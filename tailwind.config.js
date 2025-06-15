@@ -11,6 +11,11 @@ module.exports = {
         grey: "#ededed",
         "dark-grey": "#757575",
         "opaque-black": "rgba(0,0,0,0.35)",
+        // New workflow colors
+        green: "#10B981",
+        purple: "#8B5CF6",
+        orange: "#F97316",
+        teal: "#14B8A6",
       },
       backgroundImage: (theme) => ({
         "gradient-rainbow":
