@@ -3,8 +3,6 @@ import { useState } from "react";
 import LineGradient from "../components/LineGradient";
 import useMediaQuery from "../hooks/useMediaQuery";
 
-// Updated ServicesPackages component with smaller cards and fixed button gradients
-
 const ServicesPackages = () => {
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
     const [hoveredPackage, setHoveredPackage] = useState(null);
@@ -16,7 +14,7 @@ const ServicesPackages = () => {
             title: "Starter Package",
             subtitle: "Theme-Based Website",
             description: "Perfect for small businesses, portfolios, or personal blogs.",
-            price: "Rp 1.500.000 – Rp 2.500.000",
+            price: "Rp 2.000.000",
             duration: "3 – 7 days",
             bestFor: "Small businesses, students, portfolios, basic blogs",
             features: [
@@ -37,7 +35,7 @@ const ServicesPackages = () => {
             title: "Pro Package",
             subtitle: "Semi-Custom Website",
             description: "More control over design & functionality, using themes with custom elements.",
-            price: "Rp 3.000.000 – Rp 5.000.000",
+            price: "Rp 4.000.000",
             duration: "7 – 14 days",
             bestFor: "Medium-sized businesses, online presence upgrade",
             features: [
@@ -60,7 +58,7 @@ const ServicesPackages = () => {
             title: "Advanced Package",
             subtitle: "Fully Custom Website",
             description: "Custom-coded or headless CMS, tailored functionality and branding.",
-            price: "Rp 6.000.000 – Rp 12.000.000",
+            price: "Rp 9.000.000",
             duration: "2 – 4 weeks",
             bestFor: "Startups, serious business websites, agencies",
             features: [
@@ -80,40 +78,112 @@ const ServicesPackages = () => {
 
     const addOns = [
         {
+            id: "ecommerce",
             name: "E-commerce Integration",
-            description: "Shop setup with payment gateway",
+            subtitle: "Shop setup with payment gateway",
+            description: "Complete online store setup with payment processing, inventory management, and order tracking.",
             price: "+Rp 2.000.000+",
-            icon: "🛒"
+            icon: "🛒",
+            gradientColor: "from-emerald-500 to-teal-500",
+            buttonColor: "bg-gradient-to-r from-emerald-500 to-teal-500",
+            features: [
+                "Payment gateway integration",
+                "Product catalog management",
+                "Order processing system",
+                "Inventory tracking",
+                "Customer accounts",
+                "Shopping cart functionality"
+            ]
         },
         {
+            id: "logo",
             name: "Logo Design",
-            description: "Professional brand identity",
+            subtitle: "Professional brand identity",
+            description: "Custom logo design with multiple variations and brand guidelines for consistent identity.",
             price: "Rp 500.000",
-            icon: "🎨"
+            icon: "🎨",
+            gradientColor: "from-pink-500 to-rose-500",
+            buttonColor: "bg-gradient-to-r from-pink-500 to-rose-500",
+            features: [
+                "3 logo concepts",
+                "Unlimited revisions",
+                "Vector files (AI, EPS, SVG)",
+                "PNG/JPG in various sizes",
+                "Brand color palette",
+                "Usage guidelines"
+            ]
         },
         {
+            id: "content",
             name: "Content Creation",
-            description: "Copywriting and content help",
+            subtitle: "Copywriting and content help",
+            description: "Professional content writing services to engage your audience and improve conversions.",
             price: "Rp 500.000 – Rp 1.000.000",
-            icon: "✍️"
+            icon: "✍️",
+            gradientColor: "from-violet-500 to-purple-500",
+            buttonColor: "bg-gradient-to-r from-violet-500 to-purple-500",
+            features: [
+                "Website copywriting",
+                "Blog post creation",
+                "Product descriptions",
+                "About us content",
+                "Service descriptions",
+                "Call-to-action optimization"
+            ]
         },
         {
+            id: "pages",
             name: "Extra Pages",
-            description: "Additional custom pages",
+            subtitle: "Additional custom pages",
+            description: "Add more pages to your website with custom design and functionality tailored to your needs.",
             price: "Rp 200.000/page",
-            icon: "📄"
+            icon: "📄",
+            gradientColor: "from-amber-500 to-orange-500",
+            buttonColor: "bg-gradient-to-r from-amber-500 to-orange-500",
+            features: [
+                "Custom page design",
+                "Responsive layout",
+                "Content integration",
+                "SEO optimization",
+                "Mobile-friendly",
+                "Fast loading speed"
+            ]
         },
         {
+            id: "maintenance",
             name: "Maintenance Package",
-            description: "Ongoing support and updates",
+            subtitle: "Ongoing support and updates",
+            description: "Keep your website running smoothly with regular updates, backups, and technical support.",
             price: "Rp 300.000/month",
-            icon: "🔧"
+            icon: "🔧",
+            gradientColor: "from-blue-500 to-indigo-500",
+            buttonColor: "bg-gradient-to-r from-blue-500 to-indigo-500",
+            features: [
+                "Regular security updates",
+                "Daily backups",
+                "Performance monitoring",
+                "Technical support",
+                "Content updates",
+                "Plugin/theme updates"
+            ]
         },
         {
+            id: "seo",
             name: "SEO Optimization",
-            description: "Advanced search engine optimization",
+            subtitle: "Advanced search engine optimization",
+            description: "Boost your website's visibility with comprehensive SEO optimization and ongoing monitoring.",
             price: "Rp 1.500.000",
-            icon: "📈"
+            icon: "📈",
+            gradientColor: "from-green-500 to-emerald-500",
+            buttonColor: "bg-gradient-to-r from-green-500 to-emerald-500",
+            features: [
+                "Keyword research & analysis",
+                "On-page SEO optimization",
+                "Meta tags optimization",
+                "Site speed optimization",
+                "Google Search Console setup",
+                "Monthly SEO reports"
+            ]
         }
     ];
 
@@ -122,6 +192,104 @@ const ServicesPackages = () => {
         const encodedMessage = encodeURIComponent(message);
         const whatsappNumber = "YOUR_WHATSAPP_NUMBER"; // Replace with your actual WhatsApp number
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    };
+
+    const renderCard = (item, index, isAddon = false) => {
+        const cardData = isAddon ? {
+            id: item.id,
+            emoji: item.icon,
+            title: item.name,
+            subtitle: item.subtitle,
+            description: item.description,
+            price: item.price,
+            duration: null,
+            bestFor: null,
+            features: item.features,
+            gradientColor: item.gradientColor,
+            buttonColor: item.buttonColor,
+            popular: false
+        } : item;
+
+        return (
+            <motion.div
+                key={cardData.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: { opacity: 1, y: 0 }
+                }}
+                onHoverStart={() => setHoveredPackage(cardData.id)}
+                onHoverEnd={() => setHoveredPackage(null)}
+                className={`relative bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden group h-full flex flex-col ${cardData.popular ? 'ring-2 ring-yellow/50 transform scale-105' : ''
+                    } ${hoveredPackage === cardData.id ? 'transform scale-105 shadow-2xl' : ''}`}
+            >
+                {/* Popular Badge */}
+                {cardData.popular && (
+                    <div className="absolute top-3 right-3 bg-gradient-rainblue text-deep-blue px-3 py-1 text-xs font-semibold rounded-full z-10">
+                        Most Popular
+                    </div>
+                )}
+
+                {/* Card Header */}
+                <div className="relative p-6 text-center">
+                    <div className={`w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-r ${cardData.gradientColor} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
+                        {cardData.emoji}
+                    </div>
+                    
+                    <h3 className="font-playfair font-bold text-2xl text-white mb-2">
+                        {cardData.title}
+                    </h3>
+                    <p className="text-grey text-base mb-4">{cardData.subtitle}</p>
+                    
+                    <div className="mb-4">
+                        <p className="font-playfair font-bold text-3xl text-yellow">{cardData.price}</p>
+                        {cardData.duration && (
+                            <p className="text-white text-base font-medium mt-1">⏱️ {cardData.duration}</p>
+                        )}
+                    </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="px-6 pb-6 flex-grow flex flex-col">
+                    <p className="text-grey/90 mb-4 leading-relaxed text-base">{cardData.description}</p>
+
+                    {/* Features */}
+                    <div className="mb-6 flex-grow">
+                        <h4 className="font-opensans font-semibold text-base text-white mb-3">✨ What's Included:</h4>
+                        <ul className="space-y-2">
+                            {cardData.features.map((feature, idx) => (
+                                <li key={idx} className="flex items-start">
+                                    <span className="text-green-400 mr-3 mt-1 flex-shrink-0 text-sm">✓</span>
+                                    <span className="text-sm text-grey/80 leading-relaxed">{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Best For - Only for packages */}
+                    {cardData.bestFor && (
+                        <div className="mb-6 p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+                            <p className="text-sm font-medium text-white mb-2">🎯 Perfect For:</p>
+                            <p className="text-sm text-grey/90">{cardData.bestFor}</p>
+                        </div>
+                    )}
+
+                    {/* CTA Button */}
+                    <button
+                        onClick={() => handleWhatsAppContact(cardData.title)}
+                        className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-base mt-auto ${cardData.popular
+                            ? 'bg-gradient-rainblue text-deep-blue'
+                            : `${cardData.buttonColor} text-white`
+                            }`}
+                    >
+                        Get Started 💬
+                    </button>
+                </div>
+            </motion.div>
+        );
     };
 
     return (
@@ -134,109 +302,39 @@ const ServicesPackages = () => {
             </div>
 
             <div className="relative z-10">
-                {/* Header */}
+                {/* Header - Right Aligned */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5 }}
                     variants={{
-                        hidden: { opacity: 0, y: -50 },
-                        visible: { opacity: 1, y: 0 }
+                        hidden: { opacity: 0, x: 50 },
+                        visible: { opacity: 1, x: 0 }
                     }}
-                    className="text-center mt-32 mb-20 relative z-10"
+                    className="mt-32 mb-20 relative z-10 text-right"
                 >
-                    <p className="font-playfair font-semibold text-4xl mb-5">
-                        Our <span className="text-red">SERVICES</span>
-                    </p>
-                    <LineGradient width="w-1/4 mx-auto" />
-                    <p className="mt-10 text-lg max-w-2xl mx-auto text-grey">
-                        Choose the perfect package for your needs. From simple theme-based sites to fully custom solutions.
-                    </p>
+                    <div className="flex justify-end">
+                        <div>
+                            <p className="font-playfair font-semibold text-4xl mb-5">
+                                Our <span className="text-red">SERVICES</span>
+                            </p>
+                            <div className="flex justify-end my-5">
+                                <LineGradient width="w-1/4" />
+                            </div>
+                            <p className="mt-10 text-lg max-w-2xl text-grey">
+                                Choose the perfect package for your needs. From simple theme-based sites to fully custom solutions.
+                            </p>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Service Packages Grid - Made Smaller */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto px-4">
-                    {packages.map((pkg, index) => (
-                        <motion.div
-                            key={pkg.id}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ delay: index * 0.2, duration: 0.6 }}
-                            variants={{
-                                hidden: { opacity: 0, y: 50 },
-                                visible: { opacity: 1, y: 0 }
-                            }}
-                            onHoverStart={() => setHoveredPackage(pkg.id)}
-                            onHoverEnd={() => setHoveredPackage(null)}
-                            className={`relative bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden group ${pkg.popular ? 'ring-2 ring-yellow/50 transform scale-105' : ''
-                                } ${hoveredPackage === pkg.id ? 'transform scale-105 shadow-2xl' : ''}`}
-                        >
-                            {/* Popular Badge */}
-                            {pkg.popular && (
-                                <div className="absolute top-3 right-3 bg-gradient-rainblue text-deep-blue px-2 py-1 text-xs font-semibold rounded-full z-10">
-                                    Most Popular
-                                </div>
-                            )}
-
-                            {/* Package Header - Reduced Padding */}
-                            <div className="relative p-6 text-center">
-                                <div className={`w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-r ${pkg.gradientColor} flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300`}>
-                                    {pkg.emoji}
-                                </div>
-                                <h3 className="font-playfair font-bold text-xl text-white mb-2">
-                                    {pkg.title}
-                                </h3>
-                                <p className="text-grey text-base mb-3">{pkg.subtitle}</p>
-                                <div className="mb-3">
-                                    <p className="font-playfair font-bold text-lg text-white">{pkg.price}</p>
-                                    <p className="text-grey text-xs mt-1">⏱️ {pkg.duration}</p>
-                                </div>
-                            </div>
-
-                            {/* Package Content - Reduced Padding */}
-                            <div className="px-6 pb-6">
-                                <p className="text-grey mb-4 leading-relaxed text-sm">{pkg.description}</p>
-
-                                <div className="mb-4">
-                                    <h4 className="font-playfair font-semibold text-base text-white mb-3">✨ What's Included:</h4>
-                                    <ul className="space-y-2">
-                                        {pkg.features.slice(0, 4).map((feature, idx) => (
-                                            <li key={idx} className="flex items-start">
-                                                <span className="text-green-400 mr-2 mt-1 flex-shrink-0 text-sm">✓</span>
-                                                <span className="text-xs text-grey leading-relaxed">{feature}</span>
-                                            </li>
-                                        ))}
-                                        {pkg.features.length > 4 && (
-                                            <li className="text-xs text-grey opacity-70">
-                                                +{pkg.features.length - 4} more features...
-                                            </li>
-                                        )}
-                                    </ul>
-                                </div>
-
-                                <div className="mb-4 p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-                                    <p className="text-xs font-semibold text-white mb-1">🎯 Perfect For:</p>
-                                    <p className="text-xs text-grey">{pkg.bestFor}</p>
-                                </div>
-
-                                {/* CTA Button - Fixed Gradient */}
-                                <button
-                                    onClick={() => handleWhatsAppContact(pkg.title)}
-                                    className={`w-full py-2.5 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-sm ${pkg.popular
-                                        ? 'bg-gradient-rainblue text-deep-blue'
-                                        : `${pkg.buttonColor} text-white`
-                                        }`}
-                                >
-                                    Get Started - WhatsApp 💬
-                                </button>
-                            </div>
-                        </motion.div>
-                    ))}
+                {/* Service Packages Grid - Wider Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-20 max-w-7xl mx-auto px-4">
+                    {packages.map((pkg, index) => renderCard(pkg, index, false))}
                 </div>
 
-                {/* Add-ons Section */}
+                {/* Add-ons Section
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -246,9 +344,9 @@ const ServicesPackages = () => {
                         hidden: { opacity: 0, y: 50 },
                         visible: { opacity: 1, y: 0 }
                     }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-6xl mx-auto"
+                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-7xl mx-auto"
                 >
-                    <div className="text-center mb-10">
+                    <div className="text-center mb-12">
                         <h3 className="text-3xl md:text-4xl font-playfair font-bold text-white mb-4">
                             🔧 Add-Ons & <span className="bg-gradient-rainblue bg-clip-text text-transparent">Extras</span>
                         </h3>
@@ -257,28 +355,8 @@ const ServicesPackages = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                        {addOns.map((addon, index) => (
-                            <motion.div
-                                key={index}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.5 }}
-                                transition={{ delay: 0.6 + (index * 0.1), duration: 0.4 }}
-                                variants={{
-                                    hidden: { opacity: 0, scale: 0.8 },
-                                    visible: { opacity: 1, scale: 1 }
-                                }}
-                                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-white/40 hover:bg-white/15 transition-all duration-300 group cursor-pointer"
-                            >
-                                <div className="text-2xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                                    {addon.icon}
-                                </div>
-                                <h4 className="font-semibold text-white mb-2">{addon.name}</h4>
-                                <p className="text-grey text-sm mb-3 leading-relaxed">{addon.description}</p>
-                                <p className="font-playfair font-bold text-yellow">{addon.price}</p>
-                            </motion.div>
-                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-8">
+                        {addOns.map((addon, index) => renderCard(addon, index, true))}
                     </div>
 
                     <div className="text-center">
@@ -289,7 +367,7 @@ const ServicesPackages = () => {
                             Discuss Add-ons via WhatsApp 💬
                         </button>
                     </div>
-                </motion.div>
+                </motion.div> */}
 
                 {/* Floating Elements */}
                 <div className="absolute top-1/4 left-10 w-4 h-4 bg-blue rounded-full opacity-60 animate-bounce"></div>

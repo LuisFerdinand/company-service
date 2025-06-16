@@ -1,16 +1,35 @@
 import SocialMediaIcons from "../components/SocialMediaIcons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, MessageCircle, ArrowUp, Code, Sparkles, Zap, Globe, Heart } from "lucide-react";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const footerLinks = [
         { name: "Home", href: "#home" },
+        { name: "About", href: "#about" },
         { name: "Workflow", href: "#workflow" },
         { name: "Services", href: "#services" },
         { name: "Projects", href: "#projects" },
-        { name: "Testimonials", href: "#testimonials" },
         { name: "Contact", href: "#contact" }
+    ];
+
+    const services = [
+        "Web Development",
+        "UI/UX Design",
+        "E-commerce Solutions",
+        "Mobile Apps",
+        "SEO Optimization",
+        "Digital Marketing"
+    ];
+
+    const floatingIcons = [
+        { icon: Code, delay: 0, x: "15%", y: "20%" },
+        { icon: Sparkles, delay: 1, x: "85%", y: "30%" },
+        { icon: Zap, delay: 2, x: "25%", y: "70%" },
+        { icon: Globe, delay: 3, x: "75%", y: "60%" },
+        { icon: Heart, delay: 4, x: "50%", y: "85%" }
     ];
 
     const handleWhatsAppContact = () => {
@@ -20,126 +39,301 @@ const Footer = () => {
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     };
 
+    const handleEmailContact = () => {
+        window.location.href = "mailto:your-email@domain.com";
+    };
+
     return (
-        <footer className="relative bg-gradient-to-br from-deep-blue via-blue to-deep-blue overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-10 left-10 w-32 h-32 bg-yellow rounded-full blur-3xl"></div>
-                <div className="absolute bottom-10 right-10 w-40 h-40 bg-red rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white rounded-full blur-3xl opacity-5"></div>
+        <footer className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+            {/* Enhanced Background Effects */}
+            <div className="absolute inset-0">
+                {/* Gradient Orbs */}
+                <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+                
+                {/* Grid Pattern */}
+                <div className="absolute inset-0 opacity-5">
+                    <div className="h-full w-full" style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+                        backgroundSize: '40px 40px'
+                    }}></div>
+                </div>
+                
+                {/* Animated Waves */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 opacity-10">
+                    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
+                        <motion.path
+                            d="M0,60 C300,100 600,20 900,60 C1050,80 1150,40 1200,60 L1200,120 L0,120 Z"
+                            fill="url(#waveGradient)"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 2, ease: "easeInOut" }}
+                        />
+                        <defs>
+                            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#3B82F6" />
+                                <stop offset="50%" stopColor="#8B5CF6" />
+                                <stop offset="100%" stopColor="#EC4899" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
             </div>
 
-            <div className="relative z-10 pt-16 pb-8">
-                <div className="w-10/12 mx-auto">
+            {/* Floating Icons */}
+            <div className="absolute inset-0 pointer-events-none">
+                {floatingIcons.map((element, index) => {
+                    const IconComponent = element.icon;
+                    return (
+                        <motion.div
+                            key={index}
+                            className="absolute text-white/10"
+                            style={{ left: element.x, top: element.y }}
+                            initial={{ opacity: 0, scale: 0, rotate: 0 }}
+                            animate={{ 
+                                opacity: [0.1, 0.2, 0.1], 
+                                scale: [0.8, 1.2, 0.8],
+                                rotate: [0, 360],
+                                y: [-5, 5, -5]
+                            }}
+                            transition={{
+                                duration: 8,
+                                delay: element.delay,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <IconComponent size={32} />
+                        </motion.div>
+                    );
+                })}
+            </div>
+
+            <div className="relative z-10 pt-20 pb-8">
+                <div className="max-w-7xl mx-auto px-6">
+                    
+                    {/* Newsletter Section
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-16 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+                    >
+                        <h3 className="font-playfair font-bold text-3xl text-white mb-4">
+                            Ready to Start Your Project?
+                        </h3>
+                        <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+                            Let's bring your vision to life with cutting-edge web solutions.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+                            <motion.button
+                                onClick={handleEmailContact}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                            >
+                                <Mail size={20} />
+                                <span>Get Quote</span>
+                            </motion.button>
+                            <motion.button
+                                onClick={handleWhatsAppContact}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                            >
+                                <MessageCircle size={20} />
+                                <span>WhatsApp</span>
+                            </motion.button>
+                        </div>
+                    </motion.div> */}
+
                     {/* Main Footer Content */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
                         {/* Brand Section */}
-                        <div className="text-center md:text-left">
-                            <h3 className="font-playfair font-bold text-4xl text-white mb-4 drop-shadow-lg">
-                                JE
-                            </h3>
-                            <p className="text-white/80 mb-6 leading-relaxed">
-                                Creating exceptional websites that drive results. From concept to launch,
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="lg:col-span-2"
+                        >
+                            <div className="mb-6">
+                                <h3 className="font-playfair font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 drop-shadow-lg">
+                                    JANE ESPER
+                                </h3>
+                                <p className="text-white/60 text-sm font-medium tracking-wider">
+                                    PROFESSIONAL WEB DEVELOPMENT SERVICES
+                                </p>
+                            </div>
+                            <p className="text-white/80 mb-8 leading-relaxed text-lg max-w-md">
+                                Creating exceptional digital experiences that drive results. From concept to launch, 
                                 we deliver professional web solutions tailored to your business needs.
                             </p>
-                            <div className="mb-6">
+                            <div className="mb-8">
                                 <SocialMediaIcons />
                             </div>
-                        </div>
+                            
+                            {/* Contact Info */}
+                            <div className="space-y-4">
+                                <motion.div 
+                                    className="flex items-center space-x-4 group cursor-pointer"
+                                    whileHover={{ x: 5 }}
+                                    onClick={handleEmailContact}
+                                >
+                                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+                                        <Mail size={20} className="text-white" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/60 text-sm">Email</p>
+                                        <p className="text-white font-medium">your-email@domain.com</p>
+                                    </div>
+                                </motion.div>
+                                
+                                <motion.div 
+                                    className="flex items-center space-x-4 group"
+                                    whileHover={{ x: 5 }}
+                                >
+                                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                                        <Phone size={20} className="text-white" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/60 text-sm">Phone</p>
+                                        <p className="text-white font-medium">+62 xxx-xxxx-xxxx</p>
+                                    </div>
+                                </motion.div>
+                                
+                                <motion.div 
+                                    className="flex items-center space-x-4 group"
+                                    whileHover={{ x: 5 }}
+                                >
+                                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                        <MapPin size={20} className="text-white" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/60 text-sm">Location</p>
+                                        <p className="text-white font-medium">Jakarta, Indonesia</p>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </motion.div>
 
                         {/* Quick Links */}
-                        <div className="text-center md:text-left">
-                            <h4 className="font-playfair font-semibold text-xl text-yellow mb-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <h4 className="font-playfair font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-8">
                                 Quick Links
                             </h4>
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="space-y-3">
                                 {footerLinks.map((link, index) => (
-                                    <AnchorLink
+                                    <motion.div
                                         key={index}
-                                        href={link.href}
-                                        className="text-white/80 hover:text-yellow transition duration-300 hover:translate-x-1 transform block py-1"
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
                                     >
-                                        {link.name}
-                                    </AnchorLink>
+                                        <AnchorLink
+                                            href={link.href}
+                                            className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-2 text-lg hover:font-medium relative group"
+                                        >
+                                            <span className="relative z-10">{link.name}</span>
+                                            <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                                        </AnchorLink>
+                                    </motion.div>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
 
-                        {/* Contact Info */}
-                        <div className="text-center md:text-left">
-                            <h4 className="font-playfair font-semibold text-xl text-yellow mb-6">
-                                Get In Touch
+                        {/* Services */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                        >
+                            <h4 className="font-playfair font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-8">
+                                Services
                             </h4>
-                            <div className="space-y-4 mb-6">
-                                <div className="flex items-center justify-center md:justify-start space-x-3">
-                                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                        <span className="text-yellow text-sm">📧</span>
-                                    </div>
-                                    <span className="text-white/80">your-email@domain.com</span>
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start space-x-3">
-                                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                        <span className="text-yellow text-sm">📱</span>
-                                    </div>
-                                    <span className="text-white/80">+62 xxx-xxxx-xxxx</span>
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start space-x-3">
-                                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                        <span className="text-yellow text-sm">📍</span>
-                                    </div>
-                                    <span className="text-white/80">Jakarta, Indonesia</span>
-                                </div>
+                            <div className="space-y-3">
+                                {services.map((service, index) => (
+                                    <motion.div
+                                        key={index}
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                        className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-2 text-lg hover:font-medium cursor-pointer relative group"
+                                    >
+                                        <span className="relative z-10">{service}</span>
+                                        <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                                    </motion.div>
+                                ))}
                             </div>
+                        </motion.div>
+                    </div>
 
-                            {/* WhatsApp Button */}
-                            <button
-                                onClick={handleWhatsAppContact}
-                                className="bg-green hover:bg-green/90 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center md:justify-start space-x-2 mx-auto md:mx-0"
+                    {/* Enhanced Divider */}
+                    <div className="relative mb-8">
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 w-16 h-px"></div>
+                    </div>
+
+                    {/* Bottom Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0"
+                    >
+                        <div className="text-center lg:text-left">
+                            <p className="font-playfair text-white/80 text-lg mb-2">
+                                ©{currentYear} DS. All Rights Reserved.
+                            </p>
+                            <p className="text-white/60 text-sm">
+                                Made with <Heart size={16} className="inline text-red-500 mx-1" /> in Jakarta, Indonesia
+                            </p>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center lg:justify-end items-center space-x-6 text-sm text-white/60">
+                            <motion.a 
+                                href="#" 
+                                className="hover:text-yellow-400 transition duration-300"
+                                whileHover={{ y: -2 }}
                             >
-                                <span>💬</span>
-                                <span>WhatsApp Us</span>
-                            </button>
+                                Privacy Policy
+                            </motion.a>
+                            <span className="text-white/30">•</span>
+                            <motion.a 
+                                href="#" 
+                                className="hover:text-yellow-400 transition duration-300"
+                                whileHover={{ y: -2 }}
+                            >
+                                Terms of Service
+                            </motion.a>
+                            <span className="text-white/30">•</span>
+                            <motion.a 
+                                href="#" 
+                                className="hover:text-yellow-400 transition duration-300"
+                                whileHover={{ y: -2 }}
+                            >
+                                Cookie Policy
+                            </motion.a>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Divider */}
-                    <div className="border-t border-white/20 pt-8">
-                        {/* Bottom Section */}
-                        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                            <div className="text-center md:text-left">
-                                <p className="font-playfair font-semibold text-2xl text-yellow mb-2">
-                                    JANE ESPER
-                                </p>
-                                <p className="text-white/70 text-sm">
-                                    Professional Web Development Services
-                                </p>
-                            </div>
-
-                            <div className="text-center md:text-right">
-                                <p className="font-playfair text-white/80 mb-2">
-                                    ©{currentYear} ESPER. All Rights Reserved.
-                                </p>
-                                <div className="flex flex-wrap justify-center md:justify-end space-x-4 text-sm text-white/60">
-                                    <a href="#" className="hover:text-yellow transition duration-300">Privacy Policy</a>
-                                    <span>•</span>
-                                    <a href="#" className="hover:text-yellow transition duration-300">Terms of Service</a>
-                                    <span>•</span>
-                                    <a href="#" className="hover:text-yellow transition duration-300">Cookie Policy</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Back to Top Button */}
-                    <div className="text-center mt-8">
+                    {/* Enhanced Back to Top Button */}
+                    <motion.div 
+                        className="text-center mt-12"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
                         <AnchorLink
                             href="#home"
-                            className="inline-flex items-center justify-center w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 hover:transform hover:-translate-y-1 border border-white/20"
+                            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl border-2 border-white/20 group"
                         >
-                            <span className="text-yellow text-xl">↑</span>
+                            <ArrowUp size={24} className="text-white group-hover:scale-110 transition-transform duration-300" />
                         </AnchorLink>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </footer>

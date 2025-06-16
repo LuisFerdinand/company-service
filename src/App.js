@@ -3,12 +3,13 @@ import Landing from "./scenes/Landing";
 import DotGroup from "./scenes/DotGroup";
 import LineGradient from "./components/LineGradient";
 import WorkflowServices from "./scenes/WorkflowServices";
+import AboutUs from "./scenes/AboutUs"; // Add this import
 import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
 import Footer from "./scenes/Footer";
 import useMediaQuery from "./hooks/useMediaQuery";
 import { useEffect, useState } from "react";
-import Testimonials from "./scenes/Testimonials";
+// import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
 import ServicesPackages from "./scenes/ServicesPackages";
 
@@ -44,38 +45,40 @@ function App() {
           />
         )}
         <Landing setSelectedPage={setSelectedPage} selectedPage={selectedPage} />
-
       </div>
+      
+      {/* Add About Us Section */}
       <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
-
+        <AboutUs />
+      </div>
+      
+      <LineGradient />
+      <div className="mx-auto md:h-full">
         <WorkflowServices />
-
       </div>
 
       <LineGradient />
       <div className="w-5/6 mx-auto">
-
         <ServicesPackages />
-
       </div>
+
+
       <LineGradient />
       <div className="w-5/6 mx-auto">
-
         <Projects />
-
       </div>
-      <LineGradient />
+      
+      {/* <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
         <Testimonials />
-
-      </div>
+      </div> */}
+      
       <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
-
         <Contact />
-
       </div>
+      
       <Footer />
     </div>
   );

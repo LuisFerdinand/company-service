@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { HiMenu, HiX } from "react-icons/hi";
 
 const Link = ({ page, selectedPage, setSelectedPage }) => {
     const lowerCasePage = page.toLowerCase();
@@ -28,13 +29,18 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     return (
         <nav className={`${navbarBackground} z-40 w-full fixed top-0 py-4 transition-all duration-300`}>
             <div className="flex items-center justify-between mx-auto w-5/6">
-                <h4 className="font-playfair text-3xl font-bold text-white drop-shadow-lg">JE</h4>
+                <h4 className="font-playfair text-3xl font-bold text-white drop-shadow-lg">DS</h4>
 
                 {/* DESKTOP NAV */}
                 {isDesktop ? (
                     <div className="flex justify-between gap-8 font-opensans text-sm font-semibold">
                         <Link
                             page="Home"
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                        />
+                        <Link
+                            page="About"
                             selectedPage={selectedPage}
                             setSelectedPage={setSelectedPage}
                         />
@@ -54,11 +60,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                             setSelectedPage={setSelectedPage}
                         />
                         <Link
-                            page="Testimonials"
-                            selectedPage={selectedPage}
-                            setSelectedPage={setSelectedPage}
-                        />
-                        <Link
                             page="Contact"
                             selectedPage={selectedPage}
                             setSelectedPage={setSelectedPage}
@@ -69,7 +70,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                         className="rounded-full bg-white/20 backdrop-blur-sm p-3 hover:bg-white/30 transition duration-300 border border-white/30"
                         onClick={() => setIsMenuToggled(!isMenuToggled)}
                     >
-                        <img alt="menu-icon" src="../assets/menu-icon.svg" className="w-5 h-5" />
+                        <HiMenu className="w-5 h-5 text-white" />
                     </button>
                 )}
 
@@ -90,7 +91,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                                     onClick={() => setIsMenuToggled(!isMenuToggled)}
                                     className="rounded-full bg-white/20 p-2 hover:bg-white/30 transition duration-300"
                                 >
-                                    <img alt="close-icon" src="../assets/close-icon.svg" className="w-5 h-5" />
+                                    <HiX className="w-5 h-5 text-white" />
                                 </button>
                             </div>
 
@@ -98,6 +99,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                             <div className="flex flex-col gap-6 px-8 pt-8">
                                 <Link
                                     page="Home"
+                                    selectedPage={selectedPage}
+                                    setSelectedPage={setSelectedPage}
+                                />
+                                <Link
+                                    page="About"
                                     selectedPage={selectedPage}
                                     setSelectedPage={setSelectedPage}
                                 />
@@ -113,11 +119,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                                 />
                                 <Link
                                     page="Projects"
-                                    selectedPage={selectedPage}
-                                    setSelectedPage={setSelectedPage}
-                                />
-                                <Link
-                                    page="Testimonials"
                                     selectedPage={selectedPage}
                                     setSelectedPage={setSelectedPage}
                                 />
