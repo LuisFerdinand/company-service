@@ -238,12 +238,12 @@ const ServicesPackages = () => {
                     <div className={`w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-r ${cardData.gradientColor} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
                         {cardData.emoji}
                     </div>
-                    
+
                     <h3 className="font-playfair font-bold text-2xl text-white mb-2">
                         {cardData.title}
                     </h3>
                     <p className="text-grey text-base mb-4">{cardData.subtitle}</p>
-                    
+
                     <div className="mb-4">
                         <p className="font-playfair font-bold text-3xl text-yellow">{cardData.price}</p>
                         {cardData.duration && (
@@ -253,7 +253,7 @@ const ServicesPackages = () => {
                 </div>
 
                 {/* Card Content */}
-                <div className="px-6 pb-6 flex-grow flex flex-col">
+                <div className="px-6 pb-6 flex-grow flex flex-col justify-center">
                     <p className="text-grey/90 mb-4 leading-relaxed text-base">{cardData.description}</p>
 
                     {/* Features */}
@@ -334,8 +334,8 @@ const ServicesPackages = () => {
                     {packages.map((pkg, index) => renderCard(pkg, index, false))}
                 </div>
 
-                {/* Add-ons Section
-                <motion.div
+                {/* Add-ons Section */}
+                {/* <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}

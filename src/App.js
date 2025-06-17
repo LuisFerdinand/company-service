@@ -46,13 +46,13 @@ function App() {
         )}
         <Landing setSelectedPage={setSelectedPage} selectedPage={selectedPage} />
       </div>
-      
+
       {/* Add About Us Section */}
       <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
         <AboutUs />
       </div>
-      
+
       <LineGradient />
       <div className="mx-auto md:h-full">
         <WorkflowServices />
@@ -68,17 +68,17 @@ function App() {
       <div className="w-5/6 mx-auto">
         <Projects />
       </div>
-      
+
       {/* <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
         <Testimonials />
       </div> */}
-      
+
       <LineGradient />
       <div className="w-5/6 mx-auto md:h-full">
         <Contact />
       </div>
-      
+
       <Footer />
     </div>
   );

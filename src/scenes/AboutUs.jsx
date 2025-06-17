@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import LineGradient from '../components/LineGradient';
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaPython, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaJs, 
+import {
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
   FaDatabase,
   FaServer,
   FaCode,
@@ -15,12 +15,12 @@ import {
   FaRocket,
   FaCog
 } from 'react-icons/fa';
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiExpress, 
-  SiMongodb, 
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
   SiPostgresql,
   SiFramer
 } from 'react-icons/si';
@@ -85,7 +85,7 @@ const AboutUs = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="pt-48 pb-20 relative overflow-hidden flex">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -162,14 +162,14 @@ const AboutUs = () => {
             className="mt-10 space-y-6"
           >
             <p className="text-grey text-lg leading-relaxed">
-              We are a passionate team of developers who craft exceptional digital experiences. 
-              Our expertise spans across modern web technologies, ensuring we deliver cutting-edge 
+              We are a passionate team of developers who craft exceptional digital experiences.
+              Our expertise spans across modern web technologies, ensuring we deliver cutting-edge
               solutions that bring your vision to life.
             </p>
-            
+
             <p className="text-grey leading-relaxed">
-              With years of experience in both frontend and backend development, we create 
-              scalable, performant, and beautiful applications that drive business growth 
+              With years of experience in both frontend and backend development, we create
+              scalable, performant, and beautiful applications that drive business growth
               and provide outstanding user experiences.
             </p>
 
@@ -207,7 +207,7 @@ const AboutUs = () => {
 
             {/* CTA Button */}
             <motion.button
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 boxShadow: "0 10px 30px rgba(253, 204, 73, 0.3)"
               }}
@@ -240,10 +240,10 @@ const AboutUs = () => {
               >
                 {/* Card Container */}
                 <div className="relative bg-gradient-to-br from-opaque-black to-transparent backdrop-blur-sm border border-grey/10 rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105">
-                  
+
                   {/* Background Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                  
+
                   {/* Category Header */}
                   <div className="relative z-10 mb-6">
                     <div className="flex items-center gap-4 mb-4">
@@ -275,7 +275,7 @@ const AboutUs = () => {
                             {tool.name}
                           </span>
                         </div>
-                        
+
                         {/* Proficiency Bar */}
                         <div className="flex items-center gap-2">
                           <div className="w-16 h-1.5 bg-dark-grey rounded-full overflow-hidden">
@@ -301,7 +301,7 @@ const AboutUs = () => {
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, scale: 0 }}
-                          animate={{ 
+                          animate={{
                             opacity: [0, 1, 0],
                             scale: [0, 1, 0],
                             x: Math.random() * 200 - 100,
