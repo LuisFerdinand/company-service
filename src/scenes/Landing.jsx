@@ -67,11 +67,11 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
     ];
 
     return (
-        <section id="home" className="md:h-screen overflow-hidden flex items-center">
+        <section id="home" className="min-h-screen overflow-hidden flex items-center">
             {/* Background Elements */}
             <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue to-teal rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple to-red rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute top-10 left-5 w-32 h-32 xs:w-48 xs:h-48 sm:w-72 sm:h-72 md:top-20 md:left-20 bg-gradient-to-r from-blue to-teal rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-10 right-5 w-40 h-40 xs:w-56 xs:h-56 sm:w-96 sm:h-96 md:bottom-20 md:right-20 bg-gradient-to-r from-purple to-red rounded-full blur-3xl animate-pulse delay-1000"></div>
             </div>
 
             {/* Floating Tech Elements */}
@@ -89,7 +89,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         ease: "easeInOut"
                     }}
                 >
-                    <Code className="w-8 h-8" />
+                    <Code className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8" />
                 </motion.div>
 
                 {/* Database icon */}
@@ -106,7 +106,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         delay: 1
                     }}
                 >
-                    <Database className="w-10 h-10" />
+                    <Database className="w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10" />
                 </motion.div>
 
                 {/* Smartphone icon */}
@@ -123,7 +123,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         delay: 2
                     }}
                 >
-                    <Smartphone className="w-7 h-7" />
+                    <Smartphone className="w-4 h-4 xs:w-5 xs:h-5 sm:w-7 sm:h-7" />
                 </motion.div>
 
                 {/* Wifi icon */}
@@ -140,7 +140,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         delay: 0.5
                     }}
                 >
-                    <Wifi className="w-9 h-9" />
+                    <Wifi className="w-5 h-5 xs:w-7 xs:h-7 sm:w-9 sm:h-9" />
                 </motion.div>
 
                 {/* Globe icon */}
@@ -155,7 +155,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         ease: "linear"
                     }}
                 >
-                    <Globe className="w-6 h-6" />
+                    <Globe className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />
                 </motion.div>
 
                 {/* Cloud icon */}
@@ -172,26 +172,26 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         delay: 3
                     }}
                 >
-                    <Cloud className="w-8 h-8" />
+                    <Cloud className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8" />
                 </motion.div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center py-24">
+            <div className="mx-auto px-4 xs:px-6 relative z-10 h-full flex flex-col justify-center py-20 sm:py-24">
                 {/* Hero Section */}
-                <div className="text-center mb-4">
+                <div className="text-center mb-6 xs:mb-8 sm:mb-4">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6">
+                        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-playfair font-bold mb-4 xs:mb-6">
                             <span className="bg-gradient-rainblue bg-clip-text text-transparent">
                                 Digital
                             </span>
                             <br />
                             <span className="text-white">Solutions</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-grey max-w-3xl mx-auto mb-8 leading-relaxed">
+                        <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-grey max-w-3xl mx-auto mb-6 xs:mb-8 leading-relaxed px-2">
                             Transforming businesses through innovative web technologies and strategic digital solutions
                         </p>
                     </motion.div>
@@ -201,12 +201,12 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="flex flex-wrap justify-center gap-6 mb-8"
+                        className="flex flex-col xs:flex-row flex-wrap justify-center gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8"
                     >
                         {highlights.map((highlight, index) => (
-                            <div key={index} className="flex items-center gap-2">
-                                <highlight.icon className={`w-5 h-5 ${highlight.color}`} />
-                                <span className="text-grey text-sm">{highlight.text}</span>
+                            <div key={index} className="flex items-center justify-center xs:justify-start gap-2">
+                                <highlight.icon className={`w-4 h-4 xs:w-5 xs:h-5 ${highlight.color}`} />
+                                <span className="text-grey text-xs xs:text-sm">{highlight.text}</span>
                             </div>
                         ))}
                     </motion.div>
@@ -215,18 +215,18 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+                        className="flex flex-col sm:flex-row gap-3 xs:gap-4 justify-center items-center mb-6 xs:mb-8 px-2"
                     >
                         <button
                             onClick={() => handleNavigation("servicespackages")}
-                            className="bg-gradient-rainblue text-deep-blue px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
+                            className="w-full xs:w-auto bg-gradient-rainblue text-deep-blue px-6 xs:px-8 py-3 xs:py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm xs:text-base"
                         >
                             Explore Services
                             <ArrowRight className="w-4 h-4" />
                         </button>
                         <button
                             onClick={() => handleNavigation("contact")}
-                            className="border-2 border-blue text-blue px-8 py-4 rounded-xl font-semibold hover:bg-blue hover:text-deep-blue transition-all duration-300"
+                            className="w-full xs:w-auto border-2 border-blue text-blue px-6 xs:px-8 py-3 xs:py-4 rounded-xl font-semibold hover:bg-blue hover:text-deep-blue transition-all duration-300 text-sm xs:text-base"
                         >
                             Get Quote
                         </button>
@@ -240,11 +240,11 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="flex-1 flex flex-col justify-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center text-white mb-8">
+                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl font-playfair font-bold text-center text-white mb-6 xs:mb-8">
                         Our <span className="bg-gradient-rainblue bg-clip-text text-transparent">Services</span>
                     </h2>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6 max-w-6xl mx-auto">
                         {services.map((service, index) => {
                             const IconComponent = service.icon;
                             return (
@@ -259,22 +259,22 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                                     onClick={() => handleNavigation("servicespackages")}
                                 >
                                     <div className={`
-                                        bg-white/10 backdrop-blur-sm rounded-xl p-6 h-full
+                                        bg-white/10 backdrop-blur-sm rounded-xl p-4 xs:p-6 h-full
                                         border border-white/20 hover:border-white/40
                                         transition-all duration-300
                                         ${hoveredService === service.id ? 'scale-105 shadow-xl' : ''}
                                     `}>
                                         <div className={`
-                                            w-12 h-12 rounded-xl bg-gradient-to-r ${service.color}
-                                            flex items-center justify-center mb-4
+                                            w-10 h-10 xs:w-12 xs:h-12 rounded-xl bg-gradient-to-r ${service.color}
+                                            flex items-center justify-center mb-3 xs:mb-4
                                             group-hover:scale-110 transition-transform duration-300
                                         `}>
-                                            <IconComponent className="w-6 h-6 text-white" />
+                                            <IconComponent className="w-5 h-5 xs:w-6 xs:h-6 text-white" />
                                         </div>
-                                        <h3 className="text-lg font-semibold text-white mb-2">
+                                        <h3 className="text-base xs:text-lg font-semibold text-white mb-2">
                                             {service.title}
                                         </h3>
-                                        <p className="text-grey text-sm leading-relaxed">
+                                        <p className="text-grey text-xs xs:text-sm leading-relaxed">
                                             {service.description}
                                         </p>
                                     </div>
@@ -289,13 +289,13 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
-                    className="text-center mt-12"
+                    className="text-center mt-8 xs:mt-12 px-2"
                 >
                     <button
                         onClick={() => handleNavigation("contact")}
-                        className="bg-gradient-to-r from-purple to-red text-white px-8 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center gap-2"
+                        className="w-full xs:w-auto bg-gradient-to-r from-purple to-red text-white px-6 xs:px-8 py-3 xs:py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg inline-flex items-center justify-center gap-2 text-sm xs:text-base"
                     >
-                        <Sparkles className="w-5 h-5" />
+                        <Sparkles className="w-4 h-4 xs:w-5 xs:h-5" />
                         Start Your Project
                         <ArrowRight className="w-4 h-4" />
                     </button>
@@ -303,9 +303,9 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
             </div>
 
             {/* Simple Floating Elements */}
-            <div className="absolute top-1/4 left-10 w-4 h-4 bg-blue rounded-full opacity-60 animate-bounce"></div>
-            <div className="absolute top-1/3 right-20 w-6 h-6 bg-purple rounded-full opacity-40 animate-bounce delay-500"></div>
-            <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-teal rounded-full opacity-50 animate-bounce delay-1000"></div>
+            <div className="absolute top-1/4 left-4 xs:left-10 w-3 h-3 xs:w-4 xs:h-4 bg-blue rounded-full opacity-60 animate-bounce"></div>
+            <div className="absolute top-1/3 right-8 xs:right-20 w-4 h-4 xs:w-6 xs:h-6 bg-purple rounded-full opacity-40 animate-bounce delay-500"></div>
+            <div className="absolute bottom-1/4 left-1/4 w-2 h-2 xs:w-3 xs:h-3 bg-teal rounded-full opacity-50 animate-bounce delay-1000"></div>
         </section>
     );
 };

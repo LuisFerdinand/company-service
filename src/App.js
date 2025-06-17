@@ -11,7 +11,7 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 // import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
-import ServicesPackages from "./scenes/ServicesPackages";
+import Services from "./scenes/Services";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
@@ -60,7 +60,7 @@ function App() {
 
       <LineGradient />
       <div className="w-5/6 mx-auto">
-        <ServicesPackages />
+        <Services />
       </div>
 
 

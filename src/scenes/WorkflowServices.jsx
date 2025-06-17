@@ -179,7 +179,7 @@ const WorkflowServices = () => {
                 className="text-center mt-8 mb-6 relative z-10"
             >
                 <p className="font-playfair font-semibold text-3xl mb-3">
-                    Our <span className="text-red">WORKFLOW</span>
+                    Our <span className="text-blue">WORKFLOW</span>
                 </p>
                 <LineGradient width="w-1/4 mx-auto" />
                 <p className="mt-4 text-base max-w-2xl mx-auto text-grey">
