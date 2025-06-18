@@ -7,16 +7,21 @@ const Contact = () => {
     const {
         register,
         trigger,
-        formState: {errors}
+        formState: { errors }
     } = useForm();
 
     const onSubmit = async (e) => {
         const isValid = await trigger();
-        if(!isValid) {
+        if (!isValid) {
             e.preventDefault();
         }
     }
-    
+
+    // Line Gradient custom
+    const LineGradient = ({ width = "w-full" }) => (
+        <div className={`h-0.5 ${width} bg-gradient-to-r from-orange via-yellow to-orange`} />
+    );
+
     return (
         <section id='contact' className="py-48 relative overflow-hidden">
             {/* Floating Background Elements */}
@@ -87,25 +92,24 @@ const Contact = () => {
                 />
             </div>
 
-            {/* Heading - Moved to Right */}
+            {/* Contact Header - Right Aligned */}
             <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                variants={{
-                hidden: { opacity: 0, x: 50 },
-                visible: { opacity: 1, x: 0 },
-                }}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
                 className="flex justify-end w-full relative z-10"
             >
-                <div>
-                    <p className="font-playfair font-semibold text-4xl">
-                    <span className="text-yellow">CONTACT ME</span> TO GET STARTED
-                    </p>
+                <div className="text-right">
+                    <h2 className="font-playfair font-semibold text-4xl text-white mb-4">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow to-orange">Contact Me</span> To Get Started
+                    </h2>
                     <div className="flex md:justify-end my-5">
                         <LineGradient width="w-1/2" />
                     </div>
+                    <p className="mt-6 text-lg text-grey max-w-2xl leading-relaxed font-opensans">
+                        Ready to bring your vision to life? Let's discuss your next project
+                    </p>
                 </div>
             </motion.div>
 
@@ -114,14 +118,14 @@ const Contact = () => {
                 {/* Image section left */}
                 <motion.div
                     initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0 },
-                }}
-                className="basis-1/2 flex justify-center"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
+                    variants={{
+                        hidden: { opacity: 0, y: 50 },
+                        visible: { opacity: 1, y: 0 },
+                    }}
+                    className="basis-1/2 flex justify-center"
                 >
                     <img src={contactImg} alt="contact-image" className="rounded-lg shadow-lg" />
                 </motion.div>
@@ -131,10 +135,10 @@ const Contact = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{delay: 0.2, duration: 0.5 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
                     variants={{
-                    hidden: { opacity: 0, y: 50 },
-                    visible: { opacity: 1, y: 0 },
+                        hidden: { opacity: 0, y: 50 },
+                        visible: { opacity: 1, y: 0 },
                     }}
                     className="basis-1/2 mt-10 md:mt-0"
                 >
@@ -145,68 +149,68 @@ const Contact = () => {
                         method="POST"
                         className="space-y-6"
                     >
-                            <div>
-                                <input 
-                                    type="text"
-                                    className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300"
-                                    placeholder="Your Name"
-                                    {...register("name", {
-                                        required: true, 
-                                        maxLength: 100,
-                                    })}
-                                />
-                                {errors.name && (
-                                    <p className="text-red mt-2 text-sm font-medium">
-                                        {errors.name.type === 'required' && "This field is required"}
-                                        {errors.name.type === 'maxLength' && "The max length is 100 characters"}
-                                    </p>
-                                )}
-                            </div>
+                        <div>
+                            <input
+                                type="text"
+                                className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300"
+                                placeholder="Your Name"
+                                {...register("name", {
+                                    required: true,
+                                    maxLength: 100,
+                                })}
+                            />
+                            {errors.name && (
+                                <p className="text-red mt-2 text-sm font-medium">
+                                    {errors.name.type === 'required' && "This field is required"}
+                                    {errors.name.type === 'maxLength' && "The max length is 100 characters"}
+                                </p>
+                            )}
+                        </div>
 
-                            <div>
-                                <input 
-                                    type="email"
-                                    className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300"
-                                    placeholder="Your Email"
-                                    {...register("email", {
-                                        required: true, 
-                                        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                    })}
-                                />
-                                {errors.email && (
-                                    <p className="text-red mt-2 text-sm font-medium">
-                                        {errors.email.type === 'required' && "This field is required"}
-                                        {errors.email.type === 'pattern' && "Invalid email address"}
-                                    </p>
-                                )}
-                            </div>
+                        <div>
+                            <input
+                                type="email"
+                                className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300"
+                                placeholder="Your Email"
+                                {...register("email", {
+                                    required: true,
+                                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                })}
+                            />
+                            {errors.email && (
+                                <p className="text-red mt-2 text-sm font-medium">
+                                    {errors.email.type === 'required' && "This field is required"}
+                                    {errors.email.type === 'pattern' && "Invalid email address"}
+                                </p>
+                            )}
+                        </div>
 
-                            <div>
-                                <textarea 
-                                    className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300 resize-none"
-                                    placeholder="Your Message"
-                                    rows="5"
-                                    {...register("message", {
-                                        required: true, 
-                                        maxLength: 2000,
-                                    })}
-                                />
-                                {errors.message && (
-                                    <p className="text-red mt-2 text-sm font-medium">
-                                        {errors.message.type === 'required' && "This field is required"}
-                                        {errors.message.type === "maxLength" && "Max length is 2000 characters"}
-                                    </p>
-                                )}
-                            </div>
+                        <div>
+                            <textarea
+                                className="w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg font-semibold placeholder-grey text-white p-4 focus:outline-none focus:ring-2 focus:ring-yellow/50 focus:border-transparent transition-all duration-300 resize-none"
+                                placeholder="Your Message"
+                                rows="5"
+                                {...register("message", {
+                                    required: true,
+                                    maxLength: 2000,
+                                })}
+                            />
+                            {errors.message && (
+                                <p className="text-red mt-2 text-sm font-medium">
+                                    {errors.message.type === 'required' && "This field is required"}
+                                    {errors.message.type === "maxLength" && "Max length is 2000 characters"}
+                                </p>
+                            )}
+                        </div>
 
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full p-4 bg-gradient-to-r from-yellow to-orange font-bold text-deep-blue rounded-lg hover:from-orange hover:to-red transition-all duration-300 shadow-lg hover:shadow-xl"
-                                type="submit"
-                            >
-                                SEND MESSAGE
-                            </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full p-4 bg-gradient-to-r from-yellow to-orange font-bold text-deep-blue rounded-lg hover:from-orange hover:to-red transition-all duration-300 shadow-lg hover:shadow-xl"
+                            type="submit"
+                        >
+                            SEND MESSAGE
+                        </motion.button>
                     </form>
                 </motion.div>
             </div>

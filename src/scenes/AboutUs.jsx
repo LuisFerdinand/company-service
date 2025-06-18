@@ -84,8 +84,12 @@ const AboutUs = () => {
     }
   };
 
+  const LineGradient = ({ width = "w-full" }) => (
+    <div className={`h-0.5 ${width} bg-yellow`} />
+  );
+
   return (
-    <section id="about" className="pt-48 pb-20 relative overflow-hidden flex">
+    <section id="about" className="pt-20 pb-20 relative overflow-hidden flex max-w-7xl">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -146,7 +150,7 @@ const AboutUs = () => {
             <p className="font-playfair font-semibold text-4xl mb-5">
               <span className="text-yellow">ABOUT</span> US
             </p>
-            <LineGradient width="mx-auto md:mx-0 w-2/5" />
+            <LineGradient width="mx-auto md:mx-0 w-2/5" className="bg-yellow" />
           </motion.div>
 
           {/* Description */}

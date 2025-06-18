@@ -48,20 +48,20 @@ const Footer = () => {
             {/* Enhanced Background Effects */}
             <div className="absolute inset-0">
                 {/* Gradient Orbs */}
-                <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-                
+                <div className="absolute top-10 left-10 w-40 h-40 md:top-20 md:left-20 md:w-80 md:h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-10 right-10 w-48 h-48 md:bottom-20 md:right-20 md:w-96 md:h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+
                 {/* Grid Pattern */}
                 <div className="absolute inset-0 opacity-5">
                     <div className="h-full w-full" style={{
                         backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-                        backgroundSize: '40px 40px'
+                        backgroundSize: '30px 30px'
                     }}></div>
                 </div>
-                
+
                 {/* Animated Waves */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 opacity-10">
+                <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 opacity-10">
                     <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
                         <motion.path
                             d="M0,60 C300,100 600,20 900,60 C1050,80 1150,40 1200,60 L1200,120 L0,120 Z"
@@ -91,8 +91,8 @@ const Footer = () => {
                             className="absolute text-white/10"
                             style={{ left: element.x, top: element.y }}
                             initial={{ opacity: 0, scale: 0, rotate: 0 }}
-                            animate={{ 
-                                opacity: [0.1, 0.2, 0.1], 
+                            animate={{
+                                opacity: [0.1, 0.2, 0.1],
                                 scale: [0.8, 1.2, 0.8],
                                 rotate: [0, 360],
                                 y: [-5, 5, -5]
@@ -104,115 +104,80 @@ const Footer = () => {
                                 ease: "easeInOut"
                             }}
                         >
-                            <IconComponent size={32} />
+                            <IconComponent className="w-4 h-4 md:w-8 md:h-8" />
                         </motion.div>
                     );
                 })}
             </div>
 
-            <div className="relative z-10 pt-20 pb-8">
-                <div className="max-w-7xl mx-auto px-6">
-                    
-                    {/* Newsletter Section
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center mb-16 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-                    >
-                        <h3 className="font-playfair font-bold text-3xl text-white mb-4">
-                            Ready to Start Your Project?
-                        </h3>
-                        <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-                            Let's bring your vision to life with cutting-edge web solutions.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-                            <motion.button
-                                onClick={handleEmailContact}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
-                            >
-                                <Mail size={20} />
-                                <span>Get Quote</span>
-                            </motion.button>
-                            <motion.button
-                                onClick={handleWhatsAppContact}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
-                            >
-                                <MessageCircle size={20} />
-                                <span>WhatsApp</span>
-                            </motion.button>
-                        </div>
-                    </motion.div> */}
+            <div className="relative z-10 pt-12 md:pt-20 pb-6 md:pb-8">
+                <div className="max-w-7xl mx-auto px-4 md:px-6">
 
                     {/* Main Footer Content */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-16">
 
                         {/* Brand Section */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="lg:col-span-2"
+                            className="col-span-1 md:col-span-2 lg:col-span-2"
                         >
-                            <div className="mb-6">
-                                <h3 className="font-playfair font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 drop-shadow-lg">
+                            <div className="mb-4 md:mb-6">
+                                <h3 className="font-playfair font-bold text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-1 md:mb-2 drop-shadow-lg">
                                     JANE ESPER
                                 </h3>
-                                <p className="text-white/60 text-sm font-medium tracking-wider">
+                                <p className="text-white/60 text-xs md:text-sm font-medium tracking-wider">
                                     PROFESSIONAL WEB DEVELOPMENT SERVICES
                                 </p>
                             </div>
-                            <p className="text-white/80 mb-8 leading-relaxed text-lg max-w-md">
-                                Creating exceptional digital experiences that drive results. From concept to launch, 
+                            <p className="text-white/80 mb-4 md:mb-8 leading-relaxed text-sm md:text-base lg:text-lg max-w-md">
+                                Creating exceptional digital experiences that drive results. From concept to launch,
                                 we deliver professional web solutions tailored to your business needs.
                             </p>
-                            <div className="mb-8">
+                            <div className="mb-4 md:mb-8">
                                 <SocialMediaIcons />
                             </div>
-                            
+
                             {/* Contact Info */}
-                            <div className="space-y-4">
-                                <motion.div 
-                                    className="flex items-center space-x-4 group cursor-pointer"
+                            <div className="space-y-3 md:space-y-4">
+                                <motion.div
+                                    className="flex items-center space-x-3 md:space-x-4 group cursor-pointer"
                                     whileHover={{ x: 5 }}
                                     onClick={handleEmailContact}
                                 >
-                                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
-                                        <Mail size={20} className="text-white" />
+                                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+                                        <Mail className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-white/60 text-sm">Email</p>
-                                        <p className="text-white font-medium">your-email@domain.com</p>
+                                        <p className="text-white/60 text-xs md:text-sm">Email</p>
+                                        <p className="text-white font-medium text-sm md:text-base">your-email@domain.com</p>
                                     </div>
                                 </motion.div>
-                                
-                                <motion.div 
-                                    className="flex items-center space-x-4 group"
+
+                                <motion.div
+                                    className="flex items-center space-x-3 md:space-x-4 group"
                                     whileHover={{ x: 5 }}
                                 >
-                                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                                        <Phone size={20} className="text-white" />
+                                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                                        <Phone className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-white/60 text-sm">Phone</p>
-                                        <p className="text-white font-medium">+62 xxx-xxxx-xxxx</p>
+                                        <p className="text-white/60 text-xs md:text-sm">Phone</p>
+                                        <p className="text-white font-medium text-sm md:text-base">+62 xxx-xxxx-xxxx</p>
                                     </div>
                                 </motion.div>
-                                
-                                <motion.div 
-                                    className="flex items-center space-x-4 group"
+
+                                <motion.div
+                                    className="flex items-center space-x-3 md:space-x-4 group"
                                     whileHover={{ x: 5 }}
                                 >
-                                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                                        <MapPin size={20} className="text-white" />
+                                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                                        <MapPin className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-white/60 text-sm">Location</p>
-                                        <p className="text-white font-medium">Jakarta, Indonesia</p>
+                                        <p className="text-white/60 text-xs md:text-sm">Location</p>
+                                        <p className="text-white font-medium text-sm md:text-base">Jakarta, Indonesia</p>
                                     </div>
                                 </motion.div>
                             </div>
@@ -223,11 +188,12 @@ const Footer = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
+                            className="col-span-1"
                         >
-                            <h4 className="font-playfair font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-8">
+                            <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-4 md:mb-6 lg:mb-8">
                                 Quick Links
                             </h4>
-                            <div className="space-y-3">
+                            <div className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-3">
                                 {footerLinks.map((link, index) => (
                                     <motion.div
                                         key={index}
@@ -236,7 +202,7 @@ const Footer = () => {
                                     >
                                         <AnchorLink
                                             href={link.href}
-                                            className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-2 text-lg hover:font-medium relative group"
+                                            className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-1 md:py-2 text-sm md:text-base lg:text-lg hover:font-medium relative group"
                                         >
                                             <span className="relative z-10">{link.name}</span>
                                             <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
@@ -251,17 +217,18 @@ const Footer = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
+                            className="col-span-1"
                         >
-                            <h4 className="font-playfair font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-8">
+                            <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-4 md:mb-6 lg:mb-8">
                                 Services
                             </h4>
-                            <div className="space-y-3">
+                            <div className="grid grid-cols-1 gap-2 md:gap-3">
                                 {services.map((service, index) => (
                                     <motion.div
                                         key={index}
                                         whileHover={{ x: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
-                                        className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-2 text-lg hover:font-medium cursor-pointer relative group"
+                                        className="text-white/80 hover:text-yellow-400 transition-all duration-300 block py-1 md:py-2 text-sm md:text-base lg:text-lg hover:font-medium cursor-pointer relative group"
                                     >
                                         <span className="relative z-10">{service}</span>
                                         <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
@@ -272,9 +239,9 @@ const Footer = () => {
                     </div>
 
                     {/* Enhanced Divider */}
-                    <div className="relative mb-8">
+                    <div className="relative mb-4 md:mb-8">
                         <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 w-16 h-px"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 w-8 md:w-16 h-px"></div>
                     </div>
 
                     {/* Bottom Section */}
@@ -282,36 +249,36 @@ const Footer = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0"
+                        className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0"
                     >
                         <div className="text-center lg:text-left">
-                            <p className="font-playfair text-white/80 text-lg mb-2">
+                            <p className="font-playfair text-white/80 text-sm md:text-base lg:text-lg mb-1 md:mb-2">
                                 ©{currentYear} DS. All Rights Reserved.
                             </p>
-                            <p className="text-white/60 text-sm">
-                                Made with <Heart size={16} className="inline text-red-500 mx-1" /> in Jakarta, Indonesia
+                            <p className="text-white/60 text-xs md:text-sm flex items-center justify-center lg:justify-start">
+                                Made with <Heart size={12} className="mx-1 text-red-500" /> in Jakarta, Indonesia
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap justify-center lg:justify-end items-center space-x-6 text-sm text-white/60">
-                            <motion.a 
-                                href="#" 
+                        <div className="flex flex-wrap justify-center lg:justify-end items-center gap-2 md:gap-4 text-xs md:text-sm text-white/60">
+                            <motion.a
+                                href="#"
                                 className="hover:text-yellow-400 transition duration-300"
                                 whileHover={{ y: -2 }}
                             >
                                 Privacy Policy
                             </motion.a>
                             <span className="text-white/30">•</span>
-                            <motion.a 
-                                href="#" 
+                            <motion.a
+                                href="#"
                                 className="hover:text-yellow-400 transition duration-300"
                                 whileHover={{ y: -2 }}
                             >
                                 Terms of Service
                             </motion.a>
-                            <span className="text-white/30">•</span>
-                            <motion.a 
-                                href="#" 
+                            <span className="text-white/30 hidden sm:inline">•</span>
+                            <motion.a
+                                href="#"
                                 className="hover:text-yellow-400 transition duration-300"
                                 whileHover={{ y: -2 }}
                             >
@@ -321,17 +288,17 @@ const Footer = () => {
                     </motion.div>
 
                     {/* Enhanced Back to Top Button */}
-                    <motion.div 
-                        className="text-center mt-12"
+                    <motion.div
+                        className="text-center mt-8 md:mt-12"
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.5 }}
                     >
                         <AnchorLink
                             href="#home"
-                            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl border-2 border-white/20 group"
+                            className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:from-blue-600 hover:to-purple-600 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl border-2 border-white/20 group"
                         >
-                            <ArrowUp size={24} className="text-white group-hover:scale-110 transition-transform duration-300" />
+                            <ArrowUp className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                         </AnchorLink>
                     </motion.div>
                 </div>

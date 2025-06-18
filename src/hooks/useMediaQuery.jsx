@@ -5,13 +5,33 @@ const useMediaQuery = (query) => {
 
   useEffect(() => {
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
+
+    // Set initial value
+    setMatches(media.matches);
+
+    // Create event listener function
+    const listener = (event) => {
+      setMatches(event.matches);
+    };
+
+    // Add the listener to the media query
+    if (media.addEventListener) {
+      media.addEventListener('change', listener);
+    } else {
+      // Fallback for older browsers
+      media.addListener(listener);
     }
-    const listener = () => setMatches(media.matches);
-    window.addEventListener("resize", listener);
-    return () => window.removeEventListener("resize", listener);
-  }, [matches, query]);
+
+    // Cleanup function
+    return () => {
+      if (media.removeEventListener) {
+        media.removeEventListener('change', listener);
+      } else {
+        // Fallback for older browsers
+        media.removeListener(listener);
+      }
+    };
+  }, [query]);
 
   return matches;
 };
