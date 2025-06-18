@@ -147,7 +147,7 @@ const AboutUs = () => {
             }}
             className="text-center md:text-left"
           >
-            <p className="font-playfair font-semibold text-4xl mb-5">
+            <p className="font-playfair font-semibold text-3xl md:text-4xl mb-5">
               <span className="text-yellow">ABOUT</span> US
             </p>
             <LineGradient width="mx-auto md:mx-0 w-2/5" className="bg-yellow" />

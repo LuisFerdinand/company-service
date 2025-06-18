@@ -184,7 +184,7 @@ const WebServicesLanding = ({ setSelectedPage, selectedPage }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl font-playfair font-bold mb-4 xs:mb-6">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-playfair font-bold mb-4 xs:mb-6">
                             <span className="bg-gradient-rainblue bg-clip-text text-transparent">
                                 Digital
                             </span>

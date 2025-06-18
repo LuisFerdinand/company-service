@@ -100,11 +100,11 @@ const Contact = () => {
                 transition={{ duration: 0.6 }}
                 className="flex justify-end w-full relative z-10"
             >
-                <div className="text-right">
-                    <h2 className="font-playfair font-semibold text-4xl text-white mb-4">
+                <div className="text-center md:text-right">
+                    <h2 className="font-playfair font-semibold text-3xl lg:text-4xl text-white mb-4">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow to-orange">Contact Me</span> To Get Started
                     </h2>
-                    <div className="flex md:justify-end my-5">
+                    <div className="flex justify-center md:justify-end my-5">
                         <LineGradient width="w-1/2" />
                     </div>
                     <p className="mt-6 text-lg text-grey max-w-2xl leading-relaxed font-opensans">

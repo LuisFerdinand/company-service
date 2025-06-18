@@ -249,7 +249,7 @@ const Services = () => {
             <div className="relative z-10 max-w-6xl mx-auto px-3">
                 {/* Header - Compact */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                    <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-3">
                         Our <span className="bg-gradient-to-r from-yellow to-red bg-clip-text text-transparent">Services</span>
                     </h2>
                     <div className="flex justify-center my-3">

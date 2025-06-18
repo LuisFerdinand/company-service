@@ -123,7 +123,7 @@ function App() {
 
       {/* Projects Section */}
 
-      <div ref={projectsRef} className="w-5/6 mx-auto">
+      <div ref={projectsRef} className="w-5/6 mx-auto h-screen flex justify-center items-center">
         <Projects />
       </div>
 

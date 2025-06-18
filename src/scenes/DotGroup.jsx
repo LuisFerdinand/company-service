@@ -100,12 +100,13 @@ const DotGroup = ({ selectedPage, setSelectedPage }) => {
                                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue/20 to-purple/20 blur-sm -z-10" />
                             </div>
 
-                            {/* Connection line to center */}
+                            {/* Connection line to center - only on hover with different styles for active/inactive */}
                             <div className={`
                                 absolute right-12 top-1/2 w-4 h-0.5 transform -translate-y-1/2
                                 transition-all duration-300 origin-right
+                                opacity-0 group-hover:opacity-60
                                 ${isActive
-                                    ? 'bg-gradient-to-l from-blue to-purple opacity-60 shadow-sm shadow-blue/50'
+                                    ? 'bg-gradient-to-l from-yellow via-blue to-purple shadow-md shadow-yellow/50 h-0.5'
                                     : 'bg-white/20 opacity-0 group-hover:opacity-40'
                                 }
                             `} />
