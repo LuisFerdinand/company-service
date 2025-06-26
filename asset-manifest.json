@@ -1,24 +1,20 @@
 {
   "files": {
-    "main.css": "/company-service/static/css/main.b817cb63.css",
-    "main.js": "/company-service/static/js/main.36ca0481.js",
-    "static/media/contact-image.jpeg": "/company-service/static/media/contact-image.37fcb61b49d6aa5c40d3.jpeg",
-    "static/media/project-5.jpeg": "/company-service/static/media/project-5.0b26b0692e9a610483a4.jpeg",
-    "static/media/project-6.jpeg": "/company-service/static/media/project-6.ecd87ccc7667efc5f77e.jpeg",
-    "static/media/project-3.jpeg": "/company-service/static/media/project-3.422dfb13f9ee0ce64584.jpeg",
-    "static/media/project-7.jpeg": "/company-service/static/media/project-7.0050498f8187d582112e.jpeg",
+    "main.css": "/company-service/static/css/main.d631dbff.css",
+    "main.js": "/company-service/static/js/main.77be1498.js",
     "static/media/person-3.png": "/company-service/static/media/person-3.5dd0b714cfc8d2673b79.png",
     "static/media/person-2.png": "/company-service/static/media/person-2.6570129d3e8716b40235.png",
-    "static/media/project-1.jpeg": "/company-service/static/media/project-1.f3b907cc9bc300f0c439.jpeg",
     "static/media/person-1.png": "/company-service/static/media/person-1.fb6c3796b42f9ad950c7.png",
-    "static/media/project-4.jpeg": "/company-service/static/media/project-4.a059259a13ae03a1e4b2.jpeg",
-    "static/media/project-2.jpeg": "/company-service/static/media/project-2.6d87eee3afb3c2dd6b12.jpeg",
+    "static/media/slick.svg": "/company-service/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/company-service/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/company-service/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/company-service/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/company-service/index.html",
-    "main.b817cb63.css.map": "/company-service/static/css/main.b817cb63.css.map",
-    "main.36ca0481.js.map": "/company-service/static/js/main.36ca0481.js.map"
+    "main.d631dbff.css.map": "/company-service/static/css/main.d631dbff.css.map",
+    "main.77be1498.js.map": "/company-service/static/js/main.77be1498.js.map"
   },
   "entrypoints": [
-    "static/css/main.b817cb63.css",
-    "static/js/main.36ca0481.js"
+    "static/css/main.d631dbff.css",
+    "static/js/main.77be1498.js"
   ]
 }
