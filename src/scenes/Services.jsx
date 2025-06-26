@@ -1,4 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
     Rocket,
     Zap,
@@ -6,9 +9,7 @@ import {
     ShoppingCart,
     Palette,
     PenTool,
-    FileText,
     Wrench,
-    TrendingUp,
     Clock,
     Users,
     CheckCircle,
@@ -39,10 +40,27 @@ const FloatingElement = ({ children, delay = 0, className = "" }) => (
     </div>
 );
 
+// Custom Arrow Components for React Slick
+const CustomPrevArrow = ({ onClick }) => (
+    <button
+        onClick={onClick}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 hover:bg-white/20 transition-all duration-300"
+    >
+        <ChevronLeft className="w-4 h-4 text-white" />
+    </button>
+);
+
+const CustomNextArrow = ({ onClick }) => (
+    <button
+        onClick={onClick}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 hover:bg-white/20 transition-all duration-300"
+    >
+        <ChevronRight className="w-4 h-4 text-white" />
+    </button>
+);
+
 const Services = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
-    const sliderRef = useRef(null);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     const packages = [
         {
@@ -52,7 +70,7 @@ const Services = () => {
             subtitle: "Theme-Based Website",
             description: "Perfect launch pad for your digital presence",
             price: "Rp 2.000.000",
-            duration: "3 – 7 days",
+            duration: "3 - 7 days",
             bestFor: "Small businesses, portfolios",
             highlight: "Quick Launch",
             features: [
@@ -62,7 +80,7 @@ const Services = () => {
                 "Basic SEO setup",
                 "Contact form integration"
             ],
-            gradientColor: "from-blue-500 to-cyan-500",
+            gradientColor: "from-blue to-cyan",
             popular: false
         },
         {
@@ -72,7 +90,7 @@ const Services = () => {
             subtitle: "Semi-Custom Website",
             description: "Perfect balance of customization and efficiency",
             price: "Rp 4.000.000",
-            duration: "7 – 14 days",
+            duration: "7 - 14 days",
             bestFor: "Growing businesses",
             highlight: "Most Popular",
             features: [
@@ -82,7 +100,7 @@ const Services = () => {
                 "Analytics integration",
                 "WhatsApp business setup"
             ],
-            gradientColor: "from-purple-500 to-pink-500",
+            gradientColor: "from-purple to-pink",
             popular: true
         },
         {
@@ -92,7 +110,7 @@ const Services = () => {
             subtitle: "Fully Custom Website",
             description: "Enterprise-grade solution tailored to your vision",
             price: "Rp 9.000.000",
-            duration: "2 – 4 weeks",
+            duration: "2 - 4 weeks",
             bestFor: "Serious businesses, startups",
             highlight: "Premium Solution",
             features: [
@@ -102,7 +120,7 @@ const Services = () => {
                 "Advanced SEO optimization",
                 "1 month premium support"
             ],
-            gradientColor: "from-orange-500 to-red-500",
+            gradientColor: "from-orange to-red",
             popular: false
         }
     ];
@@ -115,19 +133,11 @@ const Services = () => {
     ];
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
+        const checkScreenSize = () => setIsDesktop(window.innerWidth >= 1024);
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % packages.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + packages.length) % packages.length);
-    };
 
     const handleWhatsAppContact = (packageName) => {
         const message = `Hi! I'm interested in the ${packageName}. Can we discuss the details?`;
@@ -136,18 +146,18 @@ const Services = () => {
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     };
 
-    const PackageCard = ({ item, isActive = true }) => {
+    const PackageCard = ({ item }) => {
         const IconComponent = item.icon;
 
         return (
-            <div className={`bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden group h-full flex flex-col ${item.popular ? 'ring-1 ring-yellow/60 shadow-lg' : ''
-                } ${isActive ? 'transform hover:scale-105' : ''}`}>
+            <div className={`bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden group h-full flex flex-col mx-2 ${item.popular ? 'ring-1 ring-yellow/60 shadow-lg' : ''
+                }`}>
 
                 {/* Highlight Badge */}
                 <div className="relative p-3 pb-0">
                     <div className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mb-2 ${item.popular
                         ? 'bg-gradient-to-r from-yellow to-red text-white'
-                        : 'bg-white/10 text-white border border-white/20'
+                        : `bg-gradient-to-r ${item.gradientColor} text-white`
                         }`}>
                         <Sparkles className="w-2.5 h-2.5 mr-1" />
                         {item.highlight}
@@ -155,14 +165,14 @@ const Services = () => {
 
                     {/* Icon & Title */}
                     <div className="text-center">
-                        <div className={`w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-r ${item.gradientColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md`}>
+                        <div className={`w-10 h-10 mx-auto mb-2 rounded-lg bg-gradient-to-r ${item.gradientColor} flex items-center justify-center transition-transform duration-300 shadow-md`}>
                             <IconComponent className="w-5 h-5 text-white" />
                         </div>
 
                         <h3 className="font-bold text-lg text-white mb-1">
                             {item.title}
                         </h3>
-                        <p className="text-gray-300 text-xs mb-2">{item.subtitle}</p>
+                        <p className="text-gray-400 text-xs mb-2">{item.subtitle}</p>
                     </div>
                 </div>
 
@@ -181,15 +191,13 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="px-3 pb-3 flex-grow flex flex-col">
-                    <p className="text-gray-300 mb-2 text-center text-xs leading-relaxed">{item.description}</p>
-
                     {/* Best For */}
                     <div className="mb-2 p-2 bg-gradient-to-r from-white/5 to-white/10 rounded-md border border-white/10">
                         <p className="text-xs font-medium text-white mb-0.5 flex items-center">
                             <Users className="w-3 h-3 mr-1" />
                             Perfect For:
                         </p>
-                        <p className="text-xs text-gray-300">{item.bestFor}</p>
+                        <p className="text-xs text-gray-400">{item.bestFor}</p>
                     </div>
 
                     {/* Key Features */}
@@ -202,7 +210,7 @@ const Services = () => {
                             {item.features.map((feature, idx) => (
                                 <li key={idx} className="flex items-start text-xs">
                                     <div className="w-1 h-1 bg-gradient-to-r from-yellow to-red rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
-                                    <span className="text-gray-300">{feature}</span>
+                                    <span className="text-gray-400">{feature}</span>
                                 </li>
                             ))}
                         </ul>
@@ -211,7 +219,7 @@ const Services = () => {
                     {/* CTA Button */}
                     <button
                         onClick={() => handleWhatsAppContact(item.title)}
-                        className={`w-full py-2 px-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center text-xs mt-auto ${item.popular
+                        className={`w-full py-2 px-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center text-xs mt-auto ${item.popular
                             ? 'bg-gradient-to-r from-yellow to-red text-white'
                             : `bg-gradient-to-r ${item.gradientColor} text-white`
                             }`}
@@ -222,6 +230,50 @@ const Services = () => {
                 </div>
             </div>
         );
+    };
+
+    // Slider settings
+    const sliderSettings = {
+        dots: !isDesktop,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: !isDesktop,
+        draggable: !isDesktop,
+        swipe: !isDesktop,
+        touchMove: !isDesktop,
+        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    dots: true,
+                    draggable: true,
+                    swipe: true,
+                    touchMove: true,
+                    infinite: false
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    dots: true,
+                    draggable: true,
+                    swipe: true,
+                    touchMove: true,
+                    infinite: false
+                }
+            }
+        ]
     };
 
     return (
@@ -249,72 +301,28 @@ const Services = () => {
             <div className="relative z-10 max-w-6xl mx-auto px-3">
                 {/* Header - Compact */}
                 <div className="text-center mb-8">
-                    <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-3">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-3">
                         Our <span className="bg-gradient-to-r from-yellow to-red bg-clip-text text-transparent">Services</span>
                     </h2>
                     <div className="flex justify-center my-3">
                         <LineGradient width="w-16" />
                     </div>
-                    <p className="text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-[12px] xs:text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
                         Transform your business with our comprehensive web development packages.
                         From rapid deployment to custom enterprise solutions.
                     </p>
                 </div>
 
-                {/* Desktop Grid / Mobile Slider */}
-                {isMobile ? (
-                    <div className="relative mb-8">
-                        <div className="overflow-hidden rounded-xl">
-                            <div
-                                ref={sliderRef}
-                                className="flex transition-transform duration-500 ease-out"
-                                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                            >
-                                {packages.map((pkg, index) => (
-                                    <div key={pkg.id} className="w-full flex-shrink-0 px-2">
-                                        <PackageCard item={pkg} />
-                                    </div>
-                                ))}
+                {/* Packages Slider */}
+                <div className="mb-16">
+                    <Slider {...sliderSettings}>
+                        {packages.map((pkg) => (
+                            <div key={pkg.id} className="px-2">
+                                <PackageCard item={pkg} />
                             </div>
-                        </div>
-
-                        {/* Slider Controls - Compact */}
-                        <div className="flex justify-between items-center mt-4">
-                            <button
-                                onClick={prevSlide}
-                                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 hover:bg-white/20 transition-all duration-300"
-                            >
-                                <ChevronLeft className="w-4 h-4 text-white" />
-                            </button>
-
-                            <div className="flex space-x-1">
-                                {packages.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => setCurrentSlide(index)}
-                                        className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                                            ? 'bg-gradient-to-r from-yellow to-red'
-                                            : 'bg-white/30'
-                                            }`}
-                                    />
-                                ))}
-                            </div>
-
-                            <button
-                                onClick={nextSlide}
-                                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-2 hover:bg-white/20 transition-all duration-300"
-                            >
-                                <ChevronRight className="w-4 h-4 text-white" />
-                            </button>
-                        </div>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                        {packages.map((pkg, index) => (
-                            <PackageCard key={pkg.id} item={pkg} />
                         ))}
-                    </div>
-                )}
+                    </Slider>
+                </div>
 
                 {/* Add-ons Section - Compact */}
                 <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-white/10">
@@ -333,7 +341,7 @@ const Services = () => {
                             return (
                                 <div
                                     key={addon.id}
-                                    className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/30 transition-all duration-300 p-3 group cursor-pointer hover:transform hover:scale-105"
+                                    className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/30 transition-all duration-300 p-3 group cursor-pointer hover:transform"
                                     onClick={() => handleWhatsAppContact(addon.name)}
                                 >
                                     <div className="flex items-center space-x-2">
@@ -369,6 +377,22 @@ const Services = () => {
                 }
                 .animate-float {
                     animation: float 6s ease-in-out infinite;
+                }
+                
+                /* Custom Slick Slider Styles */
+                .slick-dots {
+                    bottom: -40px;
+                }
+                
+                .slick-dots li button:before {
+                    color: rgba(255, 255, 255, 0.3);
+                    font-size: 8px;
+                }
+                
+                .slick-dots li.slick-active button:before {
+                    background: linear-gradient(to right, #fbbf24, #ef4444);
+                    color: transparent;
+                    border-radius: 50%;
                 }
             `}</style>
         </section>

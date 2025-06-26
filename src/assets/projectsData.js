@@ -8,34 +8,31 @@ import project6 from './project-6.jpeg';
 import project7 from './project-7.jpeg';
 
 // Import React Icons
-import { 
-    FaReact, 
-    FaNodeJs, 
-    FaHtml5, 
-    FaCss3Alt, 
+import {
+    FaReact,
+    FaNodeJs,
+    FaHtml5,
+    FaCss3Alt,
     FaPython,
     FaJs,
     FaDatabase,
     FaGitAlt,
     FaFigma,
-    FaMobile
 } from 'react-icons/fa';
-import { 
-    SiMongodb, 
-    SiExpress, 
-    SiFirebase, 
-    SiMui, 
-    SiTailwindcss, 
-    SiFramer, 
-    SiPostgresql, 
-    SiRedux, 
+import {
+    SiMongodb,
+    SiExpress,
+    SiFirebase,
+    SiMui,
+    SiTailwindcss,
+    SiFramer,
+    SiPostgresql,
+    SiRedux,
     SiChartdotjs,
     SiD3Dotjs,
     SiTypescript,
     SiNextdotjs,
-    SiReactnative
 } from 'react-icons/si';
-import { TiWeatherStormy } from 'react-icons/ti';
 import { MdApi } from 'react-icons/md';
 import { TbBrandReactNative } from "react-icons/tb";
 
@@ -66,7 +63,7 @@ export const getTechIcon = (techName) => {
         'Git': <FaGitAlt className="text-orange" />,
         'Figma': <FaFigma className="text-purple" />,
     };
-    
+
     return iconMap[techName] || <FaDatabase className="text-grey" />;
 };
 
@@ -142,8 +139,8 @@ export const getProjectById = (id) => {
 
 // Function to get projects by technology
 export const getProjectsByTechnology = (tech) => {
-    return projectsData.filter(project => 
-        project.technologies.some(technology => 
+    return projectsData.filter(project =>
+        project.technologies.some(technology =>
             technology.toLowerCase().includes(tech.toLowerCase())
         )
     );

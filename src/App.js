@@ -1,15 +1,13 @@
 import Navbar from "./scenes/Navbar";
 import Landing from "./scenes/Landing";
 import DotGroup from "./scenes/DotGroup";
-import LineGradient from "./components/LineGradient";
 import WorkflowServices from "./scenes/WorkflowServices";
 import AboutUs from "./scenes/AboutUs";
 import Projects from "./scenes/Projects";
 import Contact from "./scenes/Contact";
 import Footer from "./scenes/Footer";
-import useMediaQuery from "./hooks/useMediaQuery";
+import useMediaQuery from "./components/hooks/useMediaQuery";
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import Services from "./scenes/Services";
 
 function App() {
@@ -93,7 +91,7 @@ function App() {
       />
 
       {/* Home Section */}
-      <div ref={homeRef} className="w-5/6 mx-auto">
+      <div ref={homeRef} className="xs:w-5/6 mx-auto">
         {isDesktop && (
           <DotGroup
             selectedPage={selectedPage}
@@ -105,31 +103,31 @@ function App() {
 
       {/* About Section */}
 
-      <div ref={aboutRef} className="w-5/6 mx-auto md:h-full flex items-center justify-center">
+      <div ref={aboutRef} className="xs:w-5/6 mx-auto">
         <AboutUs />
       </div>
 
       {/* Workflow Section */}
 
-      <div ref={workflowRef} className="mx-auto md:h-full">
+      <div ref={workflowRef} className="xs:w-5/6 mx-auto">
         <WorkflowServices />
       </div>
 
       {/* Services Section */}
 
-      <div ref={servicesRef} className="w-5/6 mx-auto">
+      <div ref={servicesRef} className="xs:w-5/6 mx-auto">
         <Services />
       </div>
 
       {/* Projects Section */}
 
-      <div ref={projectsRef} className="w-5/6 mx-auto h-screen flex justify-center items-center">
+      <div ref={projectsRef} className="xs:w-5/6 mx-auto">
         <Projects />
       </div>
 
       {/* Contact Section */}
 
-      <div ref={contactRef} className="w-5/6 mx-auto md:h-full">
+      <div ref={contactRef} className="xs:w-5/6 mx-auto">
         <Contact />
       </div>
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import {
     MessageCircle, ClipboardList, Palette, Eye, Rocket,
-    ArrowRight, CheckCircle, Code, Zap, Globe
+    CheckCircle, Code, Zap, Globe
 } from "lucide-react";
 
 const LineGradient = ({ width = "w-1/3" }) => (
@@ -110,13 +110,13 @@ const WorkflowServices = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-5 md:mb-8 lg:mb-16"
                 >
-                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 font-playfair">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-1 font-inter">
                         Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue to-purple">Workflow</span>
                     </h2>
                     <LineGradient width="w-24 mx-auto" />
-                    <p className="mt-6 text-lg text-grey max-w-2xl mx-auto leading-relaxed font-opensans">
+                    <p className="mt-2 sm:mt-6 text-[12px] xs:text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
                         A streamlined 5-step process designed to transform your ideas into powerful digital solutions
                     </p>
                 </motion.div>
@@ -181,15 +181,12 @@ const WorkflowServices = () => {
                                         <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                                             <IconComponent size={24} className="text-white" />
                                         </div>
-                                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center text-xs font-bold text-deep-blue">
-                                            {step.number}
-                                        </div>
                                     </div>
 
                                     {/* Content */}
-                                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 group-hover:bg-white/10 transition-all duration-300">
-                                        <h3 className="text-lg font-semibold text-white mb-2 font-playfair">{step.title}</h3>
-                                        <p className="text-sm text-gray-400 mb-4 leading-relaxed font-opensans">{step.description}</p>
+                                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 group-hover:bg-white/10 transition-all duration-300 h-64 flex flex-col justify-between items-center">
+                                        <h3 className="text-base font-semibold text-white mb-2 font-inter">{step.title}</h3>
+                                        <p className="text-[13px] text-gray-400 mb-2 leading-relaxed font-opensans">{step.description}</p>
 
                                         {/* Duration Badge */}
                                         <div className="inline-block bg-gradient-to-r from-blue to-purple text-white text-xs px-3 py-1 rounded-full mb-3 font-opensans">
@@ -199,7 +196,7 @@ const WorkflowServices = () => {
                                         {/* Highlights */}
                                         <div className="space-y-2">
                                             {step.highlights.map((highlight, idx) => (
-                                                <div key={idx} className="flex items-center text-xs text-dark-grey font-opensans">
+                                                <div key={idx} className="flex items-center text-xs text-white font-opensans">
                                                     <CheckCircle size={12} className="text-green mr-2 flex-shrink-0" />
                                                     {highlight}
                                                 </div>
@@ -231,40 +228,30 @@ const WorkflowServices = () => {
                                         <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}>
                                             <IconComponent size={20} className="text-white" />
                                         </div>
-                                        <div className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center text-xs font-bold text-deep-blue">
-                                            {step.number}
-                                        </div>
                                     </div>
                                 </div>
 
                                 {/* Content */}
                                 <div className="flex-1">
                                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                        <h3 className="text-lg font-semibold text-white font-playfair">{step.title}</h3>
+                                        <h3 className="text-lg font-semibold text-white font-inter">{step.title}</h3>
                                         <div className="inline-block bg-gradient-to-r from-blue to-purple text-white text-xs px-2 py-1 rounded-full mt-1 sm:mt-0 w-fit font-opensans">
                                             {step.duration}
                                         </div>
                                     </div>
 
-                                    <p className="text-sm text-grey mb-3 leading-relaxed font-opensans">{step.description}</p>
+                                    <p className="text-[13px] text-gray-400 mb-3 leading-relaxed font-opensans">{step.description}</p>
 
                                     {/* Highlights */}
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                         {step.highlights.map((highlight, idx) => (
-                                            <div key={idx} className="flex items-center text-xs text-dark-grey font-opensans">
+                                            <div key={idx} className="flex items-center text-[13px] text-white font-opensans">
                                                 <CheckCircle size={12} className="text-green mr-2 flex-shrink-0" />
                                                 {highlight}
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-
-                                {/* Arrow for larger screens */}
-                                {index < workflowSteps.length - 1 && (
-                                    <div className="hidden sm:flex items-center text-dark-grey">
-                                        <ArrowRight size={16} />
-                                    </div>
-                                )}
                             </motion.div>
                         );
                     })}
@@ -276,7 +263,7 @@ const WorkflowServices = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mt-16"
+                    className="text-center mt-16 hidden md:block"
                 >
                     <p className="text-grey mb-6 text-lg font-opensans">
                         Ready to start your digital transformation?

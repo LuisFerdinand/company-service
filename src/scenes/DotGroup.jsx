@@ -1,4 +1,3 @@
-import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { HiHome, HiUser, HiLightningBolt, HiCog, HiBriefcase, HiMail } from 'react-icons/hi';
 
@@ -82,7 +81,7 @@ const DotGroup = ({ selectedPage, setSelectedPage }) => {
 
                             {/* Enhanced Tooltip */}
                             <div className="
-                                absolute right-16 top-1/2 transform -translate-y-1/2
+                                absolute right-16 top-1/2 -translate-y-1/2
                                 bg-gradient-to-r from-deep-blue to-deep-blue/95 text-white px-4 py-2 rounded-lg text-sm font-medium
                                 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out
                                 pointer-events-none whitespace-nowrap shadow-xl border border-white/10

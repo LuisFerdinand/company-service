@@ -24,6 +24,7 @@ module.exports = {
           "linear-gradient(90deg, #24CBFF 14.53%, #FC59FF 69.36%, #FFBD0C 117.73%)",
       }),
       fontFamily: {
+        inter: ["Inter, sand-serif"],
         playfair: ["Playfair Display", "serif"],
         opensans: ["Open Sans", "sans-serif"],
       },
@@ -33,6 +34,9 @@ module.exports = {
         person2: "url('./assets/person-2.png')",
         person3: "url('./assets/person-3.png')",
       },
+      text: {
+        base: "12px"
+      }
     },
     screens: {
       xs: "480px",
@@ -42,6 +46,7 @@ module.exports = {
       lg: "1200px",
       xl: "1700px",
     },
+
   },
   plugins: [],
 };

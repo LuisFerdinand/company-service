@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import useMediaQuery from "../hooks/useMediaQuery";
-import { HiMenu, HiX, HiCode, HiLightningBolt, HiGlobe, HiHome, HiUser, HiCog, HiBriefcase, HiMail } from "react-icons/hi";
+import useMediaQuery from "../components/hooks/useMediaQuery";
+import { HiMenu, HiX, HiCode, HiLightningBolt, HiHome, HiUser, HiCog, HiBriefcase, HiMail } from "react-icons/hi";
 
 const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false }) => {
     const lowerCasePage = page.toLowerCase();
@@ -27,7 +27,7 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false }
     return (
         <AnchorLink
             className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 ${selectedPage === lowerCasePage
-                ? "text-blue bg-blue/10 shadow-lg shadow-blue/20"
+                ? "text-white bg-blue/10 shadow-lg shadow-blue/20"
                 : "text-white/80 hover:text-white hover:bg-white/5"
                 } ${isMobile ? 'w-full justify-start' : 'justify-center'}`}
             href={`#${lowerCasePage}`}
@@ -61,7 +61,6 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
     // Updated media queries - mobile menu now shows from md screens down
     const showMobileMenu = useMediaQuery("(max-width: 1023px)"); // lg breakpoint is 1024px
-    const isMobile = useMediaQuery("(max-width: 767px)");
     const isLargeScreen = useMediaQuery("(min-width: 1280px)");
 
     // Enhanced scroll effect
@@ -114,7 +113,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
                         {/* Company name - Hide text on mobile, show shortened version on small screens */}
                         <div className="hidden xs:flex sm:flex flex-col">
-                            <h1 className="font-playfair text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight">
+                            <h1 className="font-inter text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight">
                                 {/* Show "DS" on small screens, "Digital" on medium+ */}
                                 <span className="sm:hidden">DS</span>
                                 <span className="hidden sm:inline">Digital</span>
@@ -143,12 +142,14 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
                     {/* CTA Button - Only show on large screens */}
                     <div className="hidden lg:flex items-center flex-shrink-0">
-                        <button className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105">
-                            <span className="relative z-10 whitespace-nowrap">
-                                {isLargeScreen ? "Get Started" : "Start"}
-                            </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </button>
+                        <AnchorLink href="#services" offset={80}>
+                            <button className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105">
+                                <span className="relative z-10 whitespace-nowrap">
+                                    {isLargeScreen ? "Get Started" : "Start"}
+                                </span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </button>
+                        </AnchorLink>
                     </div>
 
                     {/* Mobile Menu Button - Show from md screens down (below lg) */}
@@ -191,7 +192,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                                         <HiCode className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
                                     </div>
                                     <div>
-                                        <h2 className="font-playfair text-base sm:text-lg font-bold text-white">Digital</h2>
+                                        <h2 className="font-inter text-base sm:text-lg font-bold text-white">Digital</h2>
                                         <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">Solutions</span>
                                     </div>
                                 </div>
@@ -226,9 +227,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
                         {/* Mobile CTA */}
                         <div className="p-4 sm:p-6 border-t border-white/10 mt-auto">
-                            <button className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
-                                Get Started Today
-                            </button>
+                            <AnchorLink href="#services" offset={80}>
+                                <button className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                                    Get Started Today
+                                </button>
+                            </AnchorLink>
                         </div>
 
                         {/* Digital decoration */}

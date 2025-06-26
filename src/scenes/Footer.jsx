@@ -1,7 +1,7 @@
 import SocialMediaIcons from "../components/SocialMediaIcons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, MessageCircle, ArrowUp, Code, Sparkles, Zap, Globe, Heart } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUp, Code, Sparkles, Zap, Globe, Heart } from "lucide-react";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -32,6 +32,7 @@ const Footer = () => {
         { icon: Heart, delay: 4, x: "50%", y: "85%" }
     ];
 
+    // eslint-disable-next-line 
     const handleWhatsAppContact = () => {
         const message = "Hi! I'd like to know more about your website services.";
         const encodedMessage = encodeURIComponent(message);
