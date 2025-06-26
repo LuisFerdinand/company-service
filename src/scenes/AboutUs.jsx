@@ -192,14 +192,6 @@ const AboutUs = () => {
 
             {/* Stats Section with Boxes */}
             <div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                Pencapaian Kami
-              </motion.h2>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {aboutContent.stats.map((stat, index) => (
                   <motion.div
@@ -354,14 +346,6 @@ const AboutUs = () => {
 
             {/* Team Section */}
             <div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                Tim Profesional Kami
-              </motion.h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {aboutContent.team.map((member, index) => (
                   <motion.div
