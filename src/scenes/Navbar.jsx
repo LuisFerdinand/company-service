@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import useMediaQuery from "../components/hooks/useMediaQuery";
+import { ExternalLink } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 import { HiMenu, HiX, HiCode, HiLightningBolt, HiHome, HiUser, HiCog, HiBriefcase, HiMail } from "react-icons/hi";
 
 const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false }) => {
     const lowerCasePage = page.toLowerCase();
+
+        const navigate = useNavigate();
+    
+        const handleViewAllProjects = () => {
+            navigate("/projects-detail")
+        };
 
     // Updated icon mapping to match DotGroup
     const getIcon = (pageName) => {
@@ -71,6 +79,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const navigate = useNavigate();
+    
+        const handleViewAllProjects = () => {
+            navigate("/projects-detail")
+        };
 
     // Close mobile menu when switching to larger screens
     useEffect(() => {
@@ -143,9 +157,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                     {/* CTA Button - Only show on large screens */}
                     <div className="hidden lg:flex items-center flex-shrink-0">
                         <AnchorLink href="#services" offset={80}>
-                            <button className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105">
+                            <button 
+                                onClick={handleViewAllProjects}
+                                className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105">
                                 <span className="relative z-10 whitespace-nowrap">
-                                    {isLargeScreen ? "Get Started" : "Start"}
+                                    View Full Portfolio
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
@@ -228,8 +244,10 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                         {/* Mobile CTA */}
                         <div className="p-4 sm:p-6 border-t border-white/10 mt-auto">
                             <AnchorLink href="#services" offset={80}>
-                                <button className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
-                                    Get Started Today
+                                <button
+                                    onClick={handleViewAllProjects}
+                                    className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+                                    View Full Portfolio
                                 </button>
                             </AnchorLink>
                         </div>

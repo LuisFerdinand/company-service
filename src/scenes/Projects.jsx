@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Maximize2 } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
 import ProjectCardDetail from '../components/ProjectCardDetail';
+import { ExternalLink } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 // Mock project data - replace with your actual data
 const mockProjects = [
@@ -43,11 +45,18 @@ const mockProjects = [
         href: "#"
     }
 ];
+
 const LineGradient = ({ width = "w-full" }) => (
     <div className={`h-0.5 ${width} bg-gradient-to-r from-blue to-purple`} />
-  );
+);
 
 const Projects = () => {
+    const navigate = useNavigate();
+
+    const handleViewAllProjects = () => {
+        navigate("/projects-detail")
+    };
+    
     const [isDetailOpen, setIsDetailOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState(0);
 
@@ -104,11 +113,11 @@ const Projects = () => {
                     className="text-center"
                 >
                     <button
-                        onClick={handleLaunchPresentation}
+                        onClick={handleViewAllProjects}
                         className="bg-gradient-to-r from-blue to-purple hover:scale-105 text-grey px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-blue/25 transition-all duration-300 flex items-center space-x-3 mx-auto"
                     >
-                        <Maximize2 size={24} />
-                        <span>Launch Full Presentation</span>
+                        <ExternalLink size={24} />
+                        <span>View Full Projects</span>
                     </button>
                 </motion.div>
             </div>

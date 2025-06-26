@@ -84,7 +84,7 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
     const currentProject = projects[currentSlide];
 
     return (
-        <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-black min-h-screen z-50 flex flex-col">
+        <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-black min-h-screen z-50 flex flex-col py-12">
             {/* Header Controls - Mobile Optimized */}
             <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4 sm:p-6">
                 <div className="flex justify-between items-center">
