@@ -39,6 +39,16 @@ import {
 } from "react-icons/si";
 import { FaAws, FaCube, FaServer, FaUserLock } from "react-icons/fa";
 
+// Import all project thumbnail images
+import project1 from "../assets/assets/projects-thumbnail/1.png";
+import project2 from "../assets/assets/projects-thumbnail/2.png";
+import project3 from "../assets/assets/projects-thumbnail/3.png";
+import project4 from "../assets/assets/projects-thumbnail/4.png";
+import project5 from "../assets/assets/projects-thumbnail/5.png";
+import project6 from "../assets/assets/projects-thumbnail/6.png";
+import project7 from "../assets/assets/projects-thumbnail/7.png";
+import project8 from "../assets/assets/projects-thumbnail/8.png";
+
 // Tech icon mapping function
 export const getTechIcon = (tech) => {
   const icons = {
@@ -75,14 +85,15 @@ export const getTechIcon = (tech) => {
   );
 };
 
+
+
 export const projects = [
   {
     id: 1,
     title: "Brainwave UI/UX Website",
     subtitle:
       "A visually striking and modern UI/UX showcase built with React and Tailwind CSS",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    image: project1,
     technologies: ["React.js", "Vite", "Tailwind CSS"],
     category: "Web App",
     industry: "UI/UX",
@@ -105,8 +116,7 @@ export const projects = [
     title: "Nike Shoe Store Landing Page",
     subtitle:
       "A responsive and modern e-commerce landing page inspired by leading retail brands",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    image: project2,
     technologies: ["React.js", "Tailwind CSS", "Vite"],
     category: "Web App",
     industry: "E-commerce",
@@ -130,8 +140,7 @@ export const projects = [
     title: "Vetra SaaS Website",
     subtitle:
       "High-performance React landing page for a creative video platform",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    image: project3,
     technologies: ["React.js", "Vite", "Tailwind CSS"],
     category: "Web App",
     industry: "SaaS",
@@ -154,8 +163,7 @@ export const projects = [
     title: "Startup Pitch Platform",
     subtitle:
       "A modern Next.js 15 platform for submitting and browsing startup ideas",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    image: project4,
     technologies: [
       "Next.js",
       "React.js",
@@ -188,8 +196,7 @@ export const projects = [
     title: "FileFlow – Cloud Storage & Sharing Platform",
     subtitle:
       "A sleek file storage and sharing solution built with Appwrite and Next.js 15",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    image: project5,
     technologies: [
       "React.js",
       "Next.js",
@@ -221,8 +228,7 @@ export const projects = [
     id: 6,
     title: "Cardora – Trello Clone",
     subtitle: "A modern, kanban-style task management application",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    image: project6,
     technologies: [
       "React.js",
       "Next.js",
@@ -253,8 +259,7 @@ export const projects = [
     id: 7,
     title: "TaskNexus – Jira Clone",
     subtitle: "Agile project management platform for teams and enterprises",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    image: project7,
     technologies: [
       "React.js",
       "Next.js",
@@ -286,8 +291,7 @@ export const projects = [
     title: "VibeTube – YouTube Clone",
     subtitle:
       "A high-performance video sharing platform with modern tech stack",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    image: project8,
     technologies: [
       "React.js",
       "Next.js",

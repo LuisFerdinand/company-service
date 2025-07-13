@@ -1,71 +1,74 @@
-import { motion } from "framer-motion";
-import {
-    MessageCircle, ClipboardList, Palette, Eye, Rocket,
-    CheckCircle, Code, Zap, Globe
-} from "lucide-react";
+/* eslint-disable */
+import { motion } from "framer-motion"
+import { MessageCircle, ClipboardList, Palette, Eye, Rocket, CheckCircle, Code, Zap, Globe } from "lucide-react"
 
-const LineGradient = ({ width = "w-1/3" }) => (
-    <div className={`h-0.5 ${width} bg-gradient-to-r from-blue to-purple`} />
-);
+const LineGradient = ({ width = "w-1/3" }) => <div className={`h-0.5 ${width} bg-gradient-to-r from-blue to-purple`} />
 
 const WorkflowServices = () => {
     const workflowSteps = [
         {
             number: "01",
-            title: "Consultation",
+            title: "Konsultasi",
             icon: MessageCircle,
-            description: "Free consultation to understand your business needs and goals",
+            description: "Konsultasi gratis untuk memahami kebutuhan dan tujuan bisnis Anda",
             color: "from-blue to-teal",
-            highlights: ["Requirements Analysis", "Budget Planning", "Timeline Discussion"],
-            duration: "1-2 Days"
+            highlights: ["Analisis Kebutuhan", "Perencanaan Budget", "Diskusi Timeline"],
+            duration: "1-2 Hari",
         },
         {
             number: "02",
-            title: "Planning",
+            title: "Perencanaan",
             icon: ClipboardList,
-            description: "Detailed project roadmap and strategic planning phase",
+            description: "Roadmap proyek yang detail dan fase perencanaan strategis",
             color: "from-purple to-red",
-            highlights: ["Project Blueprint", "User Experience Design", "Technical Architecture"],
-            duration: "3-5 Days"
+            highlights: ["Blueprint Proyek", "Desain User Experience", "Arsitektur Teknis"],
+            duration: "3-5 Hari",
         },
         {
             number: "03",
-            title: "Development",
+            title: "Pengembangan",
             icon: Palette,
-            description: "Building your digital solution with modern technologies",
+            description: "Membangun solusi digital Anda dengan teknologi modern",
             color: "from-orange to-red",
-            highlights: ["Custom Development", "Responsive Design", "Quality Testing"],
-            duration: "2-4 Weeks"
+            highlights: ["Pengembangan Kustom", "Desain Responsif", "Testing Kualitas"],
+            duration: "2-4 Minggu",
         },
         {
             number: "04",
             title: "Review",
             icon: Eye,
-            description: "Testing, feedback, and refinement of your solution",
+            description: "Testing, feedback, dan penyempurnaan solusi Anda",
             color: "from-green to-teal",
-            highlights: ["Performance Testing", "User Feedback", "Final Adjustments"],
-            duration: "1-2 Weeks"
+            highlights: ["Testing Performa", "Feedback User", "Penyesuaian Akhir"],
+            duration: "1-2 Minggu",
         },
         {
             number: "05",
-            title: "Launch",
+            title: "Peluncuran",
             icon: Rocket,
-            description: "Going live with your new digital solution",
+            description: "Go live dengan solusi digital baru Anda",
             color: "from-yellow to-orange",
-            highlights: ["Deployment", "Training & Support", "Ongoing Maintenance"],
-            duration: "2-3 Days"
-        }
-    ];
+            highlights: ["Deployment", "Training & Support", "Maintenance Berkelanjutan"],
+            duration: "2-3 Hari",
+        },
+    ]
 
-    // Simplified floating elements - only 6 instead of 24
+    // Simplified floating elements
     const floatingElements = [
         { icon: Code, x: "15%", y: "20%", delay: 0 },
         { icon: Zap, x: "85%", y: "30%", delay: 2 },
         { icon: Globe, x: "10%", y: "70%", delay: 4 },
         { icon: Code, x: "90%", y: "80%", delay: 6 },
         { icon: Zap, x: "25%", y: "15%", delay: 8 },
-        { icon: Globe, x: "75%", y: "60%", delay: 10 }
-    ];
+        { icon: Globe, x: "75%", y: "60%", delay: 10 },
+    ]
+
+    const handleGetStarted = () => {
+        const element = document.getElementById("contact")
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" })
+        }
+    }
 
     return (
         <section id="workflow" className="py-16 lg:py-20 relative overflow-hidden">
@@ -78,7 +81,7 @@ const WorkflowServices = () => {
             {/* Minimal Floating Icons */}
             <div className="absolute inset-0 pointer-events-none">
                 {floatingElements.map((element, index) => {
-                    const IconComponent = element.icon;
+                    const IconComponent = element.icon
                     return (
                         <motion.div
                             key={index}
@@ -88,18 +91,18 @@ const WorkflowServices = () => {
                             animate={{
                                 opacity: [0.1, 0.3, 0.1],
                                 scale: [0.8, 1.2, 0.8],
-                                y: [-10, 10, -10]
+                                y: [-10, 10, -10],
                             }}
                             transition={{
                                 duration: 8,
                                 delay: element.delay,
-                                repeat: Infinity,
-                                ease: "easeInOut"
+                                repeat: Number.POSITIVE_INFINITY,
+                                ease: "easeInOut",
                             }}
                         >
                             <IconComponent size={24} />
                         </motion.div>
-                    );
+                    )
                 })}
             </div>
 
@@ -113,11 +116,11 @@ const WorkflowServices = () => {
                     className="text-center mb-5 md:mb-8 lg:mb-16"
                 >
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-1 font-inter">
-                        Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue to-purple">Workflow</span>
+                        Alur <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue to-purple">Kerja</span> Kami
                     </h2>
                     <LineGradient width="w-24 mx-auto" />
                     <p className="mt-2 sm:mt-6 text-[12px] xs:text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        A streamlined 5-step process designed to transform your ideas into powerful digital solutions
+                        Proses 5 langkah yang efisien untuk mengubah ide Anda menjadi solusi digital yang powerful
                     </p>
                 </motion.div>
 
@@ -125,7 +128,10 @@ const WorkflowServices = () => {
                 <div className="hidden lg:block">
                     {/* Enhanced Connecting Path */}
                     <div className="relative mb-8">
-                        <svg className="absolute top-1/2 left-0 right-0 w-full h-32 transform -translate-y-1/2 z-0" viewBox="0 0 800 100">
+                        <svg
+                            className="absolute top-1/2 left-0 right-0 w-full h-32 transform -translate-y-1/2 z-0"
+                            viewBox="0 0 800 100"
+                        >
                             <defs>
                                 <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                     <stop offset="0%" stopColor="#2CBCE9" />
@@ -157,7 +163,7 @@ const WorkflowServices = () => {
                                 fill="#ffffff"
                                 initial={{ offsetDistance: "0%" }}
                                 animate={{ offsetDistance: "100%" }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                                 style={{ offsetPath: "path('M50 50 Q200 20 350 50 T650 50 T750 50')" }}
                             />
                         </svg>
@@ -166,7 +172,7 @@ const WorkflowServices = () => {
                     {/* Steps Grid */}
                     <div className="grid grid-cols-5 gap-8 max-w-6xl mx-auto">
                         {workflowSteps.map((step, index) => {
-                            const IconComponent = step.icon;
+                            const IconComponent = step.icon
                             return (
                                 <motion.div
                                     key={step.number}
@@ -178,7 +184,9 @@ const WorkflowServices = () => {
                                 >
                                     {/* Icon */}
                                     <div className="relative mb-6 flex justify-center">
-                                        <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                        <div
+                                            className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                                        >
                                             <IconComponent size={24} className="text-white" />
                                         </div>
                                     </div>
@@ -204,7 +212,7 @@ const WorkflowServices = () => {
                                         </div>
                                     </div>
                                 </motion.div>
-                            );
+                            )
                         })}
                     </div>
                 </div>
@@ -212,7 +220,7 @@ const WorkflowServices = () => {
                 {/* Mobile & Tablet Layout */}
                 <div className="lg:hidden space-y-6">
                     {workflowSteps.map((step, index) => {
-                        const IconComponent = step.icon;
+                        const IconComponent = step.icon
                         return (
                             <motion.div
                                 key={step.number}
@@ -225,7 +233,9 @@ const WorkflowServices = () => {
                                 {/* Icon & Number */}
                                 <div className="flex-shrink-0">
                                     <div className="relative">
-                                        <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}>
+                                        <div
+                                            className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}
+                                        >
                                             <IconComponent size={20} className="text-white" />
                                         </div>
                                     </div>
@@ -253,7 +263,7 @@ const WorkflowServices = () => {
                                     </div>
                                 </div>
                             </motion.div>
-                        );
+                        )
                     })}
                 </div>
 
@@ -265,16 +275,17 @@ const WorkflowServices = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mt-16 hidden md:block"
                 >
-                    <p className="text-grey mb-6 text-lg font-opensans">
-                        Ready to start your digital transformation?
-                    </p>
-                    <button className="bg-gradient-to-r from-blue to-purple hover:from-blue hover:to-red text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-opensans">
-                        Get Started Today
+                    <p className="text-grey mb-6 text-lg font-opensans">Siap memulai transformasi digital Anda?</p>
+                    <button
+                        onClick={handleGetStarted}
+                        className="bg-gradient-to-r from-blue to-purple hover:from-blue hover:to-red text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-opensans"
+                    >
+                        Mulai Hari Ini
                     </button>
                 </motion.div>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default WorkflowServices;
+export default WorkflowServices

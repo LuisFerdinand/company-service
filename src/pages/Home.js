@@ -5,7 +5,7 @@ import DotGroup from "../scenes/home/DotGroup";
 import WorkflowServices from "../scenes/home/WorkflowServices";
 import AboutUs from "../scenes/home/AboutUs";
 import Projects from "../scenes/home/Projects";
-import Contact from "../scenes/Contact";
+import Contact from "../scenes/home/Contact";
 import Footer from "../scenes/Footer";
 import useMediaQuery from "../components/hooks/useMediaQuery";
 import { useEffect, useState, useRef } from "react";

@@ -1,5 +1,5 @@
+/* eslint-disable */
 import { robot } from "../../assets/assets";
-import { HiCode } from "react-icons/hi";
 import Button from "../../components/Button";
 
 const HeroProjects = () => {
@@ -12,25 +12,6 @@ const HeroProjects = () => {
       <div className="flex-1 flex justify-center items-start flex-col xl:px-0 sm:px-16 px-6 mt-4">
         <div className="flex flex-col gap-2 mb-4">
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            {/* Animated logo container */}
-            <div className="relative group hidden lg:block">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue via-purple to-yellow rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
-              <div className="relative bg-deep-blue rounded-lg p-1 sm:p-1.5 md:p-2 border border-white/10">
-                <div className="md:size-10 bg-gradient-to-br from-blue to-purple rounded flex items-center justify-center">
-                  <HiCode className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-5 md:h-5 text-white" />
-                </div>
-              </div>
-            </div>
-
-            {/* Company name below the logo */}
-            <div className="flex-col hidden lg:flex">
-              <h1 className="font-inter text-sm sm:text-lg md:text-xl font-bold text-white tracking-tight">
-                <span className="hidden sm:inline">Digital</span>
-              </h1>
-              <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
-                <span className="hidden sm:inline">Solutions</span>
-              </span>
-            </div>
           </div>
           <h1 className="mb-4 text-[50px] font-black leading-tight tracking-[-0.03em] text-p4 uppercase max-lg:mb-7 max-md:mb-4 max-md:text-5xl max-md:leading-12">
             <span>
@@ -47,7 +28,11 @@ const HeroProjects = () => {
             more.
           </p>
           <div className="flex items-center">
-            <Button icon={"/images/zap.svg"}>Contact Us</Button>
+            <Button icon={"/images/zap.svg"}>
+              <a href="https://wa.me/085248209388" target="blank">
+                Contact Us
+              </a>
+            </Button>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { stats } from "../../constants";
 
 const Stats = () => (

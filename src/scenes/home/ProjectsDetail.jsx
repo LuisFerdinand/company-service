@@ -1,5 +1,4 @@
-"use client"
-
+/* eslint-disable */
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowLeft, ExternalLink, Github, Calendar, Users, Code } from "lucide-react"
@@ -232,9 +231,8 @@ const ProjectsDetail = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentImage(index)}
-                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    index === currentImage ? "bg-white" : "bg-white/40"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === currentImage ? "bg-white" : "bg-white/40"
+                    }`}
                 />
               ))}
             </div>

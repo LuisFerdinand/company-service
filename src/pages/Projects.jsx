@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import Navbar from "../scenes/Navbar"
+import Footer from "../scenes/Footer"
+import Projects from "../scenes/projects/Projects"
+import ScrollToTop from "../components/ScrollToTop"
 
-import Navbar from "../scenes/Navbar";
-import Footer from "../scenes/Footer";
-import Projects from "../scenes/projects/Projects";
-
-import Hero from "../scenes/projects/Hero";
-import Stats from "../scenes/projects/Stats";
+import Hero from "../scenes/projects/Hero"
+import Stats from "../scenes/projects/Stats"
 
 const ProjectsPage = () => {
   return (
@@ -28,8 +27,11 @@ const ProjectsPage = () => {
         </div>
       </div>
       <Footer />
-    </div>
-  );
-};
 
-export default ProjectsPage;
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
+    </div>
+  )
+}
+
+export default ProjectsPage

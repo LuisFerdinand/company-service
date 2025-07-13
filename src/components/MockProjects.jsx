@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, ExternalLink, Maximize2 } from 'lucide-react';
 
 // Mock project data - replace with your actual data
 const mockProjects = [
@@ -66,7 +66,6 @@ const FullScreenProjects = () => {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [direction, setDirection] = useState(0);
-    const containerRef = useRef(null);
 
     // Handle keyboard navigation
     useEffect(() => {
@@ -161,8 +160,8 @@ const FullScreenProjects = () => {
                                     key={index}
                                     onClick={() => goToSlide(index)}
                                     className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                                            ? 'bg-blue-500 w-8'
-                                            : 'bg-white/30 hover:bg-white/50'
+                                        ? 'bg-blue-500 w-8'
+                                        : 'bg-white/30 hover:bg-white/50'
                                         }`}
                                 />
                             ))}

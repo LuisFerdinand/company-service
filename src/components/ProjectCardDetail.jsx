@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -90,16 +91,16 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
   const currentProject = projects[currentSlide];
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-black min-h-screen z-50 flex flex-col py-12">
-      {/* Header Controls - Mobile Optimized */}
-      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-4 sm:p-6">
+    <div className="fixed inset-0 bg-gradient-to-b from-slate-900 to-black min-h-screen z-50 flex flex-col">
+      {/* Header Controls */}
+      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/80 to-transparent p-3 sm:p-4 lg:p-6">
         <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
             <button
               onClick={onClose}
-              className="text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
+              className="text-gray-300 hover:text-white transition-colors p-1.5 sm:p-2 rounded-lg hover:bg-white/10"
             >
-              <X size={20} className="sm:w-6 sm:h-6" />
+              <X size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
             </button>
             <div className="text-white">
               <span className="text-xs sm:text-sm opacity-80">Project</span>
@@ -112,23 +113,22 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Desktop dots - hidden on mobile */}
-          <div className="hidden sm:flex items-center space-x-2">
+          {/* Desktop dots - hidden on mobile and tablet */}
+          <div className="hidden lg:flex items-center space-x-2">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 hover:bg-gray-400 ${
-                  index === currentSlide
-                    ? "bg-gradient-to-r from-blue to-purple w-8"
-                    : "bg-gray-500 w-2"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 hover:bg-gray-400 ${index === currentSlide
+                  ? "bg-gradient-to-r from-blue to-purple w-8"
+                  : "bg-gray-500 w-2"
+                  }`}
               />
             ))}
           </div>
 
-          {/* Mobile dots - smaller and fewer visible */}
-          <div className="flex sm:hidden items-center space-x-1">
+          {/* Mobile/Tablet dots - visible on smaller screens */}
+          <div className="flex lg:hidden items-center space-x-1">
             {projects
               .slice(Math.max(0, currentSlide - 1), currentSlide + 2)
               .map((_, relativeIndex) => {
@@ -138,11 +138,10 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                   <button
                     key={actualIndex}
                     onClick={() => goToSlide(actualIndex)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      actualIndex === currentSlide
-                        ? "bg-gradient-to-r from-blue to-purple w-6"
-                        : "bg-gray-500 w-1.5"
-                    }`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${actualIndex === currentSlide
+                      ? "bg-gradient-to-r from-blue to-purple w-6"
+                      : "bg-gray-500 w-1.5"
+                      }`}
                   />
                 );
               })}
@@ -150,8 +149,8 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
         </div>
       </div>
 
-      {/* Main Slide Area - Mobile Optimized */}
-      <div className="flex-1 relative overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-24">
+      {/* Main Slide Area */}
+      <div className="flex-1 relative overflow-hidden pt-12 sm:pt-14 lg:pt-16 pb-16 sm:pb-20 lg:pb-24">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentSlide}
@@ -165,26 +164,29 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
               opacity: { duration: 0.2 },
               scale: { duration: 0.4 },
             }}
-            className="absolute inset-0 flex items-start sm:items-center justify-center p-4 sm:p-8 overflow-y-auto sm:overflow-hidden"
+            className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 lg:p-8 overflow-y-auto"
           >
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12 lg:items-center h-full w-full">
-              {/* Project Image - Mobile Optimized */}
+            <div className="max-w-7xl mx-auto w-full h-full flex flex-col py-20 px-5 lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-12 lg:items-center">
+              {/* Project Image - 16:9 Aspect Ratio */}
               <motion.div
-                className="relative group order-1 lg:order-1"
+                className="relative group w-full mb-4 sm:mb-6 lg:mb-0 flex-shrink-0"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
-                  <img
-                    src={currentProject.image}
-                    alt={currentProject.title}
-                    className="w-full h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <div className="relative overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl shadow-2xl">
+                  {/* 16:9 Aspect Ratio Container */}
+                  <div className="w-full aspect-video bg-gray-900">
+                    <img
+                      src={currentProject.image}
+                      alt={currentProject.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  </div>
 
-                  {/* Floating Tech Icons - Mobile Optimized */}
-                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex flex-wrap gap-1 sm:gap-2 max-w-[60%]">
+                  {/* Floating Tech Icons */}
+                  <div className="absolute top-2 sm:top-3 lg:top-4 right-2 sm:right-3 lg:right-4 flex flex-wrap gap-1 sm:gap-2 max-w-[70%] sm:max-w-[60%]">
                     {currentProject.technologies
                       .slice(0, 3)
                       .map((tech, index) => (
@@ -198,8 +200,12 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                           <div className="w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center flex-shrink-0">
                             {getTechIcon(tech)}
                           </div>
-                          <span className="hidden sm:inline">{tech}</span>
-                          <span className="sm:hidden">{tech.slice(0, 3)}</span>
+                          <span className="hidden sm:inline truncate">
+                            {tech}
+                          </span>
+                          <span className="sm:hidden">
+                            {tech.slice(0, 3)}
+                          </span>
                         </motion.div>
                       ))}
                     {currentProject.technologies.length > 3 && (
@@ -216,31 +222,31 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                 </div>
               </motion.div>
 
-              {/* Project Details - Mobile Optimized */}
+              {/* Project Details */}
               <motion.div
-                className="text-white space-y-4 sm:space-y-6 order-2 lg:order-2"
+                className="text-white space-y-3 sm:space-y-4 lg:space-y-6 flex-1 overflow-y-auto"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
                 <div>
                   <motion.h1
-                    className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-blue to-purple bg-clip-text text-transparent leading-tight"
+                    className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-r from-blue to-purple bg-clip-text text-transparent leading-tight"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    {currentProject.title}AAA
+                    {currentProject.title}
                   </motion.h1>
                   <motion.div>
                     {currentProject.featured && (
-                      <span className="inline-block px-3 py-1 text-xs bg-yellow-500/10 border border-yellow-500 text-yellow-400 rounded-full font-medium mb-2 sm:mb-4">
+                      <span className="inline-block px-2 sm:px-3 py-1 text-xs bg-yellow-500/10 border border-yellow-500 text-yellow-400 rounded-full font-medium mb-2 sm:mb-3 lg:mb-4">
                         ⭐ Featured Project
                       </span>
                     )}
                   </motion.div>
                   <motion.p
-                    className="text-base sm:text-lg lg:text-xl text-gray-400 mb-4 sm:mb-6"
+                    className="text-sm sm:text-base lg:text-lg text-gray-400 mb-3 sm:mb-4 lg:mb-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
@@ -254,10 +260,10 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3">
                     Project Overview
                   </h3>
-                  <p className="text-gray-400 leading-relaxed text-sm sm:text-base lg:text-lg">
+                  <p className="text-gray-400 leading-relaxed text-xs sm:text-sm lg:text-base">
                     {currentProject.description}
                   </p>
                 </motion.div>
@@ -267,19 +273,19 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                 >
-                  <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3">
                     Technologies Used
                   </h3>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 lg:gap-3">
                     {currentProject.technologies.map((tech, index) => (
                       <motion.div
                         key={tech}
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.8 + index * 0.05 }}
-                        className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300"
+                        className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300"
                       >
-                        <div className="w-3 h-3 sm:w-5 sm:h-5 flex items-center justify-center flex-shrink-0">
+                        <div className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex items-center justify-center flex-shrink-0">
                           {getTechIcon(tech)}
                         </div>
                         <span className="font-medium text-xs sm:text-sm lg:text-base">
@@ -294,24 +300,24 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9 }}
-                  className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2 sm:pt-4"
+                  className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 pt-2 sm:pt-3 lg:pt-4"
                 >
                   <a
                     href={currentProject.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-blue to-purple px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 text-white hover:scale-105 text-sm sm:text-base"
+                    className="bg-gradient-to-r from-blue to-purple px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 text-white hover:scale-105 text-xs sm:text-sm lg:text-base"
                   >
-                    <ExternalLink size={16} className="sm:w-5 sm:h-5" />
+                    <ExternalLink size={14} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                     <span>View Live Project</span>
                   </a>
                   <a
                     href={currentProject.codeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-gray-600 hover:border-gray-400 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white/5 text-white flex items-center justify-center space-x-2 hover:scale-105 text-sm sm:text-base"
+                    className="border border-gray-600 hover:border-gray-400 px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white/5 text-white flex items-center justify-center space-x-2 hover:scale-105 text-xs sm:text-sm lg:text-base"
                   >
-                    <Github size={16} className="sm:w-5 sm:h-5" />
+                    <Github size={14} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                     <span>View Code</span>
                   </a>
                 </motion.div>
@@ -320,27 +326,27 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Arrows - Mobile Optimized */}
+        {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
           disabled={projects.length <= 1}
-          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 z-10"
+          className="absolute left-2 sm:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-2.5 lg:p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 z-10"
         >
-          <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
+          <ChevronLeft size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
         </button>
 
         <button
           onClick={nextSlide}
           disabled={projects.length <= 1}
-          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 z-10"
+          className="absolute right-2 sm:right-3 lg:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-2.5 lg:p-3 rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 z-10"
         >
-          <ChevronRight size={20} className="sm:w-6 sm:h-6" />
+          <ChevronRight size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
         </button>
       </div>
 
-      {/* Bottom Navigation Thumbnails - Mobile Optimized */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-6">
-        <div className="flex justify-center space-x-2 sm:space-x-4 overflow-x-auto scrollbar-hide">
+      {/* Bottom Navigation Thumbnails */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4 lg:p-6">
+        <div className="flex justify-center space-x-2 sm:space-x-3 lg:space-x-4 overflow-x-auto scrollbar-hide">
           {projects.map((project, index) => (
             <motion.button
               key={project.id}
@@ -349,31 +355,32 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
               initial="hidden"
               animate="visible"
               transition={{ delay: index * 0.1 }}
-              className={`relative group flex-shrink-0 transition-all duration-300 z-10 ${
-                index === currentSlide
-                  ? "ring-2 ring-blue-500 scale-110"
-                  : "hover:scale-105"
-              }`}
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-12 h-8 sm:w-20 sm:h-14 object-cover rounded-md sm:rounded-lg transition-all duration-300"
-              />
-              <div
-                className={`absolute inset-0 bg-black/50 rounded-md sm:rounded-lg transition-opacity duration-300 ${
-                  index === currentSlide
-                    ? "opacity-0"
-                    : "opacity-60 group-hover:opacity-30"
+              className={`relative group flex-shrink-0 transition-all duration-300 z-10 ${index === currentSlide
+                ? "ring-2 ring-blue-500 scale-110"
+                : "hover:scale-105"
                 }`}
+            >
+              {/* 16:9 Aspect Ratio Thumbnail */}
+              <div className="w-16 h-9 sm:w-20 sm:h-11 lg:w-24 lg:h-14 overflow-hidden rounded-md lg:rounded-lg">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-all duration-300"
+                />
+              </div>
+              <div
+                className={`absolute inset-0 bg-black/50 rounded-md lg:rounded-lg transition-opacity duration-300 ${index === currentSlide
+                  ? "opacity-0"
+                  : "opacity-60 group-hover:opacity-30"
+                  }`}
               />
 
-              {/* Title overlay for active thumbnail - hidden on small mobile */}
+              {/* Title overlay for active thumbnail */}
               {index === currentSlide && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="hidden sm:block absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                  className="hidden sm:block absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap max-w-32 truncate"
                 >
                   {project.title}
                 </motion.div>

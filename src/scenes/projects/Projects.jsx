@@ -1,4 +1,4 @@
-// scenes/projects/Projects.jsx
+/* eslint-disable */
 import { useState } from "react";
 import { projects as allProjects } from "../../constants";
 import ProjectCard from "../../components/ProjectCard";
