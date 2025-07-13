@@ -11,6 +11,7 @@ import useMediaQuery from "../components/hooks/useMediaQuery";
 import { useEffect, useState, useRef } from "react";
 import Services from "../scenes/home/Services";
 import { useLocation } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 
 const HomePage = () => {
   const [selectedPage, setSelectedPage] = useState("home");
@@ -137,6 +138,9 @@ const HomePage = () => {
       </div>
 
       <Footer />
+
+      {/* Scroll to Top */}
+      <ScrollToTop />
     </div>
   );
 };

@@ -5,7 +5,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  ArrowUp,
   Code,
   Sparkles,
   Zap,
@@ -282,10 +281,10 @@ const Footer = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col lg:flex-row justify-between items-center space-y-2 md:space-y-3 lg:space-y-0"
+            className="flex flex-col lg:flex-row justify-between items-center space-y-2 md:space-y-3 lg:space-y-0 pb-12 pt-6"
           >
             <div className="text-center lg:text-left">
-              <p className="font-playfair text-white/80 text-sm md:text-base lg:text-lg mb-0.5 md:mb-1 lg:mb-2">
+              <p className="text-white/80 text-sm md:text-base lg:text-lg mb-0.5 md:mb-1 lg:mb-2">
                 ©{currentYear} DS. All Rights Reserved.
               </p>
               <p className="text-white/60 text-xs md:text-sm flex items-center justify-center lg:justify-start">
@@ -293,36 +292,10 @@ const Footer = () => {
                 Jakarta, Indonesia
               </p>
             </div>
-
-            <div className="flex flex-wrap justify-center lg:justify-end items-center gap-1 md:gap-2 lg:gap-4 text-xs md:text-sm text-white/60">
-              <motion.a
-                href="#"
-                className="hover:text-yellow-400 transition duration-300"
-                whileHover={{ y: -2 }}
-              >
-                Privacy Policy
-              </motion.a>
-              <span className="text-white/30">•</span>
-              <motion.a
-                href="#"
-                className="hover:text-yellow-400 transition duration-300"
-                whileHover={{ y: -2 }}
-              >
-                Terms of Service
-              </motion.a>
-              <span className="text-white/30 hidden sm:inline">•</span>
-              <motion.a
-                href="#"
-                className="hover:text-yellow-400 transition duration-300"
-                whileHover={{ y: -2 }}
-              >
-                Cookie Policy
-              </motion.a>
-            </div>
           </motion.div>
 
           {/* Enhanced Back to Top Button - Smaller on mobile */}
-          <motion.div
+          {/* <motion.div
             className="text-center mt-4 md:mt-6 lg:mt-12"
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -334,7 +307,7 @@ const Footer = () => {
             >
               <ArrowUp className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-transform duration-300" />
             </AnchorLink>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </footer>

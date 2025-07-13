@@ -27,21 +27,33 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
     if (onClick) onClick()
   }
 
+  // Enhanced active state logic for Projects
+  const isActive = () => {
+    if (lowerCasePage === 'projects') {
+      // Projects is active if:
+      // 1. selectedPage is 'projects' (home page #projects section)
+      // 2. current location is '/projects' (projects page)
+      return selectedPage === 'projects' || location === '/projects'
+    }
+    // For other pages, use the original logic
+    return selectedPage === lowerCasePage || location === `/${lowerCasePage}`
+  }
+
   return (
     <button
       onClick={handleClick}
-      className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 ${selectedPage === lowerCasePage || location === `/${lowerCasePage}`
+      className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 ${isActive()
         ? "text-white bg-blue/10 shadow-lg shadow-blue/20"
         : "text-white/80 hover:text-white hover:bg-white/5"
         } ${isMobile ? "w-full justify-start" : "justify-center"}`}
     >
-      {(isMobile || selectedPage === lowerCasePage || location === `/${lowerCasePage}`) && getIcon(lowerCasePage)}
+      {(isMobile || isActive()) && getIcon(lowerCasePage)}
       <span className="relative flex whitespace-nowrap justify-between w-full">
         {page}
         {subMenu && <ChevronDown className="w-4 h-4" />}
         {!isMobile && (
           <span
-            className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue to-purple transition-all duration-300 ${selectedPage === lowerCasePage || location === `/${lowerCasePage}` ? "w-full" : "w-0 group-hover:w-full"
+            className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue to-purple transition-all duration-300 ${isActive() ? "w-full" : "w-0 group-hover:w-full"
               }`}
           />
         )}
@@ -317,6 +329,7 @@ const NavDropdown = ({
 }) => {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
   const navigate = useNavigate()
+  const location = window.location.pathname
 
   const handleNavigate = (href) => {
     if (onClick) onClick()
@@ -339,6 +352,14 @@ const NavDropdown = ({
     }
   }
 
+  // Enhanced active state for dropdown button
+  const isDropdownActive = () => {
+    if (name.toLowerCase() === 'projects') {
+      return selectedPage === 'projects' || location === '/projects'
+    }
+    return selectedPage === name.toLowerCase() || location === `/${name.toLowerCase()}`
+  }
+
   const isOpen = isMobile ? mobileDropdownOpen : dropdownOpen
 
   if (isMobile) {
@@ -346,7 +367,7 @@ const NavDropdown = ({
       <div className="space-y-2">
         <button
           onClick={handleDropdownToggle}
-          className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 w-full justify-between ${selectedPage === name.toLowerCase()
+          className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 w-full justify-between ${isDropdownActive()
             ? "text-white bg-blue/10 shadow-lg shadow-blue/20"
             : "text-white/80 hover:text-white hover:bg-white/5"
             }`}
@@ -382,7 +403,7 @@ const NavDropdown = ({
     <div className="relative dropdown-container">
       <button
         onClick={handleDropdownToggle}
-        className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 ${selectedPage === name.toLowerCase()
+        className={`group relative flex items-center gap-2 px-2 sm:px-3 md:px-4 py-2 rounded-xl font-opensans text-xs sm:text-sm font-medium transition-all duration-300 ${isDropdownActive()
           ? "text-white bg-blue/10 shadow-lg shadow-blue/20"
           : "text-white/80 hover:text-white hover:bg-white/5"
           }`}
@@ -391,7 +412,7 @@ const NavDropdown = ({
           {name}
           <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
           <span
-            className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue to-purple transition-all duration-300 ${selectedPage === name.toLowerCase() ? "w-full" : "w-0 group-hover:w-full"
+            className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue to-purple transition-all duration-300 ${isDropdownActive() ? "w-full" : "w-0 group-hover:w-full"
               }`}
           />
         </span>

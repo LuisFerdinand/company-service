@@ -70,7 +70,7 @@ const Services = () => {
             title: "Paket Starter",
             subtitle: "Website Berbasis Template",
             description: "Platform peluncuran yang sempurna untuk kehadiran digital Anda",
-            price: "Rp 2.000.000",
+            price: "Rp 750.000",
             duration: "3 - 7 hari",
             bestFor: "Bisnis kecil, portofolio",
             highlight: "Peluncuran Cepat",
@@ -90,7 +90,7 @@ const Services = () => {
             title: "Paket Pro",
             subtitle: "Website Semi-Kustom",
             description: "Keseimbangan sempurna antara kustomisasi dan efisiensi",
-            price: "Rp 4.000.000",
+            price: "Rp 1.500.000",
             duration: "7 - 14 hari",
             bestFor: "Bisnis berkembang",
             highlight: "Paling Populer",
@@ -110,7 +110,7 @@ const Services = () => {
             title: "Paket Advanced",
             subtitle: "Website Fully Kustom",
             description: "Solusi tingkat enterprise yang disesuaikan dengan visi Anda",
-            price: "Rp 9.000.000",
+            price: "Rp 5.000.000",
             duration: "2 - 4 minggu",
             bestFor: "Bisnis serius, startup",
             highlight: "Solusi Premium",
@@ -130,7 +130,7 @@ const Services = () => {
         { id: "ecommerce", name: "E-commerce", price: "+Rp 2.000.000+", icon: ShoppingCart },
         { id: "logo", name: "Desain Logo", price: "Rp 500.000", icon: Palette },
         { id: "content", name: "Pembuatan Konten", price: "Rp 500K - 1M", icon: PenTool },
-        { id: "maintenance", name: "Maintenance", price: "Rp 300K/bulan", icon: Wrench },
+        { id: "maintenance", name: "Maintenance", price: "Rp 50K/jam kerja", icon: Wrench },
     ]
 
     useEffect(() => {

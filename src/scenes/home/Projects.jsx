@@ -4,70 +4,11 @@ import ProjectCard from "../../components/ProjectCard"
 import ProjectCardDetail from "../../components/ProjectCardDetail"
 import { ExternalLink } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { projects } from "../../constants";
+
 
 // Mock project data with Indonesian content
-const mockProjects = [
-  {
-    id: 1,
-    title: "Platform E-Commerce",
-    subtitle: "Solusi e-commerce modern dan responsif dengan fitur canggih",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    description:
-      "Membangun platform e-commerce komprehensif dengan autentikasi pengguna, pemrosesan pembayaran, manajemen inventori, dan dashboard admin. Fitur termasuk notifikasi real-time, pencarian canggih, dan desain responsif mobile.",
-    href: "#",
-  },
-  {
-    id: 2,
-    title: "Dashboard AI",
-    subtitle: "Dashboard analitik interaktif yang didukung machine learning",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    technologies: ["Python", "TensorFlow", "React", "D3.js"],
-    description:
-      "Mengembangkan dashboard analitik bertenaga AI yang memproses dataset besar dan memberikan wawasan prediktif. Termasuk visualisasi data, model machine learning, dan kemampuan pemrosesan data real-time.",
-    href: "#",
-  },
-  {
-    id: 3,
-    title: "Aplikasi Mobile Banking",
-    subtitle: "Solusi mobile banking yang aman dan intuitif",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-    technologies: ["React Native", "Node.js", "PostgreSQL", "JWT"],
-    description:
-      "Menciptakan aplikasi mobile banking yang aman dengan autentikasi biometrik, riwayat transaksi, pembayaran tagihan, dan pelacakan anggaran. Mengimplementasikan enkripsi end-to-end dan sistem deteksi penipuan.",
-    href: "#",
-  },
-  {
-    id: 4,
-    title: "Platform Media Sosial",
-    subtitle: "Pengalaman jejaring sosial generasi berikutnya",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-    technologies: ["Next.js", "GraphQL", "Redis", "AWS"],
-    description:
-      "Membangun platform media sosial yang dapat diskalakan dengan pesan real-time, berbagi konten, dan kontrol privasi canggih. Fitur termasuk moderasi konten bertenaga AI dan feed yang dipersonalisasi.",
-    href: "#",
-  },
-  {
-    id: 5,
-    title: "Sistem Manajemen Sekolah",
-    subtitle: "Platform pendidikan digital terintegrasi",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Socket.io"],
-    description:
-      "Sistem manajemen sekolah lengkap dengan portal siswa, guru, dan orang tua. Fitur absensi digital, nilai online, jadwal pelajaran, dan komunikasi real-time.",
-    href: "#",
-  },
-  {
-    id: 6,
-    title: "Aplikasi Delivery Food",
-    subtitle: "Platform pemesanan makanan dengan tracking real-time",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
-    technologies: ["Flutter", "Firebase", "Google Maps", "Stripe"],
-    description:
-      "Aplikasi delivery makanan dengan fitur pencarian restoran, pemesanan online, tracking pengiriman real-time, dan sistem rating. Terintegrasi dengan payment gateway dan notifikasi push.",
-    href: "#",
-  },
-]
+const mockProjects = projects.slice(0, 4);
 
 const LineGradient = ({ width = "w-full" }) => <div className={`h-0.5 ${width} bg-gradient-to-r from-blue to-purple`} />
 
@@ -110,7 +51,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {mockProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} onClick={handleProjectClick} />
           ))}
