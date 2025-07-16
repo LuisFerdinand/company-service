@@ -47,7 +47,7 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
         : "text-white/80 hover:text-white hover:bg-white/5"
         } ${isMobile ? "w-full justify-start" : "justify-center"}`}
     >
-      {(isMobile || isActive()) && getIcon(lowerCasePage)}
+      {isMobile && getIcon(lowerCasePage)}
       <span className="relative flex whitespace-nowrap justify-between w-full">
         {page}
         {subMenu && <ChevronDown className="w-4 h-4" />}
@@ -408,7 +408,7 @@ const NavDropdown = ({
           : "text-white/80 hover:text-white hover:bg-white/5"
           }`}
       >
-        <span className="relative flex whitespace-nowrap justify-between w-full">
+        <span className="relative flex whitespace-nowrap items-center justify-between w-full">
           {name}
           <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
           <span

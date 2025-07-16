@@ -138,7 +138,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-8 md:py-16 lg:py-20 relative overflow-hidden min-h-screen flex items-center bg-deep-blue"
+      className="max-w-7xl mx-auto py-8 md:py-16 lg:py-20 relative overflow-hidden min-h-screen flex items-center bg-deep-blue"
     >
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -161,8 +161,77 @@ const Contact = () => {
         </div>
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          
+          {/* Info Column */}
+          <div className="order-1 lg:order-1">
+            <div className="bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl h-full flex flex-col">
+              {/* Contact Information */}
+              <div className="mb-8 flex-grow">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Informasi Kontak</h3>
+                <div className="space-y-6">
+                  {contactInfo.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start space-x-4 group cursor-pointer hover:translate-x-2 transition-transform duration-300"
+                    >
+                      <div className="p-3 bg-gradient-to-r from-yellow/20 to-orange/20 rounded-xl group-hover:from-yellow/30 group-hover:to-orange/30 transition-all duration-300 flex-shrink-0">
+                        <item.icon className="w-5 h-5 text-yellow" />
+                      </div>
+                      <div>
+                        <p className="text-white font-medium text-sm md:text-base">{item.label}</p>
+                        <p className="text-gray-300 text-xs sm:text-sm md:text-base mb-1">{item.text}</p>
+                        <p className="text-gray-500 text-xs">{item.subtext}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Business Hours */}
+              <div className="mb-8 p-4 bg-gradient-to-r from-yellow/10 to-orange/10 rounded-xl border border-yellow/20">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-2 bg-yellow/20 rounded-lg">
+                    <Clock className="w-5 h-5 text-yellow" />
+                  </div>
+                  <div>
+                    <p className="text-white font-medium text-sm md:text-base">Jam Operasional</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Kapan Anda bisa menghubungi kami</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  {businessHours.map((schedule, index) => (
+                    <div key={index} className="flex justify-between items-center">
+                      <span className="text-gray-300 text-xs sm:text-sm">{schedule.day}</span>
+                      <span className="text-gray-400 text-xs sm:text-sm">{schedule.hours}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Social Media */}
+              <div className="mt-auto">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Terhubung Dengan Kami</h3>
+                <div className="flex flex-wrap gap-3 mb-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-4 bg-white/10 rounded-xl text-gray-400 ${social.color} transition-all duration-300 hover:bg-white/20 group transform hover:scale-110 hover:-translate-y-1`}
+                      aria-label={social.label}
+                    >
+                      <social.icon className="w-6 h-6" />
+                    </a>
+                  ))}
+                </div>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base">
+                  Ikuti kami untuk update dan insight terbaru.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Contact Form Column */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-2">
             <div className="bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl h-full flex flex-col">
               <div className="mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Kirim pesan kepada kami</h3>
@@ -266,73 +335,7 @@ const Contact = () => {
               )}
             </div>
           </div>
-          {/* Info Column */}
-          <div className="order-1 lg:order-2">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl h-full flex flex-col">
-              {/* Contact Information */}
-              <div className="mb-8 flex-grow">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Informasi Kontak</h3>
-                <div className="space-y-6">
-                  {contactInfo.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start space-x-4 group cursor-pointer hover:translate-x-2 transition-transform duration-300"
-                    >
-                      <div className="p-3 bg-gradient-to-r from-yellow/20 to-orange/20 rounded-xl group-hover:from-yellow/30 group-hover:to-orange/30 transition-all duration-300 flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-yellow" />
-                      </div>
-                      <div>
-                        <p className="text-white font-medium text-sm md:text-base">{item.label}</p>
-                        <p className="text-gray-300 text-xs sm:text-sm md:text-base mb-1">{item.text}</p>
-                        <p className="text-gray-500 text-xs">{item.subtext}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* Business Hours */}
-              <div className="mb-8 p-4 bg-gradient-to-r from-yellow/10 to-orange/10 rounded-xl border border-yellow/20">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-yellow/20 rounded-lg">
-                    <Clock className="w-5 h-5 text-yellow" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium text-sm md:text-base">Jam Operasional</p>
-                    <p className="text-gray-400 text-xs sm:text-sm">Kapan Anda bisa menghubungi kami</p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  {businessHours.map((schedule, index) => (
-                    <div key={index} className="flex justify-between items-center">
-                      <span className="text-gray-300 text-xs sm:text-sm">{schedule.day}</span>
-                      <span className="text-gray-400 text-xs sm:text-sm">{schedule.hours}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* Social Media */}
-              <div className="mt-auto">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Terhubung Dengan Kami</h3>
-                <div className="flex flex-wrap gap-3 mb-4">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-4 bg-white/10 rounded-xl text-gray-400 ${social.color} transition-all duration-300 hover:bg-white/20 group transform hover:scale-110 hover:-translate-y-1`}
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-6 h-6" />
-                    </a>
-                  ))}
-                </div>
-                <p className="text-gray-400 text-xs sm:text-sm md:text-base">
-                  Ikuti kami untuk update dan insight terbaru.
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>

@@ -81,7 +81,7 @@ const Services = () => {
                 "Setup SEO dasar",
                 "Integrasi form kontak",
             ],
-            gradientColor: "from-blue to-cyan",
+            gradientColor: "from-blue to-green",
             popular: false,
         },
         {
@@ -101,7 +101,7 @@ const Services = () => {
                 "Integrasi analytics",
                 "Setup WhatsApp business",
             ],
-            gradientColor: "from-purple to-pink",
+            gradientColor: "from-yellow to-red",
             popular: true,
         },
         {
@@ -121,7 +121,7 @@ const Services = () => {
                 "Optimasi SEO lanjutan",
                 "Support premium 1 bulan",
             ],
-            gradientColor: "from-orange to-red",
+            gradientColor: "from-purple to-pink-300",
             popular: false,
         },
     ]
@@ -152,7 +152,7 @@ const Services = () => {
 
         return (
             <div
-                className={`bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 overflow-hidden group h-full flex flex-col mx-2 ${item.popular ? "ring-1 ring-yellow/60 shadow-lg" : ""
+                className={`bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 group h-full flex flex-col mx-2 ${item.popular ? "ring-1 ring-yellow/60 shadow-lg" : ""
                     }`}
             >
                 {/* Highlight Badge */}
@@ -321,7 +321,7 @@ const Services = () => {
                 <div className="mb-16">
                     <Slider {...sliderSettings}>
                         {packages.map((pkg) => (
-                            <div key={pkg.id} className="px-2">
+                            <div key={pkg.id} className="p-2">
                                 <PackageCard item={pkg} />
                             </div>
                         ))}
