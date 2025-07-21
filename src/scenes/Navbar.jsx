@@ -1,23 +1,23 @@
 /* eslint-disable */
 import { useState, useEffect } from "react"
 import useMediaQuery from "../components/hooks/useMediaQuery"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { HiMenu, HiX, HiCode, HiLightningBolt, HiHome, HiUser, HiCog, HiBriefcase, HiMail } from "react-icons/hi"
 import { ChevronDown } from "lucide-react"
 
 const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, subMenu = false }) => {
   const lowerCasePage = page.toLowerCase()
   const navigate = useNavigate()
-  const location = window.location.pathname
+  const location = useLocation()
 
   const getIcon = (pageName) => {
     const iconMap = {
-      home: <HiHome className="w-4 h-4" />,
-      about: <HiUser className="w-4 h-4" />,
-      workflow: <HiLightningBolt className="w-4 h-4" />,
-      services: <HiCog className="w-4 h-4" />,
-      projects: <HiBriefcase className="w-4 h-4" />,
-      contact: <HiMail className="w-4 h-4" />,
+      beranda: <HiHome className="w-4 h-4" />,
+      tentang: <HiUser className="w-4 h-4" />,
+      alur: <HiLightningBolt className="w-4 h-4" />,
+      servis: <HiCog className="w-4 h-4" />,
+      proyek: <HiBriefcase className="w-4 h-4" />,
+      kontak: <HiMail className="w-4 h-4" />,
     }
     return iconMap[pageName] || null
   }
@@ -29,14 +29,14 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
 
   // Enhanced active state logic for Projects
   const isActive = () => {
-    if (lowerCasePage === 'projects') {
+    if (lowerCasePage === 'proyek') {
       // Projects is active if:
       // 1. selectedPage is 'projects' (home page #projects section)
       // 2. current location is '/projects' (projects page)
-      return selectedPage === 'projects' || location === '/projects'
+      return selectedPage === 'projects' || location.pathname === '/projects' || location.pathname === '/proyek'
     }
     // For other pages, use the original logic
-    return selectedPage === lowerCasePage || location === `/${lowerCasePage}`
+    return selectedPage === lowerCasePage || location.pathname === `/${lowerCasePage}`
   }
 
   return (
@@ -68,8 +68,9 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false) // Add dropdown state
-  const location = window.location.pathname
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   // Updated media queries - mobile menu now shows from md screens down
   const showMobileMenu = useMediaQuery("(max-width: 1023px)") // lg breakpoint is 1024px
@@ -84,9 +85,8 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navigate = useNavigate()
   const handleViewAllProjects = () => {
-    navigate("/projects")
+    navigate("/proyek")
   }
 
   // Close mobile menu when switching to larger screens
@@ -119,16 +119,16 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const navigationItems = [
     { name: "Beranda", href: "/" },
     { name: "Tentang", href: "/#about" },
-    { name: "Alur Kerja", href: "/#workflow" },
+    { name: "Alur", href: "/#workflow" },
     { name: "Servis", href: "/#services" },
     {
-      name: "Projects",
+      name: "Proyek",
       submenu: [
         { label: "Portofolio", href: "/#projects" },
         { label: "Semua Project", href: "/projects" },
       ],
     },
-    { name: "Contact", href: "/#contact" },
+    { name: "Kontak", href: "/#contact" },
   ]
 
   return (
@@ -162,7 +162,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
           </div>
 
           {/* Desktop Navigation - Only show on large screens (lg+) */}
-          <div className="hidden md:flex items-center justify-center flex-1 max-w-4xl mx-4">
+          <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-4">
             <div className="flex items-center space-x-1 lg:space-x-2 xl:space-x-3">
               {navigationItems.map((item) =>
                 item.submenu ? (
@@ -189,8 +189,8 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
           </div>
 
           {/* CTA Button - Only show on large screens */}
-          {location !== "/projects" && (
-            <div className="hidden md:flex items-center flex-shrink-0">
+          {location.pathname !== "/projects" && location.pathname !== "/proyek" && (
+            <div className="hidden lg:flex items-center flex-shrink-0">
               <button
                 onClick={handleViewAllProjects}
                 className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105"
@@ -201,7 +201,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             </div>
           )}
 
-          {/* Mobile Menu Button - Show from md screens down (below lg) */}
+          {/* Mobile Menu Button - Show from lg screens down */}
           {showMobileMenu && (
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -220,7 +220,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
         </div>
       </div>
 
-      {/* Mobile Menu - Show for md screens and below */}
+      {/* Mobile Menu - Show for lg screens and below */}
       {showMobileMenu && (
         <>
           {/* Backdrop */}
@@ -261,9 +261,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             {/* Navigation Links */}
             <div className="p-4 sm:p-6 space-y-2 flex-1">
               {navigationItems.map((item, index) =>
-                item.name === "Projects" ? (
+                item.submenu ? (
                   <NavDropdown
-                    key="projects-dropdown"
+                    key={item.name}
                     name={item.name}
                     items={item.submenu}
                     selectedPage={selectedPage}
@@ -329,12 +329,13 @@ const NavDropdown = ({
 }) => {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
   const navigate = useNavigate()
-  const location = window.location.pathname
+  const location = useLocation()
 
   const handleNavigate = (href) => {
     if (onClick) onClick()
     if (href.startsWith("/#")) {
-      navigate(`/#${name.toLowerCase()}`)
+      const section = href.substring(2) // Remove "/#"
+      navigate("/", { state: { scrollTo: section } })
     } else {
       navigate(href)
     }
@@ -348,19 +349,21 @@ const NavDropdown = ({
     if (isMobile) {
       setMobileDropdownOpen(!mobileDropdownOpen)
     } else {
-      setDropdownOpen(!dropdownOpen)
+      if (setDropdownOpen) {
+        setDropdownOpen(!dropdownOpen)
+      }
     }
   }
 
   // Enhanced active state for dropdown button
   const isDropdownActive = () => {
-    if (name.toLowerCase() === 'projects') {
-      return selectedPage === 'projects' || location === '/projects'
+    if (name.toLowerCase() === 'proyek') {
+      return selectedPage === 'projects' || location.pathname === '/projects' || location.pathname === '/proyek'
     }
-    return selectedPage === name.toLowerCase() || location === `/${name.toLowerCase()}`
+    return selectedPage === name.toLowerCase() || location.pathname === `/${name.toLowerCase()}`
   }
 
-  const isOpen = isMobile ? mobileDropdownOpen : dropdownOpen
+  const isOpen = isMobile ? mobileDropdownOpen : (dropdownOpen || false)
 
   if (isMobile) {
     return (
