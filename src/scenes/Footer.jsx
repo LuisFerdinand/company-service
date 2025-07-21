@@ -16,21 +16,21 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Workflow", href: "#workflow" },
-    { name: "Services", href: "#services" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Beranda", href: "#home" },
+    { name: "Tentang", href: "#about" },
+    { name: "Alur Kerja", href: "#workflow" },
+    { name: "Layanan", href: "#services" },
+    { name: "Proyek", href: "#projects" },
+    { name: "Kontak", href: "#contact" },
   ];
 
   const services = [
-    "Web Development",
-    "UI/UX Design",
-    "E-commerce Solutions",
-    "Mobile Apps",
-    "SEO Optimization",
-    "Digital Marketing",
+    "Pengembangan Website",
+    "Desain UI/UX",
+    "Solusi E-commerce",
+    "Aplikasi Mobile",
+    "Optimasi SEO",
+    "Pemasaran Digital",
   ];
 
   const floatingIcons = [
@@ -43,9 +43,9 @@ const Footer = () => {
 
   // eslint-disable-next-line
   const handleWhatsAppContact = () => {
-    const message = "Hi! I'd like to know more about your website services.";
+    const message = "Halo! Saya ingin tahu lebih lanjut tentang layanan website Anda.";
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = "YOUR_WHATSAPP_NUMBER"; // Replace with your actual WhatsApp number
+    const whatsappNumber = "085248209388"; // Replace with your actual WhatsApp number
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
       "_blank"
@@ -53,7 +53,7 @@ const Footer = () => {
   };
 
   const handleEmailContact = () => {
-    window.location.href = "mailto:your-email@domain.com";
+    window.location.href = "mailto:ferdinandluis88@gmail.com";
   };
 
   return (
@@ -149,17 +149,17 @@ const Footer = () => {
               className="col-span-1 md:col-span-2 lg:col-span-2"
             >
               <div className="mb-2 md:mb-4 lg:mb-6">
-                <h3 className="font-playfair font-bold text-2xl md:text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
-                  JANE ESPER
+                <h3 className="font-bold text-2xl md:text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow to-orange mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
+                  Digital Solution
                 </h3>
                 <p className="text-white/60 text-xs md:text-sm font-medium tracking-wider">
-                  PROFESSIONAL WEB DEVELOPMENT SERVICES
+                  LAYANAN PENGEMBANGAN WEBSITE PROFESIONAL
                 </p>
               </div>
               <p className="text-white/80 mb-3 md:mb-6 lg:mb-8 leading-relaxed text-sm md:text-base lg:text-lg max-w-md">
-                Creating exceptional digital experiences that drive results.
-                From concept to launch, we deliver professional web solutions
-                tailored to your business needs.
+                Menciptakan pengalaman digital yang luar biasa yang memberikan hasil optimal. 
+                Dari konsep hingga peluncuran, kami memberikan solusi web profesional yang 
+                disesuaikan dengan kebutuhan bisnis Anda.
               </p>
               <div className="mb-3 md:mb-6 lg:mb-8">
                 <SocialMediaIcons />
@@ -178,7 +178,7 @@ const Footer = () => {
                   <div>
                     <p className="text-white/60 text-xs md:text-sm">Email</p>
                     <p className="text-white font-medium text-sm md:text-base">
-                      your-email@domain.com
+                      ferdinandluis88@gmail.com
                     </p>
                   </div>
                 </motion.div>
@@ -191,9 +191,9 @@ const Footer = () => {
                     <Phone className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs md:text-sm">Phone</p>
+                    <p className="text-white/60 text-xs md:text-sm">Telepon</p>
                     <p className="text-white font-medium text-sm md:text-base">
-                      +62 xxx-xxxx-xxxx
+                      +62 852-4820-9388
                     </p>
                   </div>
                 </motion.div>
@@ -206,7 +206,7 @@ const Footer = () => {
                     <MapPin className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs md:text-sm">Location</p>
+                    <p className="text-white/60 text-xs md:text-sm">Lokasi</p>
                     <p className="text-white font-medium text-sm md:text-base">
                       Jakarta, Indonesia
                     </p>
@@ -222,8 +222,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="col-span-1"
             >
-              <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
-                Quick Links
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+                Tautan Cepat
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-2 lg:gap-3">
                 {footerLinks.map((link, index) => (
@@ -251,8 +251,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="col-span-1 hidden md:block"
             >
-              <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
-                Services
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+                Layanan
               </h4>
               <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-3">
                 {services.map((service, index) => (
@@ -285,10 +285,10 @@ const Footer = () => {
           >
             <div className="text-center lg:text-left">
               <p className="text-white/80 text-sm md:text-base lg:text-lg mb-0.5 md:mb-1 lg:mb-2">
-                ©{currentYear} DS. All Rights Reserved.
+                ©{currentYear} DS. Hak Cipta Dilindungi.
               </p>
               <p className="text-white/60 text-xs md:text-sm flex items-center justify-center lg:justify-start">
-                Made with <Heart size={12} className="mx-1 text-red-500" /> in
+                Dibuat dengan <Heart size={12} className="mx-1 text-red-500" /> di
                 Jakarta, Indonesia
               </p>
             </div>

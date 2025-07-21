@@ -14,6 +14,8 @@ import TechStackDisplay from "../../components/TechStackDisplay";
 import person_1 from "../../assets/profile_img/Person_1.png";
 import person_2 from "../../assets/profile_img/Person_2.png";
 import person_3 from "../../assets/profile_img/Person_3.png";
+import { stats } from "../../constants";
+
 
 
 const AboutUs = () => {
@@ -29,24 +31,7 @@ const AboutUs = () => {
         "Dengan pengalaman bertahun-tahun di industri teknologi, kami memahami bahwa setiap bisnis memiliki kebutuhan unik. Tim kami terdiri dari developer berpengalaman yang passionate dalam menciptakan solusi digital yang tidak hanya menarik secara visual, tetapi juga fungsional dan menguntungkan bagi bisnis Anda.",
     },
 
-    stats: [
-      {
-        number: "50+",
-        label: "Proyek Selesai",
-      },
-      {
-        number: "3+",
-        label: "Tahun Pengalaman",
-      },
-      {
-        number: "24/7",
-        label: "Dukungan",
-      },
-      {
-        number: "99.9%",
-        label: "Uptime",
-      },
-    ],
+    stats: stats,
 
     values: [
       {

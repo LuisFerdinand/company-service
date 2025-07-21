@@ -117,15 +117,15 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
 
   // Synchronized navigation items - matches DotGroup exactly
   const navigationItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Workflow", href: "/#workflow" },
-    { name: "Services", href: "/#services" },
+    { name: "Beranda", href: "/" },
+    { name: "Tentang", href: "/#about" },
+    { name: "Alur Kerja", href: "/#workflow" },
+    { name: "Servis", href: "/#services" },
     {
       name: "Projects",
       submenu: [
-        { label: "Portfolio (Home)", href: "/#projects" },
-        { label: "All Projects", href: "/projects" },
+        { label: "Portofolio", href: "/#projects" },
+        { label: "Semua Project", href: "/projects" },
       ],
     },
     { name: "Contact", href: "/#contact" },
@@ -195,7 +195,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 onClick={handleViewAllProjects}
                 className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 whitespace-nowrap">View Full Portfolio</span>
+                <span className="relative z-10 whitespace-nowrap">Semua Projek</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
@@ -298,7 +298,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 }}
                 className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
               >
-                View Full Portfolio
+                Semua Projek
               </button>
             </div>
 

@@ -6,7 +6,6 @@ import {
   ChevronRight,
   X,
   ExternalLink,
-  Github,
 } from "lucide-react";
 import { getTechIcon } from "../constants";
 
@@ -300,25 +299,16 @@ const ProjectCardDetail = ({ projects, initialSlide = 0, isOpen, onClose }) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9 }}
-                  className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 pt-2 sm:pt-3 lg:pt-4"
+                  className="pt-2 sm:pt-3 lg:pt-4"
                 >
                   <a
                     href={currentProject.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-blue to-purple px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 text-white hover:scale-105 text-xs sm:text-sm lg:text-base"
+                    className="bg-gradient-to-r from-blue to-purple px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 text-white hover:scale-105 text-xs sm:text-sm lg:text-base w-full sm:w-auto"
                   >
                     <ExternalLink size={14} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                     <span>View Live Project</span>
-                  </a>
-                  <a
-                    href={currentProject.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="border border-gray-600 hover:border-gray-400 px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white/5 text-white flex items-center justify-center space-x-2 hover:scale-105 text-xs sm:text-sm lg:text-base"
-                  >
-                    <Github size={14} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-                    <span>View Code</span>
                   </a>
                 </motion.div>
               </motion.div>
