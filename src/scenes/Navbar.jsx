@@ -1,29 +1,43 @@
 /* eslint-disable */
 import { useState, useEffect } from "react"
 import useMediaQuery from "../components/hooks/useMediaQuery"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { HiMenu, HiX, HiCode, HiLightningBolt, HiHome, HiUser, HiCog, HiBriefcase, HiMail } from "react-icons/hi"
 import { ChevronDown } from "lucide-react"
 
 const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, subMenu = false }) => {
   const lowerCasePage = page.toLowerCase()
   const navigate = useNavigate()
-  const location = useLocation()
+  const location = window.location.pathname
 
   const getIcon = (pageName) => {
     const iconMap = {
       beranda: <HiHome className="w-4 h-4" />,
       tentang: <HiUser className="w-4 h-4" />,
       alur: <HiLightningBolt className="w-4 h-4" />,
-      servis: <HiCog className="w-4 h-4" />,
+      layanan: <HiCog className="w-4 h-4" />,
       proyek: <HiBriefcase className="w-4 h-4" />,
       kontak: <HiMail className="w-4 h-4" />,
     }
     return iconMap[pageName] || null
   }
 
+  // Map Bahasa names to English routes
+  const getRoute = (pageName) => {
+    const routeMap = {
+      beranda: 'home',
+      tentang: 'about',
+      alur: 'workflow',
+      layanan: 'services',
+      proyek: 'projects',
+      kontak: 'contact'
+    }
+    return routeMap[pageName] || pageName
+  }
+
   const handleClick = () => {
-    navigate(`/#${lowerCasePage}`)
+    const route = getRoute(lowerCasePage)
+    navigate(`/#${route}`)
     if (onClick) onClick()
   }
 
@@ -33,10 +47,11 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
       // Projects is active if:
       // 1. selectedPage is 'projects' (home page #projects section)
       // 2. current location is '/projects' (projects page)
-      return selectedPage === 'projects' || location.pathname === '/projects' || location.pathname === '/proyek'
+      return selectedPage === 'projects' || location === '/projects'
     }
-    // For other pages, use the original logic
-    return selectedPage === lowerCasePage || location.pathname === `/${lowerCasePage}`
+    // For other pages, map to English route for comparison
+    const route = getRoute(lowerCasePage)
+    return selectedPage === route || location === `/${route}`
   }
 
   return (
@@ -68,8 +83,8 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const location = useLocation()
+  const [dropdownOpen, setDropdownOpen] = useState(false) // Add dropdown state
+  const location = window.location.pathname
   const navigate = useNavigate()
 
   // Updated media queries - mobile menu now shows from md screens down
@@ -86,7 +101,16 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   }, [])
 
   const handleViewAllProjects = () => {
-    navigate("/proyek")
+    navigate("/projects")
+  }
+
+  // Handle logo click to navigate home - with null check
+  const handleLogoClick = () => {
+    navigate("/#home")
+    // Only call setSelectedPage if it exists (for backward compatibility)
+    if (setSelectedPage && typeof setSelectedPage === 'function') {
+      setSelectedPage("home")
+    }
   }
 
   // Close mobile menu when switching to larger screens
@@ -115,17 +139,17 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     ? "bg-deep-blue/95 border-b border-white/10 shadow-2xl shadow-black/20"
     : "bg-transparent"
 
-  // Synchronized navigation items - matches DotGroup exactly
+  // Updated navigation items - Bahasa names with English hrefs
   const navigationItems = [
-    { name: "Beranda", href: "/" },
+    { name: "Beranda", href: "/#home" },
     { name: "Tentang", href: "/#about" },
     { name: "Alur", href: "/#workflow" },
-    { name: "Servis", href: "/#services" },
+    { name: "Layanan", href: "/#services" },
     {
       name: "Proyek",
       submenu: [
         { label: "Portofolio", href: "/#projects" },
-        { label: "Semua Project", href: "/projects" },
+        { label: "Semua Proyek", href: "/projects" },
       ],
     },
     { name: "Kontak", href: "/#contact" },
@@ -135,8 +159,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     <nav className={`${navbarStyle} fixed top-0 w-full z-20 transition-all duration-500`}>
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-          {/* Logo Section - More compact on smaller screens */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          {/* Logo Section - Wrapped with navigation to home */}
+          <button
+            onClick={handleLogoClick}
+            className="flex items-center gap-2 sm:gap-3 flex-shrink-0 group cursor-pointer"
+            aria-label="Navigate to home"
+          >
             {/* Animated logo container */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue via-purple to-yellow rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
@@ -148,21 +176,21 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             </div>
             {/* Company name - Hide text on mobile, show shortened version on small screens */}
             <div className="hidden xs:flex sm:flex flex-col">
-              <h1 className="font-inter text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight">
+              <h1 className="font-inter text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight group-hover:text-blue transition-colors duration-300">
                 {/* Show "DS" on small screens, "Digital" on medium+ */}
                 <span className="sm:hidden">DS</span>
                 <span className="hidden sm:inline">Digital</span>
               </h1>
-              <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
+              <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase group-hover:text-purple transition-colors duration-300">
                 {/* Show "Sol" on small screens, "Solutions" on medium+ */}
                 <span className="sm:hidden">Sol</span>
                 <span className="hidden sm:inline">Solutions</span>
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Desktop Navigation - Only show on large screens (lg+) */}
-          <div className="hidden lg:flex items-center justify-center flex-1 max-w-4xl mx-4">
+          <div className="hidden md:flex items-center justify-center flex-1 max-w-4xl mx-4">
             <div className="flex items-center space-x-1 lg:space-x-2 xl:space-x-3">
               {navigationItems.map((item) =>
                 item.submenu ? (
@@ -189,19 +217,19 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
           </div>
 
           {/* CTA Button - Only show on large screens */}
-          {location.pathname !== "/projects" && location.pathname !== "/proyek" && (
-            <div className="hidden lg:flex items-center flex-shrink-0">
+          {location !== "/projects" && (
+            <div className="hidden md:flex items-center flex-shrink-0">
               <button
                 onClick={handleViewAllProjects}
                 className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 whitespace-nowrap">Semua Projek</span>
+                <span className="relative z-10 whitespace-nowrap">Semua Proyek</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
           )}
 
-          {/* Mobile Menu Button - Show from lg screens down */}
+          {/* Mobile Menu Button - Show from md screens down (below lg) */}
           {showMobileMenu && (
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -220,7 +248,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
         </div>
       </div>
 
-      {/* Mobile Menu - Show for lg screens and below */}
+      {/* Mobile Menu - Show for md screens and below */}
       {showMobileMenu && (
         <>
           {/* Backdrop */}
@@ -234,20 +262,27 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             className={`z-40 fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-deep-blue/95 backdrop-blur-xl border-l border-white/10 shadow-2xl transform transition-transform duration-500 ease-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
               }`}
           >
-            {/* Menu Header */}
+            {/* Menu Header - Also clickable for navigation */}
             <div className="p-4 sm:p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    handleLogoClick()
+                    setIsMenuOpen(false)
+                  }}
+                  className="flex items-center gap-3 group"
+                  aria-label="Navigate to home"
+                >
                   <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue to-purple rounded-xl flex items-center justify-center">
                     <HiCode className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-inter text-base sm:text-lg font-bold text-white">Digital</h2>
-                    <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
+                    <h2 className="font-inter text-base sm:text-lg font-bold text-white group-hover:text-blue transition-colors duration-300">Digital</h2>
+                    <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase group-hover:text-purple transition-colors duration-300">
                       Solutions
                     </span>
                   </div>
-                </div>
+                </button>
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
@@ -261,9 +296,9 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             {/* Navigation Links */}
             <div className="p-4 sm:p-6 space-y-2 flex-1">
               {navigationItems.map((item, index) =>
-                item.submenu ? (
+                item.name === "Proyek" ? (
                   <NavDropdown
-                    key={item.name}
+                    key="projects-dropdown"
                     name={item.name}
                     items={item.submenu}
                     selectedPage={selectedPage}
@@ -298,7 +333,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 }}
                 className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
               >
-                Semua Projek
+                Semua Proyek
               </button>
             </div>
 
@@ -329,13 +364,18 @@ const NavDropdown = ({
 }) => {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
   const navigate = useNavigate()
-  const location = useLocation()
+  const location = window.location.pathname
 
   const handleNavigate = (href) => {
     if (onClick) onClick()
     if (href.startsWith("/#")) {
-      const section = href.substring(2) // Remove "/#"
-      navigate("/", { state: { scrollTo: section } })
+      // Extract the section from href (e.g., "/#projects" -> "projects")
+      const section = href.replace("/#", "")
+      navigate(`/#${section}`)
+      // Only call setSelectedPage if it exists
+      if (setSelectedPage && typeof setSelectedPage === 'function') {
+        setSelectedPage(section)
+      }
     } else {
       navigate(href)
     }
@@ -349,21 +389,19 @@ const NavDropdown = ({
     if (isMobile) {
       setMobileDropdownOpen(!mobileDropdownOpen)
     } else {
-      if (setDropdownOpen) {
-        setDropdownOpen(!dropdownOpen)
-      }
+      if (setDropdownOpen) setDropdownOpen(!dropdownOpen)
     }
   }
 
   // Enhanced active state for dropdown button
   const isDropdownActive = () => {
     if (name.toLowerCase() === 'proyek') {
-      return selectedPage === 'projects' || location.pathname === '/projects' || location.pathname === '/proyek'
+      return selectedPage === 'projects' || location === '/projects'
     }
-    return selectedPage === name.toLowerCase() || location.pathname === `/${name.toLowerCase()}`
+    return selectedPage === name.toLowerCase() || location === `/${name.toLowerCase()}`
   }
 
-  const isOpen = isMobile ? mobileDropdownOpen : (dropdownOpen || false)
+  const isOpen = isMobile ? mobileDropdownOpen : dropdownOpen
 
   if (isMobile) {
     return (
@@ -441,4 +479,4 @@ const NavDropdown = ({
   )
 }
 
-export default Navbar
+export default Navbar;
