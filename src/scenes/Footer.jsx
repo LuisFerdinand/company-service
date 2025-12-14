@@ -2,9 +2,6 @@ import SocialMediaIcons from "../components/SocialMediaIcons";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Code,
   Sparkles,
   Zap,
@@ -52,9 +49,9 @@ const Footer = () => {
     );
   };
 
-  const handleEmailContact = () => {
-    window.location.href = "mailto:your-email@domain.com";
-  };
+  // const handleEmailContact = () => {
+  //   window.location.href = "mailto:your-email@domain.com";
+  // };
 
   return (
     <footer className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
@@ -148,14 +145,23 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="col-span-1 md:col-span-2 lg:col-span-2"
             >
-              <div className="mb-2 md:mb-4 lg:mb-6">
-                <h3 className="font-playfair font-bold text-2xl md:text-3xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
-                  JANE ESPER
-                </h3>
-                <p className="text-white/60 text-xs md:text-sm font-medium tracking-wider">
-                  PROFESSIONAL WEB DEVELOPMENT SERVICES
-                </p>
+              <div className="mb-2 md:mb-4 lg:mb-6 flex items-center">
+                {/* Logo replacement */}
+                <img
+                  src="/logo.ico"
+                  alt="JANE ESPER Logo"
+                  className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mr-3 md:mr-4 lg:mr-5 drop-shadow-lg"
+                />
+                <div>
+                  <h3 className="font-bold text-2xl md:text-3xl lg:text-5xl text-transparent text-white bg-clip-text mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
+                    Digital Solutions
+                  </h3>
+                  <p className="text-white/60 text-xs md:text-sm font-medium tracking-wider">
+                    PROFESSIONAL WEB DEVELOPMENT SERVICES
+                  </p>
+                </div>
               </div>
+              {/* Rest of the content remains the same */}
               <p className="text-white/80 mb-3 md:mb-6 lg:mb-8 leading-relaxed text-sm md:text-base lg:text-lg max-w-md">
                 Creating exceptional digital experiences that drive results.
                 From concept to launch, we deliver professional web solutions
@@ -167,51 +173,7 @@ const Footer = () => {
 
               {/* Contact Info - Compact spacing */}
               <div className="space-y-2 md:space-y-3 lg:space-y-4">
-                <motion.div
-                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group cursor-pointer"
-                  whileHover={{ x: 5 }}
-                  onClick={handleEmailContact}
-                >
-                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
-                    <Mail className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs md:text-sm">Email</p>
-                    <p className="text-white font-medium text-sm md:text-base">
-                      your-email@domain.com
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group"
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                    <Phone className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs md:text-sm">Phone</p>
-                    <p className="text-white font-medium text-sm md:text-base">
-                      +62 xxx-xxxx-xxxx
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group"
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                    <MapPin className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white/60 text-xs md:text-sm">Location</p>
-                    <p className="text-white font-medium text-sm md:text-base">
-                      Jakarta, Indonesia
-                    </p>
-                  </div>
-                </motion.div>
+                {/* Contact items remain the same */}
               </div>
             </motion.div>
 

@@ -142,7 +142,11 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
               <div className="absolute -inset-1 bg-gradient-to-r from-blue via-purple to-yellow rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
               <div className="relative bg-deep-blue rounded-lg p-1 sm:p-1.5 md:p-2 border border-white/10">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-gradient-to-br from-blue to-purple rounded flex items-center justify-center">
-                  <HiCode className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-5 md:h-5 text-white" />
+                  <img
+                    src="/logo.ico"
+                    alt="Digital Solutions Logo"
+                    className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-5 md:h-5"
+                  />
                 </div>
               </div>
             </div>
@@ -238,9 +242,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             <div className="p-4 sm:p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue to-purple rounded-xl flex items-center justify-center">
-                    <HiCode className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
-                  </div>
+                  {/* Replace the gradient div with your logo */}
+                  <img
+                    src="/logo.ico"
+                    alt="Digital Solutions Logo"
+                    className="w-8 sm:w-10 h-8 sm:h-10 rounded-xl"
+                  />
                   <div>
                     <h2 className="font-inter text-base sm:text-lg font-bold text-white">Digital</h2>
                     <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
