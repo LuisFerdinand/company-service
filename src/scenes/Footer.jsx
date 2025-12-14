@@ -7,6 +7,9 @@ import {
   Zap,
   Globe,
   Heart,
+  Phone,
+  Mail,
+  MapPin,
 } from "lucide-react";
 
 const Footer = () => {
@@ -153,12 +156,12 @@ const Footer = () => {
                 <img
                   src="/logo.ico"
                   alt="JANE ESPER Logo"
-                  className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mr-3 md:mr-4 lg:mr-5 drop-shadow-lg"
+                  className="w-16 h-16 md:w-16 md:h-16 mr-3 md:mr-4 lg:mr-5 drop-shadow-lg"
                 />
                 <div>
-                  <h3 className="font-bold text-2xl md:text-3xl lg:text-5xl text-transparent text-white bg-clip-text mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
+                  <h4 className="font-bold text-2xl md:text-3xl lg:text-4xl text-transparent text-white bg-clip-text mb-0.5 md:mb-1 lg:mb-2 drop-shadow-lg">
                     Digital Solutions
-                  </h3>
+                  </h4>
                   <p className="text-white/60 text-xs md:text-sm font-medium tracking-wider">
                     PROFESSIONAL WEB DEVELOPMENT SERVICES
                   </p>
@@ -231,7 +234,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="col-span-1"
             >
-              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent text-white mb-2 md:mb-4 lg:mb-8">
                 Tautan Cepat
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-2 lg:gap-3">
@@ -260,7 +263,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="col-span-1 hidden md:block"
             >
-              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-white mb-2 md:mb-4 lg:mb-8">
                 Layanan
               </h4>
               <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-3">

@@ -10,10 +10,9 @@ import {
   FaBullseye,
   FaCompass,
 } from "react-icons/fa";
-import TechStackDisplay from "../../components/TechStackDisplay"; 
+import TechStackDisplay from "../../components/TechStackDisplay";
 import person_1 from "../../assets/profile_img/Person_1.png";
 import person_2 from "../../assets/profile_img/Person_2.png";
-import person_3 from "../../assets/profile_img/Person_3.png";
 import { stats } from "../../constants";
 
 
@@ -69,11 +68,6 @@ const AboutUs = () => {
         name: "Vincent",
         role: "Developer",
         image: person_2,
-      },
-      {
-        name: "Valentino Wiyoto",
-        role: "Marketing",
-        image: person_3,
       },
     ],
 
@@ -225,7 +219,7 @@ const AboutUs = () => {
             >
               {/* Background Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-yellow/5 to-orange/5 rounded-2xl blur-xl"></div>
-              
+
               <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 shadow-2xl">
                 {/* Section Title with Enhanced Styling */}
                 <motion.div
