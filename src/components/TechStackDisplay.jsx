@@ -27,10 +27,10 @@ const Tooltip = ({ children, content, show }) => (
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-10 border border-gray-700"
+                className="absolute bottom-full transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-10 border border-gray-700"
             >
                 {content}
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                <div className="absolute top-full transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
             </motion.div>
         )}
     </div>
@@ -42,27 +42,27 @@ const TechStackDisplay = () => {
     const techStackContent = {
         description: "Kami menggunakan teknologi web terkini untuk memastikan website Anda cepat, aman, dan modern.",
         frontend: [
-            { icon: <FaReact className="text-blue text-xl" />, name: "React" },
-            { icon: <SiNextdotjs className="text-white text-xl" />, name: "Next.js" },
-            { icon: <SiTailwindcss className="text-cyan text-xl" />, name: "Tailwind" },
-            { icon: <SiTypescript className="text-blue text-xl" />, name: "TypeScript" },
-            { icon: <FaJsSquare className="text-yellow text-xl" />, name: "JavaScript" },
-            { icon: <FaHtml5 className="text-orange text-xl" />, name: "HTML5" },
-            { icon: <FaCss3 className="text-blue text-xl" />, name: "CSS3" },
-            { icon: <SiVuedotjs className="text-green text-xl" />, name: "Vue.js" },
-            { icon: <SiAngular className="text-red text-xl" />, name: "Angular" },
+            { icon: <FaReact className="text-blue text-lg" />, name: "React" },
+            { icon: <SiNextdotjs className="text-white text-lg" />, name: "Next.js" },
+            { icon: <SiTailwindcss className="text-cyan-400 text-lg" />, name: "Tailwind" },
+            { icon: <SiTypescript className="text-blue text-lg" />, name: "TypeScript" },
+            { icon: <FaJsSquare className="text-yellow text-lg" />, name: "JavaScript" },
+            { icon: <FaHtml5 className="text-orange text-lg" />, name: "HTML5" },
+            { icon: <FaCss3 className="text-blue text-lg" />, name: "CSS3" },
+            { icon: <SiVuedotjs className="text-green text-lg" />, name: "Vue.js" },
+            { icon: <SiAngular className="text-red text-lg" />, name: "Angular" },
         ],
         backend: [
-            { icon: <FaNodeJs className="text-green text-xl" />, name: "Node.js" },
-            { icon: <SiMongodb className="text-green text-xl" />, name: "MongoDB" },
-            { icon: <SiPostgresql className="text-blue text-xl" />, name: "PostgreSQL" },
-            { icon: <SiMysql className="text-orange text-xl" />, name: "MySQL" },
-            { icon: <FaPython className="text-blue text-xl" />, name: "Python" },
-            { icon: <SiDjango className="text-green text-xl" />, name: "Django" },
-            { icon: <FaPhp className="text-purple text-xl" />, name: "PHP" },
-            { icon: <SiLaravel className="text-red text-xl" />, name: "Laravel" },
-            { icon: <SiRedis className="text-red text-xl" />, name: "Redis" },
-            { icon: <SiGraphql className="text-pink-400 text-xl" />, name: "GraphQL" },
+            { icon: <FaNodeJs className="text-green text-lg" />, name: "Node.js" },
+            { icon: <SiMongodb className="text-green text-lg" />, name: "MongoDB" },
+            { icon: <SiPostgresql className="text-blue text-lg" />, name: "PostgreSQL" },
+            { icon: <SiMysql className="text-orange text-lg" />, name: "MySQL" },
+            { icon: <FaPython className="text-blue text-lg" />, name: "Python" },
+            { icon: <SiDjango className="text-green text-lg" />, name: "Django" },
+            { icon: <FaPhp className="text-purple text-lg" />, name: "PHP" },
+            { icon: <SiLaravel className="text-red text-lg" />, name: "Laravel" },
+            { icon: <SiRedis className="text-red text-lg" />, name: "Redis" },
+            { icon: <SiGraphql className="text-pink-400 text-lg" />, name: "GraphQL" },
         ],
     }
 
@@ -91,7 +91,7 @@ const TechStackDisplay = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-2">
                         {techStackContent.frontend.map((tool, index) => (
                             <Tooltip key={`frontend-${index}`} content={tool.name} show={hoveredTech === `frontend-${index}`}>
                                 <motion.div
@@ -99,23 +99,16 @@ const TechStackDisplay = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.05 }}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        y: -2,
-                                    }}
                                     onMouseEnter={() => setHoveredTech(`frontend-${index}`)}
                                     onMouseLeave={() => setHoveredTech(null)}
-                                    className="group relative bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:border-blue/30 transition-all duration-300 cursor-pointer"
+                                    className="group relative bg-white/5 backdrop-blur-sm rounded-full p-2 border border-white/10 hover:border-blue/30 transition-all duration-300 cursor-pointer"
                                 >
-                                    <div className="flex flex-col items-center text-center">
-                                        <div className="w-10 h-10 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <div className="flex flex-col items-center justify-center">
+                                        <div className="w-6 h-6 flex items-center justify-center">
                                             {tool.icon}
                                         </div>
-                                        <span className="text-xs font-medium text-white group-hover:text-blue transition-colors">
-                                            {tool.name}
-                                        </span>
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue/10 to-purple/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-1 bg-gradient-to-r from-blue/10 to-purple/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </motion.div>
                             </Tooltip>
                         ))}
@@ -134,7 +127,7 @@ const TechStackDisplay = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 gap-2">
                         {techStackContent.backend.map((tool, index) => (
                             <Tooltip key={`backend-${index}`} content={tool.name} show={hoveredTech === `backend-${index}`}>
                                 <motion.div
@@ -142,48 +135,21 @@ const TechStackDisplay = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.05 }}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        y: -2,
-                                    }}
                                     onMouseEnter={() => setHoveredTech(`backend-${index}`)}
                                     onMouseLeave={() => setHoveredTech(null)}
-                                    className="group relative bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:border-green/30 transition-all duration-300 cursor-pointer"
+                                    className="group relative bg-white/5 backdrop-blur-sm rounded-full p-2 border border-white/10 hover:border-green-400/30 transition-all duration-300 cursor-pointer"
                                 >
-                                    <div className="flex flex-col items-center text-center">
-                                        <div className="w-10 h-10 mb-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <div className="flex flex-col items-center justify-center">
+                                        <div className="w-6 h-6 flex items-center justify-center">
                                             {tool.icon}
                                         </div>
-                                        <span className="text-xs font-medium text-white group-hover:text-green transition-colors">
-                                            {tool.name}
-                                        </span>
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-green/10 to-teal/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-green/10 to-teal/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </motion.div>
                             </Tooltip>
                         ))}
                     </div>
                 </div>
-
-                {/* Tech Stats */}
-                {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-                    <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-blue text-xl font-bold">15+</div>
-                        <div className="text-xs text-gray-400">Teknologi</div>
-                    </div>
-                    <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-green text-xl font-bold">99%</div>
-                        <div className="text-xs text-gray-400">Uptime</div>
-                    </div>
-                    <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-purple text-xl font-bold">24/7</div>
-                        <div className="text-xs text-gray-400">Support</div>
-                    </div>
-                    <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-yellow text-xl font-bold">Fast</div>
-                        <div className="text-xs text-gray-400">Delivery</div>
-                    </div>
-                </div> */}
             </div>
         </motion.div>
     )

@@ -107,7 +107,7 @@ const Landing = ({ setSelectedPage, selectedPage }) => {
         },
         {
             icon: ArrowRight,
-            text: "Selesai 7-14 Hari",
+            text: "Selesai 2-7 Hari",
             color: "text-purple",
         },
         {
@@ -250,7 +250,7 @@ const Landing = ({ setSelectedPage, selectedPage }) => {
                         <div className="flex items-center justify-center gap-4">
                             <div className="flex items-center justify-center gap-2">
                                 <FaMoneyBillWave className="w-4 h-4 text-red" />
-                                <p className="text-[12px] xs:text-sm font-medium text-grey">Mulai Rp 2.000.000</p>
+                                <p className="text-[12px] xs:text-sm font-medium text-grey">Mulai Rp 750.000</p>
                             </div>
                             <div className="flex items-center justify-center gap-2">
                                 <Sparkles className="w-4 h-4 text-yellow" />

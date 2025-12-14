@@ -12,31 +12,46 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
 
   const getIcon = (pageName) => {
     const iconMap = {
-      home: <HiHome className="w-4 h-4" />,
-      about: <HiUser className="w-4 h-4" />,
-      workflow: <HiLightningBolt className="w-4 h-4" />,
-      services: <HiCog className="w-4 h-4" />,
-      projects: <HiBriefcase className="w-4 h-4" />,
-      contact: <HiMail className="w-4 h-4" />,
+      beranda: <HiHome className="w-4 h-4" />,
+      tentang: <HiUser className="w-4 h-4" />,
+      alur: <HiLightningBolt className="w-4 h-4" />,
+      layanan: <HiCog className="w-4 h-4" />,
+      proyek: <HiBriefcase className="w-4 h-4" />,
+      kontak: <HiMail className="w-4 h-4" />,
     }
     return iconMap[pageName] || null
   }
 
+  // Map Bahasa names to English routes
+  const getRoute = (pageName) => {
+    const routeMap = {
+      beranda: 'home',
+      tentang: 'about',
+      alur: 'workflow',
+      layanan: 'services',
+      proyek: 'projects',
+      kontak: 'contact'
+    }
+    return routeMap[pageName] || pageName
+  }
+
   const handleClick = () => {
-    navigate(`/#${lowerCasePage}`)
+    const route = getRoute(lowerCasePage)
+    navigate(`/#${route}`)
     if (onClick) onClick()
   }
 
   // Enhanced active state logic for Projects
   const isActive = () => {
-    if (lowerCasePage === 'projects') {
+    if (lowerCasePage === 'proyek') {
       // Projects is active if:
       // 1. selectedPage is 'projects' (home page #projects section)
       // 2. current location is '/projects' (projects page)
       return selectedPage === 'projects' || location === '/projects'
     }
-    // For other pages, use the original logic
-    return selectedPage === lowerCasePage || location === `/${lowerCasePage}`
+    // For other pages, map to English route for comparison
+    const route = getRoute(lowerCasePage)
+    return selectedPage === route || location === `/${route}`
   }
 
   return (
@@ -47,7 +62,7 @@ const Link = ({ page, selectedPage, setSelectedPage, onClick, isMobile = false, 
         : "text-white/80 hover:text-white hover:bg-white/5"
         } ${isMobile ? "w-full justify-start" : "justify-center"}`}
     >
-      {(isMobile || isActive()) && getIcon(lowerCasePage)}
+      {isMobile && getIcon(lowerCasePage)}
       <span className="relative flex whitespace-nowrap justify-between w-full">
         {page}
         {subMenu && <ChevronDown className="w-4 h-4" />}
@@ -70,6 +85,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
   const [scrolled, setScrolled] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false) // Add dropdown state
   const location = window.location.pathname
+  const navigate = useNavigate()
 
   // Updated media queries - mobile menu now shows from md screens down
   const showMobileMenu = useMediaQuery("(max-width: 1023px)") // lg breakpoint is 1024px
@@ -84,9 +100,17 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navigate = useNavigate()
   const handleViewAllProjects = () => {
     navigate("/projects")
+  }
+
+  // Handle logo click to navigate home - with null check
+  const handleLogoClick = () => {
+    navigate("/#home")
+    // Only call setSelectedPage if it exists (for backward compatibility)
+    if (setSelectedPage && typeof setSelectedPage === 'function') {
+      setSelectedPage("home")
+    }
   }
 
   // Close mobile menu when switching to larger screens
@@ -115,28 +139,32 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
     ? "bg-deep-blue/95 border-b border-white/10 shadow-2xl shadow-black/20"
     : "bg-transparent"
 
-  // Synchronized navigation items - matches DotGroup exactly
+  // Updated navigation items - Bahasa names with English hrefs
   const navigationItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Workflow", href: "/#workflow" },
-    { name: "Services", href: "/#services" },
+    { name: "Beranda", href: "/#home" },
+    { name: "Tentang", href: "/#about" },
+    { name: "Alur", href: "/#workflow" },
+    { name: "Layanan", href: "/#services" },
     {
-      name: "Projects",
+      name: "Proyek",
       submenu: [
-        { label: "Portfolio (Home)", href: "/#projects" },
-        { label: "All Projects", href: "/projects" },
+        { label: "Portofolio", href: "/#projects" },
+        { label: "Semua Proyek", href: "/projects" },
       ],
     },
-    { name: "Contact", href: "/#contact" },
+    { name: "Kontak", href: "/#contact" },
   ]
 
   return (
     <nav className={`${navbarStyle} fixed top-0 w-full z-20 transition-all duration-500`}>
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-          {/* Logo Section - More compact on smaller screens */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          {/* Logo Section - Wrapped with navigation to home */}
+          <button
+            onClick={handleLogoClick}
+            className="flex items-center gap-2 sm:gap-3 flex-shrink-0 group cursor-pointer"
+            aria-label="Navigate to home"
+          >
             {/* Animated logo container */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-blue via-purple to-yellow rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
@@ -152,18 +180,18 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             </div>
             {/* Company name - Hide text on mobile, show shortened version on small screens */}
             <div className="hidden xs:flex sm:flex flex-col">
-              <h1 className="font-inter text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight">
+              <h1 className="font-inter text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white tracking-tight group-hover:text-blue transition-colors duration-300">
                 {/* Show "DS" on small screens, "Digital" on medium+ */}
                 <span className="sm:hidden">DS</span>
                 <span className="hidden sm:inline">Digital</span>
               </h1>
-              <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
+              <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase group-hover:text-purple transition-colors duration-300">
                 {/* Show "Sol" on small screens, "Solutions" on medium+ */}
                 <span className="sm:hidden">Sol</span>
                 <span className="hidden sm:inline">Solutions</span>
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Desktop Navigation - Only show on large screens (lg+) */}
           <div className="hidden md:flex items-center justify-center flex-1 max-w-4xl mx-4">
@@ -199,7 +227,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 onClick={handleViewAllProjects}
                 className="relative group px-3 md:px-4 lg:px-6 py-2 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-xs md:text-sm font-semibold text-white shadow-lg shadow-blue/25 hover:shadow-blue/40 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10 whitespace-nowrap">View Full Portfolio</span>
+                <span className="relative z-10 whitespace-nowrap">Semua Proyek</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple to-blue rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
@@ -238,23 +266,27 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             className={`z-40 fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-deep-blue/95 backdrop-blur-xl border-l border-white/10 shadow-2xl transform transition-transform duration-500 ease-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
               }`}
           >
-            {/* Menu Header */}
+            {/* Menu Header - Also clickable for navigation */}
             <div className="p-4 sm:p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  {/* Replace the gradient div with your logo */}
-                  <img
-                    src="/logo.ico"
-                    alt="Digital Solutions Logo"
-                    className="w-8 sm:w-10 h-8 sm:h-10 rounded-xl"
-                  />
+                <button
+                  onClick={() => {
+                    handleLogoClick()
+                    setIsMenuOpen(false)
+                  }}
+                  className="flex items-center gap-3 group"
+                  aria-label="Navigate to home"
+                >
+                  <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue to-purple rounded-xl flex items-center justify-center">
+                    <HiCode className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
+                  </div>
                   <div>
-                    <h2 className="font-inter text-base sm:text-lg font-bold text-white">Digital</h2>
-                    <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase">
+                    <h2 className="font-inter text-base sm:text-lg font-bold text-white group-hover:text-blue transition-colors duration-300">Digital</h2>
+                    <span className="font-opensans text-xs text-blue font-medium tracking-widest uppercase group-hover:text-purple transition-colors duration-300">
                       Solutions
                     </span>
                   </div>
-                </div>
+                </button>
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
@@ -268,7 +300,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
             {/* Navigation Links */}
             <div className="p-4 sm:p-6 space-y-2 flex-1">
               {navigationItems.map((item, index) =>
-                item.name === "Projects" ? (
+                item.name === "Proyek" ? (
                   <NavDropdown
                     key="projects-dropdown"
                     name={item.name}
@@ -305,7 +337,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }) => {
                 }}
                 className="w-full py-3 bg-gradient-to-r from-blue to-purple rounded-xl font-opensans text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
               >
-                View Full Portfolio
+                Semua Proyek
               </button>
             </div>
 
@@ -341,7 +373,13 @@ const NavDropdown = ({
   const handleNavigate = (href) => {
     if (onClick) onClick()
     if (href.startsWith("/#")) {
-      navigate(`/#${name.toLowerCase()}`)
+      // Extract the section from href (e.g., "/#projects" -> "projects")
+      const section = href.replace("/#", "")
+      navigate(`/#${section}`)
+      // Only call setSelectedPage if it exists
+      if (setSelectedPage && typeof setSelectedPage === 'function') {
+        setSelectedPage(section)
+      }
     } else {
       navigate(href)
     }
@@ -355,13 +393,13 @@ const NavDropdown = ({
     if (isMobile) {
       setMobileDropdownOpen(!mobileDropdownOpen)
     } else {
-      setDropdownOpen(!dropdownOpen)
+      if (setDropdownOpen) setDropdownOpen(!dropdownOpen)
     }
   }
 
   // Enhanced active state for dropdown button
   const isDropdownActive = () => {
-    if (name.toLowerCase() === 'projects') {
+    if (name.toLowerCase() === 'proyek') {
       return selectedPage === 'projects' || location === '/projects'
     }
     return selectedPage === name.toLowerCase() || location === `/${name.toLowerCase()}`
@@ -415,7 +453,7 @@ const NavDropdown = ({
           : "text-white/80 hover:text-white hover:bg-white/5"
           }`}
       >
-        <span className="relative flex whitespace-nowrap justify-between w-full">
+        <span className="relative flex whitespace-nowrap items-center justify-between w-full">
           {name}
           <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
           <span
@@ -445,4 +483,4 @@ const NavDropdown = ({
   )
 }
 
-export default Navbar
+export default Navbar;

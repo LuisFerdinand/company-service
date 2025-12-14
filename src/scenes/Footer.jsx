@@ -13,21 +13,21 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Workflow", href: "#workflow" },
-    { name: "Services", href: "#services" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Beranda", href: "#home" },
+    { name: "Tentang", href: "#about" },
+    { name: "Alur Kerja", href: "#workflow" },
+    { name: "Layanan", href: "#services" },
+    { name: "Proyek", href: "#projects" },
+    { name: "Kontak", href: "#contact" },
   ];
 
   const services = [
-    "Web Development",
-    "UI/UX Design",
-    "E-commerce Solutions",
-    "Mobile Apps",
-    "SEO Optimization",
-    "Digital Marketing",
+    "Pengembangan Website",
+    "Desain UI/UX",
+    "Solusi E-commerce",
+    "Aplikasi Mobile",
+    "Optimasi SEO",
+    "Pemasaran Digital",
   ];
 
   const floatingIcons = [
@@ -40,9 +40,9 @@ const Footer = () => {
 
   // eslint-disable-next-line
   const handleWhatsAppContact = () => {
-    const message = "Hi! I'd like to know more about your website services.";
+    const message = "Halo! Saya ingin tahu lebih lanjut tentang layanan website Anda.";
     const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = "YOUR_WHATSAPP_NUMBER"; // Replace with your actual WhatsApp number
+    const whatsappNumber = "085248209388"; // Replace with your actual WhatsApp number
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
       "_blank"
@@ -52,6 +52,9 @@ const Footer = () => {
   // const handleEmailContact = () => {
   //   window.location.href = "mailto:your-email@domain.com";
   // };
+  const handleEmailContact = () => {
+    window.location.href = "mailto:ferdinandluis88@gmail.com";
+  };
 
   return (
     <footer className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
@@ -163,9 +166,9 @@ const Footer = () => {
               </div>
               {/* Rest of the content remains the same */}
               <p className="text-white/80 mb-3 md:mb-6 lg:mb-8 leading-relaxed text-sm md:text-base lg:text-lg max-w-md">
-                Creating exceptional digital experiences that drive results.
-                From concept to launch, we deliver professional web solutions
-                tailored to your business needs.
+                Menciptakan pengalaman digital yang luar biasa yang memberikan hasil optimal.
+                Dari konsep hingga peluncuran, kami memberikan solusi web profesional yang
+                disesuaikan dengan kebutuhan bisnis Anda.
               </p>
               <div className="mb-3 md:mb-6 lg:mb-8">
                 <SocialMediaIcons />
@@ -173,7 +176,51 @@ const Footer = () => {
 
               {/* Contact Info - Compact spacing */}
               <div className="space-y-2 md:space-y-3 lg:space-y-4">
-                {/* Contact items remain the same */}
+                <motion.div
+                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group cursor-pointer"
+                  whileHover={{ x: 5 }}
+                  onClick={handleEmailContact}
+                >
+                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+                    <Mail className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs md:text-sm">Email</p>
+                    <p className="text-white font-medium text-sm md:text-base">
+                      ferdinandluis88@gmail.com
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                    <Phone className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs md:text-sm">Telepon</p>
+                    <p className="text-white font-medium text-sm md:text-base">
+                      +62 852-4820-9388
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-2 md:space-x-3 lg:space-x-4 group"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-7 h-7 md:w-9 md:h-9 lg:w-12 lg:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <MapPin className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs md:text-sm">Lokasi</p>
+                    <p className="text-white font-medium text-sm md:text-base">
+                      Jakarta, Indonesia
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -184,8 +231,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="col-span-1"
             >
-              <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
-                Quick Links
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+                Tautan Cepat
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-2 lg:gap-3">
                 {footerLinks.map((link, index) => (
@@ -213,8 +260,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="col-span-1 hidden md:block"
             >
-              <h4 className="font-playfair font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
-                Services
+              <h4 className="font-semibold text-lg md:text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-2 md:mb-4 lg:mb-8">
+                Layanan
               </h4>
               <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-3">
                 {services.map((service, index) => (
@@ -247,10 +294,10 @@ const Footer = () => {
           >
             <div className="text-center lg:text-left">
               <p className="text-white/80 text-sm md:text-base lg:text-lg mb-0.5 md:mb-1 lg:mb-2">
-                ©{currentYear} DS. All Rights Reserved.
+                ©{currentYear} DS. Hak Cipta Dilindungi.
               </p>
               <p className="text-white/60 text-xs md:text-sm flex items-center justify-center lg:justify-start">
-                Made with <Heart size={12} className="mx-1 text-red-500" /> in
+                Dibuat dengan <Heart size={12} className="mx-1 text-red-500" /> di
                 Jakarta, Indonesia
               </p>
             </div>

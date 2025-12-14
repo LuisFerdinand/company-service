@@ -1,21 +1,4 @@
 import {
-  people01,
-  people02,
-  people03,
-  facebook,
-  instagram,
-  linkedin,
-  twitter,
-  airbnb,
-  binance,
-  coinbase,
-  dropbox,
-  send,
-  shield,
-  star,
-} from "../assets/assets";
-
-import {
   SiReact,
   SiNodedotjs,
   SiMongodb,
@@ -40,14 +23,14 @@ import {
 import { FaAws, FaCube, FaServer, FaUserLock } from "react-icons/fa";
 
 // Import all project thumbnail images
-import project1 from "../assets/assets/projects-thumbnail/1.png";
-import project2 from "../assets/assets/projects-thumbnail/2.png";
-import project3 from "../assets/assets/projects-thumbnail/3.png";
-import project4 from "../assets/assets/projects-thumbnail/4.png";
-import project5 from "../assets/assets/projects-thumbnail/5.png";
-import project6 from "../assets/assets/projects-thumbnail/6.png";
-import project7 from "../assets/assets/projects-thumbnail/7.png";
-import project8 from "../assets/assets/projects-thumbnail/8.png";
+import project1 from "../assets/projects-thumbnail/1.png";
+import project2 from "../assets/projects-thumbnail/2.png";
+import project3 from "../assets/projects-thumbnail/3.png";
+import project4 from "../assets/projects-thumbnail/4.png";
+import project5 from "../assets/projects-thumbnail/5.png";
+import project6 from "../assets/projects-thumbnail/6.png";
+import project7 from "../assets/projects-thumbnail/7.png";
+import project8 from "../assets/projects-thumbnail/8.png";
 
 // Tech icon mapping function
 export const getTechIcon = (tech) => {
@@ -90,79 +73,79 @@ export const getTechIcon = (tech) => {
 export const projects = [
   {
     id: 1,
-    title: "Brainwave UI/UX Website",
+    title: "Situs Web UI/UX Brainwave",
     subtitle:
-      "A visually striking and modern UI/UX showcase built with React and Tailwind CSS",
+      "Showcase UI/UX yang menawan dan modern dibangun dengan React dan Tailwind CSS",
     image: project1,
     technologies: ["React.js", "Vite", "Tailwind CSS"],
-    category: "Web App",
+    category: "Aplikasi Web",
     industry: "UI/UX",
     year: 2024,
-    clientType: "Internal Project",
+    clientType: "Proyek Internal",
     description:
-      "Brainwave is a cutting-edge UI/UX web application built with React.js and Tailwind CSS. Designed to demonstrate the latest trends in modern web design, it features a sleek layout, interactive animations, and highly reusable components. This project serves as a design and development reference for building engaging, responsive user interfaces.",
+      "Brainwave adalah aplikasi web UI/UX mutakhir yang dibangun dengan React.js dan Tailwind CSS. Dirancang untuk mendemonstrasikan tren terbaru dalam desain web modern, aplikasi ini menampilkan tata letak yang elegan, animasi interaktif, dan komponen yang sangat dapat digunakan kembali. Proyek ini berfungsi sebagai referensi desain dan pengembangan untuk membangun antarmuka pengguna yang menarik dan responsif.",
     features: [
-      "Polished multi-section layout including hero, features, roadmap, pricing, and footer",
-      "Parallax animation effects triggered by scroll and cursor movement",
-      "Fully responsive design for seamless performance on all devices",
-      "Utilizes contemporary UI styles such as bento grids and glassmorphism",
-      "Built with scalable and reusable component architecture for clean development",
+      "Tata letak multi-bagian yang dipoles termasuk hero, fitur, roadmap, harga, dan footer",
+      "Efek animasi parallax yang dipicu oleh scroll dan gerakan kursor",
+      "Desain sepenuhnya responsif untuk performa yang mulus di semua perangkat",
+      "Memanfaatkan gaya UI kontemporer seperti bento grid dan glassmorphism",
+      "Dibangun dengan arsitektur komponen yang skalabel dan dapat digunakan kembali untuk pengembangan yang bersih",
     ],
     href: "https://brain-wave-lyart.vercel.app",
     featured: true,
   },
   {
     id: 2,
-    title: "Nike Shoe Store Landing Page",
+    title: "Landing Page Toko Sepatu Nike",
     subtitle:
-      "A responsive and modern e-commerce landing page inspired by leading retail brands",
+      "Landing page e-commerce yang responsif dan modern terinspirasi dari brand retail terkemuka",
     image: project2,
     technologies: ["React.js", "Tailwind CSS", "Vite"],
-    category: "Web App",
+    category: "Aplikasi Web",
     industry: "E-commerce",
     year: 2024,
-    clientType: "Concept Project",
+    clientType: "Proyek Konsep",
     description:
-      "A sleek, mobile-first landing page designed for a fictional Nike-branded shoe store. Built with React, Tailwind CSS, and Vite, this project showcases a clean layout, conversion-focused sections, and responsive design. It serves as a strong front-end development example and a visual asset for e-commerce portfolios.",
+      "Landing page yang elegan dan mobile-first yang dirancang untuk toko sepatu bermerek Nike fiktif. Dibangun dengan React, Tailwind CSS, dan Vite, proyek ini menampilkan tata letak yang bersih, bagian yang berfokus pada konversi, dan desain responsif. Proyek ini berfungsi sebagai contoh pengembangan front-end yang kuat dan aset visual untuk portofolio e-commerce.",
     features: [
-      "Eye-catching hero section with call-to-action",
-      "Dynamic popular product listings",
-      "Customer statistics and social proof elements",
-      "Product benefits and feature highlights",
-      "Testimonial carousel for trust-building",
-      "Newsletter subscription section",
-      "Fully responsive layout for all devices",
+      "Bagian hero yang menarik perhatian dengan call-to-action",
+      "Daftar produk populer yang dinamis",
+      "Statistik pelanggan dan elemen bukti sosial",
+      "Manfaat produk dan sorotan fitur",
+      "Carousel testimoni untuk membangun kepercayaan",
+      "Bagian berlangganan newsletter",
+      "Tata letak sepenuhnya responsif untuk semua perangkat",
     ],
     href: "https://nike-one-vert.vercel.app",
   },
   {
     id: 3,
-    title: "Vetra SaaS Website",
+    title: "Situs Web SaaS Vetra",
     subtitle:
-      "High-performance React landing page for a creative video platform",
+      "Landing page React berperforma tinggi untuk platform video kreatif",
     image: project3,
     technologies: ["React.js", "Vite", "Tailwind CSS"],
-    category: "Web App",
+    category: "Aplikasi Web",
     industry: "SaaS",
     year: 2024,
-    clientType: "Internal Project",
+    clientType: "Proyek Internal",
     description:
-      "Vetra is a modern SaaS landing page for a content creation platform that simplifies video editing workflows. Built with React.js and Tailwind CSS, the site features a sleek, responsive UI/UX, smooth animations, and high performance. It serves as a polished reference site for SaaS product teams and front-end developers.",
+      "Vetra adalah landing page SaaS modern untuk platform pembuatan konten yang menyederhanakan alur kerja pengeditan video. Dibangun dengan React.js dan Tailwind CSS, situs ini menampilkan UI/UX yang elegan dan responsif, animasi yang halus, dan performa tinggi. Situs ini berfungsi sebagai situs referensi yang dipoles untuk tim produk SaaS dan pengembang front-end.",
     features: [
-      "Complete multi-section layout: Hero, Features, Pricing (monthly/yearly), Testimonials, FAQ",
-      "Smooth transitions and micro-interactions using CSS animations",
-      "Custom visual styling with layered gradients and pseudo-elements",
-      "Responsive design optimized for all screen sizes",
-      "Fast loading performance and clean codebase",
-      "Pixel-perfect layout and mobile-first architecture",
+      "Tata letak multi-bagian lengkap: Hero, Fitur, Harga (bulanan/tahunan), Testimoni, FAQ",
+      "Transisi halus dan mikro-interaksi menggunakan animasi CSS",
+      "Gaya visual kustom dengan gradien berlapis dan pseudo-element",
+      "Desain responsif yang dioptimalkan untuk semua ukuran layar",
+      "Performa loading cepat dan codebase yang bersih",
+      "Tata letak pixel-perfect dan arsitektur mobile-first",
     ],
     href: "https://vetra-rose.vercel.app",
   },
   {
     id: 4,
-    title: "Startup Pitch Platform",
+    title: "Platform Pitch Startup",
     subtitle:
-      "A modern Next.js 15 platform for submitting and browsing startup ideas",
+      "Platform Next.js 15 modern untuk mengirimkan dan menjelajahi ide startup",
     image: project4,
     technologies: [
       "Next.js",
@@ -171,31 +154,31 @@ export const projects = [
       "Tailwind CSS",
       "TypeScript",
     ],
-    category: "Web App",
-    industry: "Startup / Community",
+    category: "Aplikasi Web",
+    industry: "Startup / Komunitas",
     year: 2024,
-    clientType: "Tutorial Project",
+    clientType: "Proyek Tutorial",
     description:
-      "An interactive platform built with the latest web technologies where entrepreneurs can submit and explore startup ideas. Designed with a minimalist UI and powered by Sanity CMS, it provides a clean and intuitive user experience. Created as part of a hands-on tutorial to teach beginners how to build real-world full-stack applications using modern tools.",
+      "Platform interaktif yang dibangun dengan teknologi web terbaru di mana pengusaha dapat mengirimkan dan menjelajahi ide startup. Dirancang dengan UI minimalis dan didukung oleh Sanity CMS, platform ini memberikan pengalaman pengguna yang bersih dan intuitif. Dibuat sebagai bagian dari tutorial praktik langsung untuk mengajarkan pemula cara membangun aplikasi full-stack dunia nyata menggunakan alat modern.",
     features: [
-      "Live content feed powered by Sanity Content API to display the latest pitches",
-      "GitHub authentication for quick and secure user login",
-      "Startup submission form including title, category, media links, and description",
-      "Detailed pitch view pages with multimedia support",
-      "Filtering and search functionality for browsing pitches",
-      "Personal profile page displaying all submitted ideas",
-      "Editor Picks: Admins can feature standout pitches via Sanity Studio",
-      "Built-in view counter to track idea popularity",
-      "Clean, minimal UI built with TailwindCSS and ShadCN components",
-      "Latest React 19 and Next.js 15 features with scalable architecture",
+      "Feed konten langsung didukung oleh Sanity Content API untuk menampilkan pitch terbaru",
+      "Autentikasi GitHub untuk login pengguna yang cepat dan aman",
+      "Form pengiriman startup termasuk judul, kategori, tautan media, dan deskripsi",
+      "Halaman tampilan pitch detail dengan dukungan multimedia",
+      "Fungsionalitas filtering dan pencarian untuk menjelajahi pitch",
+      "Halaman profil pribadi yang menampilkan semua ide yang dikirimkan",
+      "Editor Picks: Admin dapat menampilkan pitch unggulan via Sanity Studio",
+      "Penghitung tampilan built-in untuk melacak popularitas ide",
+      "UI yang bersih dan minimal dibangun dengan TailwindCSS dan komponen ShadCN",
+      "Fitur React 19 dan Next.js 15 terbaru dengan arsitektur yang skalabel",
     ],
     href: "https://yc-directory-seven-sage.vercel.app",
   },
   {
     id: 5,
-    title: "FileFlow – Cloud Storage & Sharing Platform",
+    title: "FileFlow – Platform Penyimpanan & Berbagi Cloud",
     subtitle:
-      "A sleek file storage and sharing solution built with Appwrite and Next.js 15",
+      "Solusi penyimpanan dan berbagi file yang elegan dibangun dengan Appwrite dan Next.js 15",
     image: project5,
     technologies: [
       "React.js",
@@ -204,30 +187,30 @@ export const projects = [
       "Tailwind CSS",
       "TypeScript",
     ],
-    category: "Web App",
-    industry: "Cloud Storage",
+    category: "Aplikasi Web",
+    industry: "Penyimpanan Cloud",
     year: 2024,
-    clientType: "Internal Project",
+    clientType: "Proyek Internal",
     description:
-      "FileFlow is a modern web-based platform for managing and sharing files with ease. Built using Next.js 15 and Appwrite, it features seamless file uploads, user authentication, intuitive organization, and real-time dashboard insights. Designed with a minimalist UI, it ensures fast, secure, and responsive file management for all users.",
+      "FileFlow adalah platform berbasis web modern untuk mengelola dan berbagi file dengan mudah. Dibangun menggunakan Next.js 15 dan Appwrite, platform ini menampilkan upload file yang mulus, autentikasi pengguna, organisasi yang intuitif, dan wawasan dashboard real-time. Dirancang dengan UI minimalis, platform ini memastikan manajemen file yang cepat, aman, dan responsif untuk semua pengguna.",
     features: [
-      "Secure authentication using Appwrite for signup, login, and logout",
-      "Support for uploading documents, images, videos, and audio files",
-      "Intuitive file viewer with rename, delete, and open-in-tab capabilities",
-      "Download functionality for easy local access to stored files",
-      "Built-in sharing tools for collaborative file access",
-      "Interactive dashboard displaying storage stats and recent activity",
-      "Full-text global search to locate files instantly",
-      "Custom sorting by name, date, or file size",
-      "Minimalist and responsive design across all devices",
+      "Autentikasi aman menggunakan Appwrite untuk signup, login, dan logout",
+      "Dukungan untuk upload dokumen, gambar, video, dan file audio",
+      "Penampil file intuitif dengan kemampuan rename, hapus, dan buka-di-tab",
+      "Fungsionalitas download untuk akses lokal yang mudah ke file tersimpan",
+      "Alat berbagi built-in untuk akses file kolaboratif",
+      "Dashboard interaktif yang menampilkan statistik penyimpanan dan aktivitas terbaru",
+      "Pencarian global full-text untuk menemukan file secara instan",
+      "Pengurutan kustom berdasarkan nama, tanggal, atau ukuran file",
+      "Desain minimalis dan responsif di semua perangkat",
     ],
     href: "https://store-it-lime-one.vercel.app/",
     featured: true,
   },
   {
     id: 6,
-    title: "Cardora – Trello Clone",
-    subtitle: "A modern, kanban-style task management application",
+    title: "Cardora – Klon Trello",
+    subtitle: "Aplikasi manajemen tugas bergaya kanban yang modern",
     image: project6,
     technologies: [
       "React.js",
@@ -238,27 +221,27 @@ export const projects = [
       "Neon",
       "Clerk",
     ],
-    category: "Web App",
-    industry: "Productivity",
+    category: "Aplikasi Web",
+    industry: "Produktivitas",
     year: 2024,
-    clientType: "Personal Project",
+    clientType: "Proyek Pribadi",
     description:
-      "Cardora is a powerful kanban board application inspired by Trello, designed for seamless task and project management. Built with modern web technologies like Next.js and Prisma, it offers real-time drag-and-drop interactions, authentication with Clerk, and efficient data handling via Neon database. Ideal for teams and individuals looking to manage workflows intuitively.",
+      "Cardora adalah aplikasi papan kanban yang powerful terinspirasi dari Trello, dirancang untuk manajemen tugas dan proyek yang mulus. Dibangun dengan teknologi web modern seperti Next.js dan Prisma, aplikasi ini menawarkan interaksi drag-and-drop real-time, autentikasi dengan Clerk, dan penanganan data yang efisien melalui database Neon. Ideal untuk tim dan individu yang ingin mengelola alur kerja secara intuitif.",
     features: [
-      "User authentication and session management via Clerk",
-      "Create and manage multiple boards, columns, and cards",
-      "Drag-and-drop reordering for cards and columns (kanban-style)",
-      "Persistent backend using Prisma ORM and Neon database",
-      "Fully responsive interface using Tailwind CSS",
-      "Real-time updates and clean UI interactions using modern React hooks",
-      "Optimized performance using Next.js App Router architecture",
+      "Autentikasi pengguna dan manajemen sesi melalui Clerk",
+      "Membuat dan mengelola beberapa board, kolom, dan kartu",
+      "Pengurutan ulang drag-and-drop untuk kartu dan kolom (gaya kanban)",
+      "Backend persisten menggunakan Prisma ORM dan database Neon",
+      "Antarmuka sepenuhnya responsif menggunakan Tailwind CSS",
+      "Update real-time dan interaksi UI yang bersih menggunakan React hooks modern",
+      "Performa dioptimalkan menggunakan arsitektur Next.js App Router",
     ],
     href: "https://cardora.vercel.app/",
   },
   {
     id: 7,
-    title: "TaskNexus – Jira Clone",
-    subtitle: "Agile project management platform for teams and enterprises",
+    title: "TaskNexus – Klon Jira",
+    subtitle: "Platform manajemen proyek Agile untuk tim dan enterprise",
     image: project7,
     technologies: [
       "React.js",
@@ -268,29 +251,29 @@ export const projects = [
       "Hono",
       "Appwrite",
     ],
-    category: "Web App",
-    industry: "Productivity",
+    category: "Aplikasi Web",
+    industry: "Produktivitas",
     year: 2024,
-    clientType: "Internal Tool",
+    clientType: "Alat Internal",
     description:
-      "TaskNexus is a Jira-inspired project management tool that empowers teams to plan, track, and release software more efficiently. Built using Next.js and styled with Tailwind CSS, the platform leverages Appwrite for backend functionality and Hono for serverless routing and API logic. With features like issue tracking, sprint planning, user assignment, and real-time updates, TaskNexus is ideal for agile development environments.",
+      "TaskNexus adalah alat manajemen proyek terinspirasi Jira yang memberdayakan tim untuk merencanakan, melacak, dan merilis perangkat lunak dengan lebih efisien. Dibangun menggunakan Next.js dan ditata dengan Tailwind CSS, platform ini memanfaatkan Appwrite untuk fungsionalitas backend dan Hono untuk routing serverless dan logika API. Dengan fitur seperti pelacakan issue, perencanaan sprint, penugasan pengguna, dan update real-time, TaskNexus ideal untuk lingkungan pengembangan agile.",
     features: [
-      "User authentication and role-based access powered by Appwrite",
-      "Create and manage multiple projects, issues, epics, and sprints",
-      "Drag-and-drop kanban board with dynamic column and status support",
-      "Collaborator and assignee features for issue tracking",
-      "Sprint planning and backlogs with start/end date configuration",
-      "Real-time updates using efficient API routes via Hono",
-      "Clean, responsive UI optimized with Tailwind CSS and component architecture",
+      "Autentikasi pengguna dan akses berbasis peran didukung oleh Appwrite",
+      "Membuat dan mengelola beberapa proyek, issue, epic, dan sprint",
+      "Papan kanban drag-and-drop dengan dukungan kolom dan status dinamis",
+      "Fitur kolaborator dan penerima tugas untuk pelacakan issue",
+      "Perencanaan sprint dan backlog dengan konfigurasi tanggal mulai/berakhir",
+      "Update real-time menggunakan rute API yang efisien melalui Hono",
+      "UI yang bersih dan responsif dioptimalkan dengan Tailwind CSS dan arsitektur komponen",
     ],
     href: "https://task-nexus-tau.vercel.app/",
     featured: true,
   },
   {
     id: 8,
-    title: "VibeTube – YouTube Clone",
+    title: "VibeTube – Klon YouTube",
     subtitle:
-      "A high-performance video sharing platform with modern tech stack",
+      "Platform berbagi video berperforma tinggi dengan tech stack modern",
     image: project8,
     technologies: [
       "React.js",
@@ -302,21 +285,21 @@ export const projects = [
       "tRPC",
       "Clerk",
     ],
-    category: "Web App",
-    industry: "Media & Entertainment",
+    category: "Aplikasi Web",
+    industry: "Media & Hiburan",
     year: 2024,
     clientType: "Startup",
     description:
-      "VibeTube is a full-featured YouTube-inspired video platform built using the latest technologies including Next.js, Drizzle ORM, and tRPC. It supports seamless video streaming, user authentication, and modern UI components. This project emphasizes scalable architecture, real-time updates, and a user-friendly experience for creators and viewers alike.",
+      "VibeTube adalah platform video berfitur lengkap terinspirasi YouTube yang dibangun menggunakan teknologi terbaru termasuk Next.js, Drizzle ORM, dan tRPC. Platform ini mendukung streaming video yang mulus, autentikasi pengguna, dan komponen UI modern. Proyek ini menekankan arsitektur yang skalabel, update real-time, dan pengalaman yang user-friendly untuk kreator dan penonton.",
     features: [
-      "User authentication and profile management with Clerk",
-      "Video upload, streaming, and preview with responsive layout",
-      "Browse, search, and filter videos by category and popularity",
-      "Like, comment, and subscribe functionality",
-      "Built using type-safe APIs with tRPC and Drizzle ORM for data handling",
-      "Database powered by Neon for scalable Postgres integration",
-      "Minimalist and intuitive UI styled with Tailwind CSS",
-      "High performance and SEO-optimized with Next.js 14+ App Router",
+      "Autentikasi pengguna dan manajemen profil dengan Clerk",
+      "Upload video, streaming, dan preview dengan tata letak responsif",
+      "Jelajahi, cari, dan filter video berdasarkan kategori dan popularitas",
+      "Fungsionalitas like, komentar, dan subscribe",
+      "Dibangun menggunakan API type-safe dengan tRPC dan Drizzle ORM untuk penanganan data",
+      "Database didukung oleh Neon untuk integrasi Postgres yang skalabel",
+      "UI minimalis dan intuitif ditata dengan Tailwind CSS",
+      "Performa tinggi dan dioptimalkan SEO dengan Next.js 14+ App Router",
     ],
     href: "https://vibe-tube-alpha.vercel.app/",
     featured: true,
@@ -342,72 +325,22 @@ export const navLinks = [
   },
 ];
 
-export const features = [
-  {
-    id: "feature-1",
-    icon: star,
-    title: "Rewards",
-    content:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes",
-  },
-  {
-    id: "feature-2",
-    icon: shield,
-    title: "100% Secured",
-    content:
-      "We take proactive steps make sure your information and transactions are secure.",
-  },
-  {
-    id: "feature-3",
-    icon: send,
-    title: "Balance Transfer",
-    content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
-  },
-];
-
-export const feedback = [
-  {
-    id: "feedback-1",
-    content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    name: "Herman Jensen",
-    title: "Founder & Leader",
-    img: people01,
-  },
-  {
-    id: "feedback-2",
-    content:
-      "Money makes your life easier. If you're lucky to have it, you're lucky.",
-    name: "Steve Mark",
-    title: "Founder & Leader",
-    img: people02,
-  },
-  {
-    id: "feedback-3",
-    content:
-      "It is usually people in the money business, finance, and international trade that are really rich.",
-    name: "Kenn Gallagher",
-    title: "Founder & Leader",
-    img: people03,
-  },
-];
-
 export const stats = [
   {
-    id: "stats-1",
-    title: "Projects Delivered",
-    value: "120+",
+    number: "50+",
+    label: "Proyek Selesai",
   },
   {
-    id: "stats-2",
-    title: "Clients Worldwide",
-    value: "45+",
+    number: "3+",
+    label: "Tahun Pengalaman",
   },
   {
-    id: "stats-3",
-    title: "Tech Stack Expertise",
-    value: "30+",
+    number: "24/7",
+    label: "Dukungan",
+  },
+  {
+    number: "99.9%",
+    label: "Uptime",
   },
 ];
 
@@ -474,48 +407,6 @@ export const footerLinks = [
         link: "https://www.hoobank.com/become-a-partner/",
       },
     ],
-  },
-];
-
-export const socialMedia = [
-  {
-    id: "social-media-1",
-    icon: instagram,
-    link: "https://www.instagram.com/",
-  },
-  {
-    id: "social-media-2",
-    icon: facebook,
-    link: "https://www.facebook.com/",
-  },
-  {
-    id: "social-media-3",
-    icon: twitter,
-    link: "https://www.twitter.com/",
-  },
-  {
-    id: "social-media-4",
-    icon: linkedin,
-    link: "https://www.linkedin.com/",
-  },
-];
-
-export const clients = [
-  {
-    id: "client-1",
-    logo: airbnb,
-  },
-  {
-    id: "client-2",
-    logo: binance,
-  },
-  {
-    id: "client-3",
-    logo: coinbase,
-  },
-  {
-    id: "client-4",
-    logo: dropbox,
   },
 ];
 

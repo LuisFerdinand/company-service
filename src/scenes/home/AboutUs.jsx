@@ -1,20 +1,22 @@
-"use client"
-
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FaRocket,
   FaUsers,
   FaLightbulb,
   FaHandshake,
   FaChevronDown,
-  FaAward,
   FaEye,
-  FaHeart,
-  FaStar,
-} from "react-icons/fa"
-import { Shield, Clock, Target, Zap } from "lucide-react"
-import TechStackDisplay from "../../components/TechStackDisplay" // Import the new component
+  FaBullseye,
+  FaCompass,
+} from "react-icons/fa";
+import TechStackDisplay from "../../components/TechStackDisplay"; 
+import person_1 from "../../assets/profile_img/Person_1.png";
+import person_2 from "../../assets/profile_img/Person_2.png";
+import person_3 from "../../assets/profile_img/Person_3.png";
+import { stats } from "../../constants";
+
+
 
 const AboutUs = () => {
   const [activeAccordion, setActiveAccordion] = useState(0)
@@ -29,24 +31,7 @@ const AboutUs = () => {
         "Dengan pengalaman bertahun-tahun di industri teknologi, kami memahami bahwa setiap bisnis memiliki kebutuhan unik. Tim kami terdiri dari developer berpengalaman yang passionate dalam menciptakan solusi digital yang tidak hanya menarik secara visual, tetapi juga fungsional dan menguntungkan bagi bisnis Anda.",
     },
 
-    stats: [
-      {
-        number: "50+",
-        label: "Proyek Selesai",
-      },
-      {
-        number: "3+",
-        label: "Tahun Pengalaman",
-      },
-      {
-        number: "24/7",
-        label: "Dukungan",
-      },
-      {
-        number: "99.9%",
-        label: "Uptime",
-      },
-    ],
+    stats: stats,
 
     values: [
       {
@@ -76,19 +61,19 @@ const AboutUs = () => {
 
     team: [
       {
-        name: "Ahmad Rizki",
+        name: "Luis Ferdinand",
         role: "Lead Developer",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        image: person_1,
       },
       {
-        name: "Sarah Wijaya",
-        role: "UI/UX Designer",
-        image: "https://images.unsplash.com/photo-1494790108755-2616b12a9c0b?w=150&h=150&fit=crop&crop=face",
+        name: "Vincent",
+        role: "Developer",
+        image: person_2,
       },
       {
-        name: "Budi Santoso",
-        role: "Backend Specialist",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        name: "Valentino Wiyoto",
+        role: "Marketing",
+        image: person_3,
       },
     ],
 
@@ -99,71 +84,71 @@ const AboutUs = () => {
       vision: "Menjadi partner terpercaya dalam transformasi digital untuk UMKM dan perusahaan di seluruh Indonesia.",
     },
 
-    achievements: [
-      {
-        icon: <FaAward className="text-yellow text-xl" />,
-        title: "50+ Proyek Sukses",
-        description: "Telah menyelesaikan berbagai proyek dari startup hingga enterprise",
-      },
-      {
-        icon: <FaStar className="text-yellow text-xl" />,
-        title: "Rating 4.9/5",
-        description: "Kepuasan klien yang tinggi berdasarkan review dan testimoni",
-      },
-      {
-        icon: <Shield className="text-blue text-xl" />,
-        title: "Garansi Kualitas",
-        description: "Jaminan kualitas dan support berkelanjutan untuk setiap proyek",
-      },
-      {
-        icon: <Clock className="text-green text-xl" />,
-        title: "Delivery Tepat Waktu",
-        description: "98% proyek diselesaikan sesuai timeline yang disepakati",
-      },
-    ],
+    // achievements: [
+    //   {
+    //     icon: <FaAward className="text-yellow text-xl" />,
+    //     title: "50+ Proyek Sukses",
+    //     description: "Telah menyelesaikan berbagai proyek dari startup hingga enterprise",
+    //   },
+    //   {
+    //     icon: <FaStar className="text-yellow text-xl" />,
+    //     title: "Rating 4.9/5",
+    //     description: "Kepuasan klien yang tinggi berdasarkan review dan testimoni",
+    //   },
+    //   {
+    //     icon: <Shield className="text-blue text-xl" />,
+    //     title: "Garansi Kualitas",
+    //     description: "Jaminan kualitas dan support berkelanjutan untuk setiap proyek",
+    //   },
+    //   {
+    //     icon: <Clock className="text-green text-xl" />,
+    //     title: "Delivery Tepat Waktu",
+    //     description: "98% proyek diselesaikan sesuai timeline yang disepakati",
+    //   },
+    // ],
 
-    process: [
-      {
-        step: "01",
-        title: "Konsultasi",
-        description: "Diskusi mendalam tentang kebutuhan dan tujuan bisnis Anda",
-        icon: <Target className="text-blue" />,
-      },
-      {
-        step: "02",
-        title: "Perencanaan",
-        description: "Merancang strategi dan roadmap pengembangan yang optimal",
-        icon: <FaLightbulb className="text-yellow" />,
-      },
-      {
-        step: "03",
-        title: "Pengembangan",
-        description: "Implementasi dengan teknologi terkini dan best practices",
-        icon: <Zap className="text-purple" />,
-      },
-      {
-        step: "04",
-        title: "Peluncuran",
-        description: "Testing, deployment, dan training untuk tim Anda",
-        icon: <FaRocket className="text-green" />,
-      },
-    ],
+    // process: [
+    //   {
+    //     step: "01",
+    //     title: "Konsultasi",
+    //     description: "Diskusi mendalam tentang kebutuhan dan tujuan bisnis Anda",
+    //     icon: <Target className="text-blue" />,
+    //   },
+    //   {
+    //     step: "02",
+    //     title: "Perencanaan",
+    //     description: "Merancang strategi dan roadmap pengembangan yang optimal",
+    //     icon: <FaLightbulb className="text-yellow" />,
+    //   },
+    //   {
+    //     step: "03",
+    //     title: "Pengembangan",
+    //     description: "Implementasi dengan teknologi terkini dan best practices",
+    //     icon: <Zap className="text-purple" />,
+    //   },
+    //   {
+    //     step: "04",
+    //     title: "Peluncuran",
+    //     description: "Testing, deployment, dan training untuk tim Anda",
+    //     icon: <FaRocket className="text-green" />,
+    //   },
+    // ],
 
-    testimonials: [
-      {
-        name: "Andi Pratama",
-        role: "CEO, TechStart Indonesia",
-        content:
-          "DigitalSolution membantu kami mengembangkan platform yang user-friendly dan scalable. Tim yang sangat profesional!",
-        rating: 5,
-      },
-      {
-        name: "Sari Dewi",
-        role: "Owner, Boutique Fashion",
-        content: "Website toko online kami meningkatkan penjualan 300% dalam 3 bulan. Terima kasih DigitalSolution!",
-        rating: 5,
-      },
-    ],
+    // testimonials: [
+    //   {
+    //     name: "Andi Pratama",
+    //     role: "CEO, TechStart Indonesia",
+    //     content:
+    //       "DigitalSolution membantu kami mengembangkan platform yang user-friendly dan scalable. Tim yang sangat profesional!",
+    //     rating: 5,
+    //   },
+    //   {
+    //     name: "Sari Dewi",
+    //     role: "Owner, Boutique Fashion",
+    //     content: "Website toko online kami meningkatkan penjualan 300% dalam 3 bulan. Terima kasih DigitalSolution!",
+    //     rating: 5,
+    //   },
+    // ],
   }
 
   const LineGradient = ({ width = "w-full" }) => <div className={`h-0.5 ${width} bg-yellow`} />
@@ -228,7 +213,100 @@ const AboutUs = () => {
               viewport={{ once: true }}
               className="lg:hidden text-center"
             >
-              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{aboutContent.hero.additionalText}</p>
+              <p className="text-gray-400 text-[12px] xs:text-sm sm:text-base leading-relaxed">{aboutContent.hero.additionalText}</p>
+            </motion.div>
+
+            {/* Enhanced Mission & Vision - Now Prominently Placed */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Background Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow/5 to-orange/5 rounded-2xl blur-xl"></div>
+              
+              <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 shadow-2xl">
+                {/* Section Title with Enhanced Styling */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-8"
+                >
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 flex items-center justify-center gap-3">
+                    <FaBullseye className="text-yellow" />
+                    <span className="bg-gradient-to-r from-yellow to-orange bg-clip-text text-transparent">
+                      {aboutContent.mission.title}
+                    </span>
+                  </h2>
+                  <LineGradient width="mx-auto w-20 sm:w-32" />
+                </motion.div>
+
+                <div className="space-y-6">
+                  {/* Mission Card */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    className="bg-gradient-to-r from-blue/20 to-teal/20 backdrop-blur-sm rounded-xl p-6 border border-blue/30 shadow-lg group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue to-teal rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <FaCompass className="text-white text-xl" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-3 flex items-center gap-2">
+                          <span className="text-blue">MISI</span>
+                          <div className="h-px bg-gradient-to-r from-blue to-transparent flex-1"></div>
+                        </h3>
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-medium">
+                          {aboutContent.mission.mission}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Vision Card */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    className="bg-gradient-to-r from-yellow/20 to-orange/20 backdrop-blur-sm rounded-xl p-6 border border-yellow/30 shadow-lg group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-br from-yellow to-orange rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <FaEye className="text-deep-blue text-xl" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-white font-bold text-lg sm:text-xl mb-3 flex items-center gap-2">
+                          <span className="text-yellow">VISI</span>
+                          <div className="h-px bg-gradient-to-r from-yellow to-transparent flex-1"></div>
+                        </h3>
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-medium">
+                          {aboutContent.mission.vision}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Bottom accent line */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="h-1 bg-gradient-to-r from-blue via-yellow to-orange rounded-full mt-8"
+                ></motion.div>
+              </div>
             </motion.div>
 
             {/* Stats Section with Boxes */}
@@ -246,16 +324,13 @@ const AboutUs = () => {
                     <div className="text-yellow text-xl sm:text-2xl md:text-3xl font-bold mb-2 group-hover:scale-110 transition-transform">
                       {stat.number}
                     </div>
-                    <div className="text-white text-xs sm:text-sm md:text-base font-medium group-hover:text-yellow transition-colors">
+                    <div className="text-white text-[12px] xs:text-sm sm:text-base md:text-base font-medium group-hover:text-yellow transition-colors">
                       {stat.label}
                     </div>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-            {/* Tech Stack - Now a separate component */}
-            <TechStackDisplay />
           </div>
 
           {/* Right Column */}
@@ -302,8 +377,8 @@ const AboutUs = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 sm:px-6 pb-3 sm:pb-4">
-                        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed pl-8 sm:pl-9">
+                      <div className="px-4 sm:px-6 pb-3 sm:py-4">
+                        <p className="text-gray-400 text-[12px] xs:text-sm sm:text-base leading-relaxed pl-8 sm:pl-9">
                           {value.description}
                         </p>
                       </div>
@@ -312,154 +387,6 @@ const AboutUs = () => {
                 ))}
               </div>
             </div>
-
-            {/* Mission & Vision */}
-            <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                {aboutContent.mission.title}
-              </motion.h3>
-              <div className="space-y-4">
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <FaEye className="text-blue text-lg" />
-                    <h4 className="text-white font-semibold">Misi</h4>
-                  </div>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{aboutContent.mission.mission}</p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <FaHeart className="text-red text-lg" />
-                    <h4 className="text-white font-semibold">Visi</h4>
-                  </div>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{aboutContent.mission.vision}</p>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Achievements */}
-            {/* <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                Pencapaian Kami
-              </motion.h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {aboutContent.achievements.map((achievement, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-yellow/30 transition-all duration-300 group"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="group-hover:scale-110 transition-transform">{achievement.icon}</div>
-                      <div>
-                        <h4 className="text-white font-semibold text-sm mb-1">{achievement.title}</h4>
-                        <p className="text-gray-400 text-xs leading-relaxed">{achievement.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div> */}
-
-            {/* Process Overview */}
-            {/* <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                Proses Kerja Kami
-              </motion.h3>
-              <div className="space-y-3">
-                {aboutContent.process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-yellow/30 transition-all duration-300 group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-8 h-8 bg-gradient-to-r from-yellow to-orange rounded-full flex items-center justify-center text-deep-blue font-bold text-sm">
-                        {step.step}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-white font-semibold text-sm mb-1">{step.title}</h4>
-                        <p className="text-gray-400 text-xs leading-relaxed">{step.description}</p>
-                      </div>
-                      <div className="group-hover:scale-110 transition-transform">{step.icon}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div> */}
-
-            {/* Testimonials */}
-            {/* <div>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-xl sm:text-2xl font-bold text-white mb-6 text-center lg:text-left"
-              >
-                Kata Klien Kami
-              </motion.h3>
-              <div className="space-y-4">
-                {aboutContent.testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
-                  >
-                    <div className="flex items-start gap-3">
-                      <FaQuoteLeft className="text-yellow text-lg flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">"{testimonial.content}"</p>
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="text-white font-semibold text-sm">{testimonial.name}</h4>
-                            <p className="text-gray-500 text-xs">{testimonial.role}</p>
-                          </div>
-                          <div className="flex gap-1">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <FaStar key={i} className="text-yellow text-xs" />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div> */}
 
             {/* Team Section */}
             <div>
@@ -490,53 +417,55 @@ const AboutUs = () => {
                       />
                     </div>
                     <h3 className="text-white font-semibold text-sm sm:text-base mb-1">{member.name}</h3>
-                    <p className="text-yellow text-xs sm:text-sm font-medium">{member.role}</p>
+                    <p className="text-yellow text-[12px] xs:text-sm sm:text-base font-medium">{member.role}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* CTA Section - Positioned at Bottom */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="bg-gradient-to-r from-yellow/10 to-orange/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-yellow/20">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
-                  Siap Mengembangkan Bisnis Anda?
-                </h2>
-                <p className="text-gray-400 text-sm sm:text-base mb-6 max-w-2xl mx-auto leading-relaxed">
-                  Mari buat website yang menarik pelanggan dan mengembangkan bisnis Anda dengan teknologi terdepan.
-                </p>
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 15px 35px rgba(253, 204, 73, 0.4)",
-                    y: -2,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    const element = document.getElementById("projects")
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }}
-                  className="bg-gradient-to-r from-yellow to-orange text-deep-blue font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-sm sm:text-base transition-all duration-300 hover:shadow-xl inline-flex items-center gap-2"
-                >
-                  Lihat Proyek Kami
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-                  >
-                    <FaRocket className="text-sm sm:text-base" />
-                  </motion.div>
-                </motion.button>
-              </div>
-            </motion.div>
+            {/* Tech Stack - Now a separate component */}
+            <TechStackDisplay />
           </div>
         </div>
+        {/* CTA Section - Positioned at Bottom */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-6"
+        >
+          <div className="bg-gradient-to-r from-yellow/10 to-orange/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-yellow/20">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
+              Siap Mengembangkan Bisnis Anda?
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base mb-6 max-w-2xl mx-auto leading-relaxed">
+              Mari buat website yang menarik pelanggan dan mengembangkan bisnis Anda dengan teknologi terdepan.
+            </p>
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 15px 35px rgba(253, 204, 73, 0.4)",
+                y: -2,
+              }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const element = document.getElementById("projects")
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+              className="bg-gradient-to-r from-yellow to-orange text-deep-blue font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-sm sm:text-base transition-all duration-300 hover:shadow-xl inline-flex items-center gap-2"
+            >
+              Lihat Proyek Kami
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+              >
+                <FaRocket className="text-sm sm:text-base" />
+              </motion.div>
+            </motion.button>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
